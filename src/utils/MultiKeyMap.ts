@@ -159,7 +159,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @return {boolean} whether the entry/entries has been deleted
      *
      * @example
-     * map.deleteByValues('LiLei');
+     * map.deleteByValue('LiLei');
      */
     deleteByValue(value: V): boolean {
         if (this.valueMap.size === 0) {
