@@ -1,0 +1,10 @@
+{
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "verbose": false,
+    "moduleNameMapper": {
+        "^@$": "<rootDir>/src",
+        "^@/(.*)$": "<rootDir>/src/$1",
+        "^@yookue/ts-multi-map$": "<rootDir>/src"
+    }
+}

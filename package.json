@@ -1,0 +1,117 @@
+{
+    "name": "@yookue/ts-multi-map",
+    "version": "0.1.0",
+    "title": "TsMultiMap",
+    "description": "Multiple Key/Value Map Utilities for TypeScript",
+    "homepage": "https://yookue.github.io/ts-multi-map",
+    "organization": "Yookue Ltd",
+    "private": false,
+    "license": "MIT",
+    "keywords": [
+        "multi-map",
+        "multiple-map",
+        "many-keys-map",
+        "many-values-map"
+    ],
+    "files": [
+        "dist"
+    ],
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "unpkg": "dist/umd/ts-multi-map.min.js",
+    "types": "dist/esm/index.d.ts",
+    "sideEffects": false,
+    "scripts": {
+        "build": "father build",
+        "rebuild": "del-cli ./dist && father build",
+        "build:watch": "father dev",
+        "docs:build": "tsc --outDir ./docs-temp && jsdoc -c jsdoc.config.json && del-cli ./docs-temp",
+        "docs:rebuild": "del-cli ./docs-dist && npm run docs:build",
+        "docs:deploy": "gh-pages -d ./docs-dist",
+        "doctor": "father doctor",
+        "lint": "npm run lint:es && npm run lint:css",
+        "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
+        "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+        "test": "jest",
+        "test:coverage": "jest --coverage"
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.22.10",
+        "object-hash": "^3.0.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.1.2",
+        "@commitlint/config-conventional": "^17.1.0",
+        "@types/jest": "^29.5.4",
+        "@types/object-hash": "^3.0.3",
+        "babel-plugin-comments-clean": "^1.0.0",
+        "del-cli": "^5.0.0",
+        "docdash": "^2.0.1",
+        "eslint": "^8.46.0",
+        "father": "^4.3.1",
+        "gh-pages": "^5.0.0",
+        "jsdoc": "^4.0.2",
+        "lint-staged": "^13.2.3",
+        "prettier": "^2.7.1",
+        "stylelint": "^15.10.2",
+        "ts-jest": "^29.1.0",
+        "typescript": "^5.1.6"
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
+    },
+    "lint-staged": {
+        "*.{md,json}": [
+            "prettier --write --no-error-on-unmatched-pattern"
+        ],
+        "*.{css,less}": [
+            "stylelint --fix",
+            "prettier --write"
+        ],
+        "*.{js,jsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{ts,tsx}": [
+            "eslint --fix",
+            "prettier --parser=typescript --write"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yookue/ts-multi-map.git"
+    },
+    "bugs": {
+        "url": "https://github.com/yookue/ts-multi-map/issues"
+    },
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "author": {
+        "name": "Yookue Ltd",
+        "email": "yookue@outlook.com",
+        "url": "https://yookue.com"
+    },
+    "contributors": [
+        {
+            "name": "Davis Hsing",
+            "email": "davidhsing@163.com",
+            "url": "https://github.com/davidhsing"
+        }
+    ]
+}

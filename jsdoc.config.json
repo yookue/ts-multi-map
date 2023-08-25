@@ -1,0 +1,56 @@
+{
+    "source": {
+        "include": [
+            "docs-temp",
+            "README.md"
+        ],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc", "closure"]
+    },
+    "opts": {
+        "template": "node_modules/docdash",
+        "encoding": "utf-8",
+        "destination": "./docs-dist",
+        "recurse": true,
+        "verbose": false
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "docdash": {
+        "openGraph": {
+            "title": "TsMultiMap",
+            "type": "website",
+            "image": "",
+            "site_name": "ts-multi-map",
+            "url": "https://yookue.github.io/ts-multi-map"
+        },
+        "meta": {
+            "title": "TsMultiMap",
+            "description": "Multiple Key/Value Map Utilities for TypeScript",
+            "keyword": "yookue, multi-map, multiple-map, many-keys-map, many-values-map"
+        },
+        "menu": {
+            "Github": {
+                "href": "https://github.com/yookue/ts-multi-map",
+                "target": "_blank",
+                "class": "menu-item",
+                "id": "repo_link"
+            }
+        },
+        "search": true,
+        "templates": {
+            "default": {
+                "includeDate": false,
+                "outputSourceFiles": false
+            },
+            "cleverLinks": false,
+            "monospaceLinks": false
+        }
+    }
+}
