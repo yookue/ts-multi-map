@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>MultiValueMap.js - TsMultiMap</title>
+    
+    <meta name="description" content="Multiple Key/Value Map Utilities for TypeScript" />
+    
+        <meta name="keywords" content="yookue, multi-map, multiple-map, many-keys-map, many-values-map" />
+        <meta name="keyword" content="yookue, multi-map, multiple-map, many-keys-map, many-values-map" />
+    
+    
+    
+    <meta property="og:title" content="TsMultiMap"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    <meta property="og:site_name" content="ts-multi-map"/>
+    <meta property="og:url" content="https://yookue.github.io/ts-multi-map"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/yookue/ts-multi-map" target="_blank" class="menu-item" id="repo_link" >Github</a></h2><h3>Classes</h3><ul><li><a href="MultiKeyMap.html">MultiKeyMap</a><ul class='methods'><li data-type='method'><a href="MultiKeyMap.html#clear">clear</a></li><li data-type='method'><a href="MultiKeyMap.html#deleteByKey">deleteByKey</a></li><li data-type='method'><a href="MultiKeyMap.html#deleteByValue">deleteByValue</a></li><li data-type='method'><a href="MultiKeyMap.html#deleteByValues">deleteByValues</a></li><li data-type='method'><a href="MultiKeyMap.html#entries">entries</a></li><li data-type='method'><a href="MultiKeyMap.html#forEach">forEach</a></li><li data-type='method'><a href="MultiKeyMap.html#forEachBreakable">forEachBreakable</a></li><li data-type='method'><a href="MultiKeyMap.html#forEachIndexing">forEachIndexing</a></li><li data-type='method'><a href="MultiKeyMap.html#get">get</a></li><li data-type='method'><a href="MultiKeyMap.html#hasAllValues">hasAllValues</a></li><li data-type='method'><a href="MultiKeyMap.html#hasAnyValues">hasAnyValues</a></li><li data-type='method'><a href="MultiKeyMap.html#hasKey">hasKey</a></li><li data-type='method'><a href="MultiKeyMap.html#hasKeyValue">hasKeyValue</a></li><li data-type='method'><a href="MultiKeyMap.html#hasValue">hasValue</a></li><li data-type='method'><a href="MultiKeyMap.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="MultiKeyMap.html#isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="MultiKeyMap.html#keys">keys</a></li><li data-type='method'><a href="MultiKeyMap.html#set">set</a></li><li data-type='method'><a href="MultiKeyMap.html#toString">toString</a></li><li data-type='method'><a href="MultiKeyMap.html#values">values</a></li><li data-type='method'><a href="MultiKeyMap.html#.of">of</a></li></ul></li><li><a href="MultiValueMap.html">MultiValueMap</a><ul class='methods'><li data-type='method'><a href="MultiValueMap.html#clear">clear</a></li><li data-type='method'><a href="MultiValueMap.html#deleteByKey">deleteByKey</a></li><li data-type='method'><a href="MultiValueMap.html#deleteByKeys">deleteByKeys</a></li><li data-type='method'><a href="MultiValueMap.html#deleteByValue">deleteByValue</a></li><li data-type='method'><a href="MultiValueMap.html#deleteByValues">deleteByValues</a></li><li data-type='method'><a href="MultiValueMap.html#deleteValueOfKey">deleteValueOfKey</a></li><li data-type='method'><a href="MultiValueMap.html#entries">entries</a></li><li data-type='method'><a href="MultiValueMap.html#forEach">forEach</a></li><li data-type='method'><a href="MultiValueMap.html#forEachBreakable">forEachBreakable</a></li><li data-type='method'><a href="MultiValueMap.html#forEachIndexing">forEachIndexing</a></li><li data-type='method'><a href="MultiValueMap.html#get">get</a></li><li data-type='method'><a href="MultiValueMap.html#hasAllKeys">hasAllKeys</a></li><li data-type='method'><a href="MultiValueMap.html#hasAnyKeys">hasAnyKeys</a></li><li data-type='method'><a href="MultiValueMap.html#hasKey">hasKey</a></li><li data-type='method'><a href="MultiValueMap.html#hasKeyValue">hasKeyValue</a></li><li data-type='method'><a href="MultiValueMap.html#hasValues">hasValues</a></li><li data-type='method'><a href="MultiValueMap.html#isEmpty">isEmpty</a></li><li data-type='method'><a href="MultiValueMap.html#isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="MultiValueMap.html#keys">keys</a></li><li data-type='method'><a href="MultiValueMap.html#push">push</a></li><li data-type='method'><a href="MultiValueMap.html#set">set</a></li><li data-type='method'><a href="MultiValueMap.html#toString">toString</a></li><li data-type='method'><a href="MultiValueMap.html#values">values</a></li><li data-type='method'><a href="MultiValueMap.html#.of">of</a></li></ul></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">MultiValueMap.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ *
+ * Licensed under the MIT License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+/**
+ * Map with entries that contains a single key and multiple values
+ *
+ * @implements {Omit&lt;Map&lt;K, Array&lt;V>>>}
+ */
+export class MultiValueMap {
+    /**
+     * Construct a multi value map instance
+     *
+     * @param {MapEntries&lt;K, V>} entries the map entries that represented with [K, V[]][]
+     * @constructor
+     *
+     * @example
+     * const map = new MultiValueMap([
+     *     ['color', ['red', 'green', 'blue']]
+     * ]);
+     */
+    constructor(entries) {
+        this.map = new Map();
+        entries === null || entries === void 0 ? void 0 : entries.forEach(entry => {
+            const [key, values] = entry;
+            this.set(key, values);
+        });
+    }
+    /**
+     * Returns the values of the given key
+     *
+     * @param {K} key the key to retrieve
+     * @return {Array&lt;V>|undefined} the values of the given key
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']]
+     * ]);
+     * const colors = map.get('color');    // ['red', 'green', 'blue']
+     */
+    get(key) {
+        return this.map.get(key);
+    }
+    /**
+     * Sets the values of the given key
+     *
+     * @param {K} key the key to set
+     * @param {Array&lt;V>} values the values to set
+     *
+     * @example
+     * map.set('color', ['red', 'green', 'blue']);
+     */
+    set(key, values) {
+        this.map.set(key, values);
+    }
+    /**
+     * Push values onto the given key, the values will be appended to the given key
+     *
+     * @param {K} key the key to operate
+     * @param {Array&lt;V>} values the values to push
+     *
+     * @example
+     * map.push('color', 'yellow', 'black');
+     */
+    push(key, ...values) {
+        let array = this.get(key) || [];
+        array.push(...values);
+        this.map.set(key, array);
+    }
+    /**
+     * Clears the map
+     */
+    clear() {
+        this.map.clear();
+    }
+    /**
+     * Returns the keys of the map
+     *
+     * @return {Array&lt;K>} the keys of the map
+     */
+    keys() {
+        return [...this.map.keys()];
+    }
+    /**
+     * Returns the values array of the map
+     *
+     * @return {Array&lt;Array&lt;V>>} the values array of the map
+     */
+    values() {
+        return [...this.map.values()];
+    }
+    /**
+     * Returns the key/values entries of the map
+     *
+     * @return {Array&lt;K, Array&lt;V>>} the key/values entries of the map
+     */
+    entries() {
+        return [...this.map.entries()];
+    }
+    /**
+     * Deletes the entry with the given key
+     *
+     * @param {K} key the key to delete
+     * @return {boolean} whether the entry has been deleted
+     *
+     * @example
+     * map.deleteByKey('color');
+     */
+    deleteByKey(key) {
+        return this.map.delete(key);
+    }
+    /**
+     * Deletes all the entries with any of the given keys
+     *
+     * @param {Array&lt;K>} keys the keys to delete
+     * @return {boolean} whether any of the entries has been deleted
+     *
+     * @example
+     * map.deleteByKeys('color', 'position');
+     */
+    deleteByKeys(...keys) {
+        if ((keys === null || keys === void 0 ? void 0 : keys.length) === 0 || this.map.size === 0) {
+            return false;
+        }
+        let result = false;
+        for (const key of keys) {
+            result = result || this.map.delete(key);
+        }
+        return result;
+    }
+    /**
+     * Deletes the entry/entries with the given value
+     *
+     * @param {V} value the value to delete
+     * @return {boolean} whether the entry/entries has been deleted
+     *
+     * @example
+     * map.deleteByValue('red');
+     */
+    deleteByValue(value) {
+        if (this.map.size === 0) {
+            return false;
+        }
+        let result = false;
+        for (const [key, values] of this.entries()) {
+            if (values === null || values === void 0 ? void 0 : values.includes(value)) {
+                result = result || this.map.delete(key);
+            }
+        }
+        return result;
+    }
+    /**
+     * Deletes all the entries with any of the given values
+     *
+     * @param {Array&lt;V>} values the values to delete
+     * @return {boolean} whether any of the entries has been deleted
+     *
+     * @example
+     * map.deleteByValues('green', 'blue');
+     */
+    deleteByValues(...values) {
+        if ((values === null || values === void 0 ? void 0 : values.length) === 0 || this.map.size === 0) {
+            return false;
+        }
+        let result = false;
+        for (const value of values) {
+            result = result || this.deleteByValue(value);
+        }
+        return result;
+    }
+    /**
+     * Deletes a value for the given key from the map, keeping other values
+     *
+     * @param {K} key the key to operate
+     * @param {V} value the value to delete
+     * @return {boolean} whether the value has been removed
+     *
+     * @example
+     * map.deleteValueOfKey('color', 'blue');
+     */
+    deleteValueOfKey(key, value) {
+        let array = this.get(key) || [];
+        if (!array.includes(value)) {
+            return false;
+        }
+        array = array.filter((v, i) => v !== value);
+        this.map.set(key, array);
+        return true;
+    }
+    /**
+     * Processes each entry in the map
+     *
+     * @param {function} callback a callback function that processes each entry
+     * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
+     *
+     * @example
+     * map.forEach((values, key) => {
+     *     console.log(key);
+     * });
+     */
+    forEach(callback, thisArg) {
+        this.map.forEach((values, key) => {
+            callback(values, key, this);
+        }, thisArg);
+    }
+    /**
+     * Processes each entry in the map with index capability
+     *
+     * @param {function} callback a callback function that processes each entry
+     * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
+     *
+     * @example
+     * map.forEachIndexing((values, key, index) => {
+     *     console.log(index);
+     * });
+     */
+    forEachIndexing(callback, thisArg) {
+        let index = 0;
+        this.map.forEach((values, key) => {
+            callback(values, key, index++, this);
+        }, thisArg);
+    }
+    /**
+     * Processes each entry in the map with breakable capability
+     *
+     * @param {function} callback a callback function that processes each entry. Returning false indicates to break the map iteration
+     * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
+     *
+     * @example
+     * map.forEachBreakable((values, key) => {
+     *     return true;
+     * });
+     */
+    forEachBreakable(callback, thisArg) {
+        this.map.forEach((values, key) => {
+            if (!callback(values, key, this)) {
+                return;
+            }
+        }, thisArg);
+    }
+    /**
+     * Returns whether the map contains the given key
+     *
+     * @param {K} key the key to check
+     * @return {boolean} whether the map contains the given key
+     *
+     * @example
+     * map.hasKey('color');
+     */
+    hasKey(key) {
+        return this.map.has(key);
+    }
+    /**
+     * Returns whether the map contains the given key/value pair
+     *
+     * @param {K} key the key to check
+     * @param {V} value the value to check
+     * @return {boolean} whether the map contains the given key/value pair
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']]
+     * ]);
+     * const hasColor = map.hasKeyValue('color', 'red');    // true
+     * const hasColor = map.hasKeyValue('color', 'black');    // false
+     */
+    hasKeyValue(key, value) {
+        if (this.map.size === 0) {
+            return false;
+        }
+        const array = this.get(key) || [];
+        return array.includes(value);
+    }
+    /**
+     * Returns whether any entries of the map that contains all the given values
+     *
+     * @param {Array&lt;V>} values the values to check
+     * @return {boolean} whether any entries of the map that contains all the given values
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']],
+     *     ['position', ['top', 'right', 'bottom', 'left']]
+     * ]);
+     * const hasColor = map.hasValues('red', 'black');    // false
+     * const hasPosition = map.hasValues('top', 'right');    // true
+     */
+    hasValues(...values) {
+        if ((values === null || values === void 0 ? void 0 : values.length) === 0 || this.map.size === 0) {
+            return false;
+        }
+        for (const array of this.map.values()) {
+            let result = true;
+            for (const v of values) {
+                result = result &amp;&amp; array.includes(v);
+                if (!result) {
+                    break;
+                }
+            }
+            if (result) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * Returns whether the map contains any of the given keys
+     *
+     * @param {Array&lt;K>} keys the keys to check
+     * @return {boolean} whether the map contains any of the given keys
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']]
+     * ]);
+     * const hasKeys = map.hasAnyKeys('color', 'position');    // true
+     */
+    hasAnyKeys(...keys) {
+        if ((keys === null || keys === void 0 ? void 0 : keys.length) === 0 || this.map.size === 0) {
+            return false;
+        }
+        for (const key of keys) {
+            if (this.keys().includes(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * Returns whether the map contains all the given keys
+     *
+     * @param {Array&lt;K>} keys the keys to check
+     * @return {boolean} whether the map contains all the given keys
+     *
+     * @example
+     * map.hasAllKeys('color', 'position');
+     */
+    hasAllKeys(...keys) {
+        if ((keys === null || keys === void 0 ? void 0 : keys.length) === 0 || this.map.size === 0) {
+            return false;
+        }
+        for (const key of keys) {
+            if (!this.keys().includes(key)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    /**
+     * Returns whether the map is empty
+     *
+     * @return {boolean} whether the map is empty
+     */
+    isEmpty() {
+        return this.map.size === 0;
+    }
+    /**
+     * Returns whether the map is not empty
+     *
+     * @return {boolean} whether the map is not empty
+     */
+    isNotEmpty() {
+        return this.map.size > 0;
+    }
+    /**
+     * Response for returning the list of key/values to iterate
+     *
+     * @example
+     * for (const [key, values] of map) {
+     *     console.log(key);
+     * }
+     */
+    [Symbol.iterator]() {
+        return this.map[Symbol.iterator]();
+    }
+    /**
+     * Returns the size of map
+     *
+     * @return {number} the size of map
+     */
+    get size() {
+        return this.map.size;
+    }
+    /**
+     * Returns the string representation of the map identifier ('MultiValueMap')
+     *
+     * @returns {string} the string representation of the map identifier
+     */
+    get [Symbol.toStringTag]() {
+        return 'MultiValueMap';
+    }
+    /**
+     * Returns the string representation of the map elements
+     *
+     * @returns {string} the string representation of the map elements
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']],
+     *     ['position', ['top', 'right', 'bottom', 'left']]
+     * ]);
+     * console.log(map.toString());    // color:[red,green,blue];position:[top,right,bottom,left]
+     */
+    toString() {
+        return [...this].map(entry => {
+            const [key, values] = ((entry.length &lt;= 1) ? [[], entry[0]] : [entry.slice(0, -1), entry[entry.length - 1]]);
+            return `${key}:[${values.join()}]`;
+        }).join(';');
+    }
+    /**
+     * Construct a multi value map instance
+     *
+     * @param {MapEntries&lt;K, V>} entries the map entries that represented with [K, V[]][]
+     * @return {MultiValueMap} a multi value map instance
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']]
+     * ]);
+     */
+    static of(entries) {
+        return new MultiValueMap(entries);
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.2</a> on Fri Aug 25 2023 18:44:44 GMT+0800 using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
