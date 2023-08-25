@@ -23,14 +23,14 @@ describe('MultiKeyMap', () => {
         const map = new MultiKeyMap([
             [['row1', 'col1'], 'LiLei']
         ]);
-        expect(map.get('row1', 'col1')).toBe('LiLei');
+        expect(map.get(['row1', 'col1'])).toBe('LiLei');
     });
 
     test('Testing of method', () => {
         const map = MultiKeyMap.of([
             [['row1', 'col1'], 'LiLei']
         ]);
-        expect(map.get('row1', 'col1')).toBe('LiLei');
+        expect(map.get(['row1', 'col1'])).toBe('LiLei');
     });
 
     test('Testing size method', () => {
@@ -44,7 +44,7 @@ describe('MultiKeyMap', () => {
             [['row1', 'col1'], 'LiLei']
         ]);
         map.set(['row1', 'col1'], 'HanMeimei');
-        expect(map.get('row1', 'col1')).toBe('HanMeimei');
+        expect(map.get(['row1', 'col1'])).toBe('HanMeimei');
     });
 
     test('Testing deleteByKey method', () => {

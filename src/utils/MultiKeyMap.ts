@@ -60,9 +60,9 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * const student = map.get('row1', 'col1');    // 'LiLei'
+     * const student = map.get(['row1', 'col1']);    // 'LiLei'
      */
-    get(...keys: K[]): V | undefined {
+    get(keys: K[]): V | undefined {
         if (keys?.length == 0) {
             return undefined;
         }
@@ -262,8 +262,8 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @example
      * map.hasKey('row1', 'col1');
      */
-    hasKey(...keys: K[]): boolean {
-        return keys?.length > 0 && this.keysMap.hasValues(...keys);
+    hasKey(keys: K[]): boolean {
+        return keys?.length > 0 && this.keysMap.hasValues(keys);
     }
 
     /**
@@ -281,7 +281,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const hasGirl = map.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false
      */
     hasKeyValue(keys: K[], value: V): boolean {
-        return keys?.length > 0 && this.get(...keys) === value;
+        return keys?.length > 0 && this.get(keys) === value;
     }
 
     /**

@@ -43,7 +43,7 @@ describe('MultiValueMap', () => {
         const map = MultiValueMap.of([
             ['color', ['red', 'green', 'blue']]
         ]);
-        map.push('color', 'yellow', 'black');
+        map.push('color', ['yellow', 'black']);
         expect(map.get('color')).toContain('yellow');
     });
 
@@ -120,8 +120,8 @@ describe('MultiValueMap', () => {
             ['color', ['red', 'green', 'blue']],
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
-        expect(map.hasValues('red', 'black')).toBeFalsy();
-        expect(map.hasValues('top', 'right')).toBeTruthy();
+        expect(map.hasValues(['red', 'black'])).toBeFalsy();
+        expect(map.hasValues(['top', 'right'])).toBeTruthy();
     });
 
     test('Testing hasAnyKeys method', () => {
