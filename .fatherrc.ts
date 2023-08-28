@@ -16,6 +16,8 @@ export default defineConfig({
         '@yookue/ts-multi-map': path.resolve(__dirname, './src'),
     },
     extraBabelPlugins: [
-        'babel-plugin-comments-clean',
+        ['babel-plugin-comments', {
+            remove: 'all',
+        }]
     ]
 });

@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "title": "TsMultiMap",
     "description": "Multiple Key/Value Map Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-multi-map",
@@ -44,7 +44,7 @@
         "@commitlint/config-conventional": "^17.1.0",
         "@types/jest": "^29.5.4",
         "@types/object-hash": "^3.0.3",
-        "babel-plugin-comments-clean": "^1.0.0",
+        "babel-plugin-comments": "^1.0.4",
         "del-cli": "^5.0.0",
         "docdash": "^2.0.1",
         "eslint": "^8.46.0",
