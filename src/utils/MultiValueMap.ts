@@ -84,7 +84,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * map.push('color', ['yellow', 'black']);
      */
     push(key: K, values: V[]): void {
-        let array = this.get(key) || [];
+        const array = this.get(key) || [];
         array.push(...values);
         this.map.set(key, array);
     }
@@ -213,7 +213,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
         if (!array.includes(value)) {
             return false;
         }
-        array = array.filter((v, i) => v !== value);
+        array = array.filter(v => v !== value);
         this.map.set(key, array);
         return true;
     }
