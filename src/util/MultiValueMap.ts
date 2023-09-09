@@ -38,7 +38,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *     ['color', ['red', 'green', 'blue']]
      * ]);
      */
-    constructor(entries?: MapEntries<K, V>) {
+    public constructor(entries?: MapEntries<K, V>) {
         entries?.forEach(entry => {
             const [key, values] = entry;
             this.set(key, values);
@@ -57,7 +57,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * ]);
      * const colors = map.get('color');    // ['red', 'green', 'blue']
      */
-    get(key: K): V[] | undefined {
+    public get(key: K): V[] | undefined {
         return this.map.get(key);
     }
 
@@ -70,7 +70,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.set('color', ['red', 'green', 'blue']);
      */
-    set(key: K, values: V[]): void {
+    public set(key: K, values: V[]): void {
         this.map.set(key, values);
     }
 
@@ -83,7 +83,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.push('color', ['yellow', 'black']);
      */
-    push(key: K, values: V[]): void {
+    public push(key: K, values: V[]): void {
         const array = this.get(key) || [];
         array.push(...values);
         this.map.set(key, array);
@@ -92,7 +92,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
     /**
      * Clears the map
      */
-    clear(): void {
+    public clear(): void {
         this.map.clear();
     }
 
@@ -101,7 +101,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @return {Array<K>} the keys of the map
      */
-    keys(): K[] {
+    public keys(): K[] {
         return [...this.map.keys()];
     }
 
@@ -110,7 +110,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @return {Array<Array<V>>} the values array of the map
      */
-    values(): V[][] {
+    public values(): V[][] {
         return [...this.map.values()];
     }
 
@@ -119,7 +119,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @return {Array<K, Array<V>>} the key/values entries of the map
      */
-    entries(): [K, V[]][] {
+    public entries(): [K, V[]][] {
         return [...this.map.entries()];
     }
 
@@ -132,7 +132,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.deleteByKey('color');
      */
-    deleteByKey(key: K): boolean {
+    public deleteByKey(key: K): boolean {
         return this.map.delete(key);
     }
 
@@ -145,7 +145,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.deleteByKeys('color', 'position');
      */
-    deleteByKeys(...keys: K[]): boolean {
+    public deleteByKeys(...keys: K[]): boolean {
         if (keys?.length === 0 || this.map.size === 0) {
             return false;
         }
@@ -165,7 +165,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.deleteByValue('red');
      */
-    deleteByValue(value: V): boolean {
+    public deleteByValue(value: V): boolean {
         if (this.map.size === 0) {
             return false;
         }
@@ -187,7 +187,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.deleteByValues('green', 'blue');
      */
-    deleteByValues(...values: V[]): boolean {
+    public deleteByValues(...values: V[]): boolean {
         if (values?.length === 0 || this.map.size === 0) {
             return false;
         }
@@ -208,7 +208,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.deleteValueOfKey('color', 'blue');
      */
-    deleteValueOfKey(key: K, value: V): boolean {
+    public deleteValueOfKey(key: K, value: V): boolean {
         let array = this.get(key) || [];
         if (!array.includes(value)) {
             return false;
@@ -229,7 +229,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *     console.log(key);
      * });
      */
-    forEach(callback: (values?: V[], key?: K, map?: MultiValueMap<K, V>) => void, thisArg?: any): void {
+    public forEach(callback: (values?: V[], key?: K, map?: MultiValueMap<K, V>) => void, thisArg?: any): void {
         this.map.forEach((values, key) => {
             callback(values, key, this);
         }, thisArg);
@@ -246,7 +246,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *     console.log(index);
      * });
      */
-    forEachIndexing(callback: (values?: V[], key?: K, index?: number, map?: MultiValueMap<K, V>) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (values?: V[], key?: K, index?: number, map?: MultiValueMap<K, V>) => void, thisArg?: any): void {
         let index = 0;
         this.map.forEach((values, key) => {
             callback(values, key, index++, this);
@@ -264,7 +264,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *     return true;
      * });
      */
-    forEachBreakable(callback: (values?: V[], key?: K, map?: MultiValueMap<K, V>) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (values?: V[], key?: K, map?: MultiValueMap<K, V>) => boolean, thisArg?: any): void {
         this.map.forEach((values, key) => {
             if (!callback(values, key, this)) {
                 return;
@@ -281,7 +281,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.hasKey('color');
      */
-    hasKey(key: K): boolean {
+    public hasKey(key: K): boolean {
         return this.map.has(key);
     }
 
@@ -299,7 +299,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * const hasColor = map.hasKeyValue('color', 'red');    // true
      * const hasColor = map.hasKeyValue('color', 'black');    // false
      */
-    hasKeyValue(key: K, value: V): boolean {
+    public hasKeyValue(key: K, value: V): boolean {
         if (this.map.size === 0) {
             return false;
         }
@@ -321,7 +321,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * const hasColor = map.hasValues(['red', 'black']);    // false
      * const hasPosition = map.hasValues(['top', 'right']);    // true
      */
-    hasValues(values: V[]): boolean {
+    public hasValues(values: V[]): boolean {
         if (values?.length === 0 || this.map.size === 0) {
             return false;
         }
@@ -352,7 +352,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * ]);
      * const hasKeys = map.hasAnyKeys('color', 'position');    // true
      */
-    hasAnyKeys(...keys: K[]): boolean {
+    public hasAnyKeys(...keys: K[]): boolean {
         if (keys?.length === 0 || this.map.size === 0) {
             return false;
         }
@@ -373,7 +373,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * @example
      * map.hasAllKeys('color', 'position');
      */
-    hasAllKeys(...keys: K[]): boolean {
+    public hasAllKeys(...keys: K[]): boolean {
         if (keys?.length === 0 || this.map.size === 0) {
             return false;
         }
@@ -390,7 +390,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @return {boolean} whether the map is empty
      */
-    isEmpty(): boolean {
+    public isEmpty(): boolean {
         return this.map.size === 0;
     }
 
@@ -399,7 +399,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @return {boolean} whether the map is not empty
      */
-    isNotEmpty(): boolean {
+    public isNotEmpty(): boolean {
         return this.map.size > 0;
     }
 
@@ -411,7 +411,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *     console.log(key);
      * }
      */
-    [Symbol.iterator](): IterableIterator<[K, V[]]> {
+    public [Symbol.iterator](): IterableIterator<[K, V[]]> {
         return this.map[Symbol.iterator]();
     }
 
@@ -420,7 +420,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @return {number} the size of map
      */
-    get size(): number {
+    public get size(): number {
         return this.map.size;
     }
 
@@ -429,7 +429,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @returns {string} the string representation of the map identifier
      */
-    get [Symbol.toStringTag](): string {
+    public get [Symbol.toStringTag](): string {
         return 'MultiValueMap';
     }
 
@@ -445,7 +445,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * ]);
      * console.log(map.toString());    // color:[red,green,blue];position:[top,right,bottom,left]
      */
-    toString(): string {
+    public toString(): string {
         return [...this].map(entry => {
             const [key, values] = (
                 (entry.length <= 1) ? [[], entry[0]] : [entry.slice(0, -1), entry[entry.length - 1]]
@@ -465,7 +465,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *     ['color', ['red', 'green', 'blue']]
      * ]);
      */
-    static of(entries?: MapEntries<any, any>): MultiValueMap<any, any> {
+    public static of(entries?: MapEntries<any, any>): MultiValueMap<any, any> {
         return new MultiValueMap<any, any>(entries);
     }
 }

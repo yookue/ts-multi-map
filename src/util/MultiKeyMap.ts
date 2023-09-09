@@ -43,7 +43,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *     [['row1', 'col1'], 'LiLei']
      * ]);
      */
-    constructor(entries?: MapEntries<K, V>) {
+    public constructor(entries?: MapEntries<K, V>) {
         entries?.forEach(entry => {
             const [keys, value] = entry;
             this.set(keys, value);
@@ -62,7 +62,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * ]);
      * const student = map.get(['row1', 'col1']);    // 'LiLei'
      */
-    get(keys: K[]): V | undefined {
+    public get(keys: K[]): V | undefined {
         if (keys?.length == 0) {
             return undefined;
         }
@@ -79,7 +79,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @example
      * map.set(['row1', 'col1'], 'HanMeimei');
      */
-    set(keys: K[], value: V): void {
+    public set(keys: K[], value: V): void {
         if (keys?.length == 0) {
             return;
         }
@@ -91,7 +91,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
     /**
      * Clears the map
      */
-    clear(): void {
+    public clear(): void {
         this.keysMap.clear();
         this.valueMap.clear();
     }
@@ -101,7 +101,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @return {Array<Array<K>>} the keys array of the map
      */
-    keys(): K[][] {
+    public keys(): K[][] {
         return [...this.keysMap.values()];
     }
 
@@ -110,7 +110,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @return {Array<V>} the values of the map
      */
-    values(): V[] {
+    public values(): V[] {
         return [...this.valueMap.values()];
     }
 
@@ -119,7 +119,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @return {Array<Array<K>, V>} the keys/value entries of the map
      */
-    entries(): [K[], V][] {
+    public entries(): [K[], V][] {
         if (this.valueMap.size === 0) {
             return [];
         }
@@ -139,7 +139,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @example
      * map.deleteByKey('row1', 'col1');
      */
-    deleteByKey(...keys: K[]): boolean {
+    public deleteByKey(...keys: K[]): boolean {
         if (keys?.length === 0) {
             return false;
         }
@@ -161,7 +161,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @example
      * map.deleteByValue('LiLei');
      */
-    deleteByValue(value: V): boolean {
+    public deleteByValue(value: V): boolean {
         if (this.valueMap.size === 0) {
             return false;
         }
@@ -185,7 +185,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @example
      * map.deleteByValues('LiLei', 'HanMeimei');
      */
-    deleteByValues(...values: V[]): boolean {
+    public deleteByValues(...values: V[]): boolean {
         if (values?.length === 0 || this.valueMap.size === 0) {
             return false;
         }
@@ -207,7 +207,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *     console.log(value);
      * });
      */
-    forEach(callback: (value?: V, keys?: K[], map?: MultiKeyMap<K, V>) => void, thisArg?: any): void {
+    public forEach(callback: (value?: V, keys?: K[], map?: MultiKeyMap<K, V>) => void, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [keys, value] = entry;
             callback(value, keys, this);
@@ -225,7 +225,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *     console.log(index);
      * });
      */
-    forEachIndexing(callback: (value?: V, keys?: K[], index?: number, map?: MultiKeyMap<K, V>) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value?: V, keys?: K[], index?: number, map?: MultiKeyMap<K, V>) => void, thisArg?: any): void {
         let index = 0;
         this.entries().forEach(entry => {
             const [keys, value] = entry;
@@ -244,7 +244,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *     return true;
      * });
      */
-    forEachBreakable(callback: (value?: V, keys?: K[], map?: MultiKeyMap<K, V>) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value?: V, keys?: K[], map?: MultiKeyMap<K, V>) => boolean, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [keys, value] = entry;
             if (!callback(value, keys, this)) {
@@ -262,7 +262,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @example
      * map.hasKey('row1', 'col1');
      */
-    hasKey(keys: K[]): boolean {
+    public hasKey(keys: K[]): boolean {
         return keys?.length > 0 && this.keysMap.hasValues(keys);
     }
 
@@ -280,7 +280,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const hasBoy = map.hasKeyValue(['row1', 'col1'], 'LiLei');    // true
      * const hasGirl = map.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false
      */
-    hasKeyValue(keys: K[], value: V): boolean {
+    public hasKeyValue(keys: K[], value: V): boolean {
         return keys?.length > 0 && this.get(keys) === value;
     }
 
@@ -297,7 +297,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const hasBoy = map.hasValue('LiLei');    // true
      * const hasGirl = map.hasValue('HanMeimei');    // false
      */
-    hasValue(value: V): boolean {
+    public hasValue(value: V): boolean {
         return this.values().includes(value);
     }
 
@@ -313,7 +313,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * ]);
      * const hasValue = map.hasAnyValues('LiLei', 'HanMeimei');    // true
      */
-    hasAnyValues(...values: V[]): boolean {
+    public hasAnyValues(...values: V[]): boolean {
         if (values?.length === 0 || this.valueMap.size === 0) {
             return false;
         }
@@ -334,7 +334,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * @example
      * map.hasAllValues('LiLei');
      */
-    hasAllValues(...values: V[]): boolean {
+    public hasAllValues(...values: V[]): boolean {
         if (values?.length === 0 || this.valueMap.size === 0) {
             return false;
         }
@@ -351,7 +351,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @return {boolean} whether the map is empty
      */
-    isEmpty(): boolean {
+    public isEmpty(): boolean {
         return this.valueMap.size === 0;
     }
 
@@ -360,7 +360,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @return {boolean} whether the map is not empty
      */
-    isNotEmpty(): boolean {
+    public isNotEmpty(): boolean {
         return this.valueMap.size > 0;
     }
 
@@ -372,7 +372,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *     console.log(value);
      * }
      */
-    [Symbol.iterator](): IterableIterator<[K[], V]> {
+    public [Symbol.iterator](): IterableIterator<[K[], V]> {
         return this.entries()[Symbol.iterator]();
     }
 
@@ -381,7 +381,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @return {number} the size of map
      */
-    get size(): number {
+    public get size(): number {
         return this.valueMap.size;
     }
 
@@ -390,7 +390,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @returns {string} the string representation of the map identifier
      */
-    get [Symbol.toStringTag](): string {
+    public get [Symbol.toStringTag](): string {
         return 'MultiKeyMap';
     }
 
@@ -406,7 +406,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * ]);
      * console.log(map.toString());    // [row1,col1]:LiLei;[row2,col2]:HanMeimei
      */
-    toString(): string {
+    public toString(): string {
         return [...this].map(entry => {
             const [keys, value] = (
                 (entry.length <= 1) ? [[], entry[0]] : [entry.slice(0, -1), entry[entry.length - 1]]
@@ -426,7 +426,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *     [['row1', 'col1'], 'LiLei']
      * ]);
      */
-    static of(entries?: MapEntries<any, any>): MultiKeyMap<any, any> {
+    public static of(entries?: MapEntries<any, any>): MultiKeyMap<any, any> {
         return new MultiKeyMap<any, any>(entries);
     }
 }

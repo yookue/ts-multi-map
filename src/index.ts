@@ -15,5 +15,5 @@
  */
 
 
-export {MultiKeyMap} from './utils/MultiKeyMap';
-export {MultiValueMap} from './utils/MultiValueMap';
+export {MultiKeyMap} from './util/MultiKeyMap';
+export {MultiValueMap} from './util/MultiValueMap';
