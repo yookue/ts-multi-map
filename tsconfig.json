@@ -25,12 +25,11 @@
         }
     },
     "include": [
-        "src/**/*",
-        "test/**/*",
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
         "dist",
-        "docs-dist",
+        "docs-dist"
     ]
 }
