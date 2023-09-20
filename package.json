@@ -1,24 +1,29 @@
 {
-    "name": "@yookue/ts-multi-map",
-    "version": "0.1.6",
-    "title": "TsMultiMap",
-    "description": "Multiple Key/Value Map Utilities for TypeScript",
-    "homepage": "https://yookue.github.io/ts-multi-map",
+    "name": "@yookue/ts-lang-utils",
+    "version": "0.1.3",
+    "title": "TsLangUtils",
+    "description": "Common Lang Utilities for TypeScript",
+    "homepage": "https://yookue.github.io/ts-lang-utils",
     "organization": "Yookue Ltd",
     "private": false,
     "license": "MIT",
     "keywords": [
-        "multi-map",
-        "multiple-map",
-        "many-keys-map",
-        "many-values-map"
+        "commons-lang",
+        "array-utils",
+        "boolean-utils",
+        "date-utils",
+        "json-utils",
+        "object-utils",
+        "random-utils",
+        "string-utils",
+        "thread-utils"
     ],
     "files": [
         "dist"
     ],
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
-    "unpkg": "dist/umd/ts-multi-map.min.js",
+    "unpkg": "dist/umd/ts-lang-utils.min.js",
     "types": "dist/esm/index.d.ts",
     "sideEffects": false,
     "scripts": {
@@ -32,19 +37,17 @@
         "test:coverage": "jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.22.10",
-        "object-hash": "^3.0.0"
+        "@babel/runtime": "^7.22.15"
     },
     "devDependencies": {
-        "@types/jest": "^29.5.4",
-        "@types/object-hash": "^3.0.3",
+        "@types/jest": "^29.5.5",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "babel-plugin-comments": "^1.0.4",
         "del-cli": "^5.1.0",
         "docdash": "^2.0.2",
         "eslint": "^7.32.0",
-        "father": "^4.3.4",
+        "father": "^4.3.5",
         "gh-pages": "^6.0.0",
         "jsdoc": "^4.0.2",
         "prettier": "^2.8.8",
@@ -53,10 +56,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/yookue/ts-multi-map.git"
+        "url": "git+https://github.com/yookue/ts-lang-utils.git"
     },
     "bugs": {
-        "url": "https://github.com/yookue/ts-multi-map/issues"
+        "url": "https://github.com/yookue/ts-lang-utils/issues"
     },
     "publishConfig": {
         "access": "public",
