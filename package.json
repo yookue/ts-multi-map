@@ -1,29 +1,24 @@
 {
-    "name": "@yookue/ts-lang-utils",
-    "version": "0.1.3",
-    "title": "TsLangUtils",
-    "description": "Common Lang Utilities for TypeScript",
-    "homepage": "https://yookue.github.io/ts-lang-utils",
+    "name": "@yookue/ts-multi-map",
+    "version": "0.1.7",
+    "title": "TsMultiMap",
+    "description": "Multiple Key/Value Map Utilities for TypeScript",
+    "homepage": "https://yookue.github.io/ts-multi-map",
     "organization": "Yookue Ltd",
     "private": false,
     "license": "MIT",
     "keywords": [
-        "commons-lang",
-        "array-utils",
-        "boolean-utils",
-        "date-utils",
-        "json-utils",
-        "object-utils",
-        "random-utils",
-        "string-utils",
-        "thread-utils"
+        "multi-map",
+        "multiple-map",
+        "many-keys-map",
+        "many-values-map"
     ],
     "files": [
         "dist"
     ],
     "main": "dist/cjs/index.js",
     "module": "dist/esm/index.js",
-    "unpkg": "dist/umd/ts-lang-utils.min.js",
+    "unpkg": "dist/umd/ts-multi-map.min.js",
     "types": "dist/esm/index.d.ts",
     "sideEffects": false,
     "scripts": {
@@ -37,10 +32,12 @@
         "test:coverage": "jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.22.15"
+        "@babel/runtime": "^7.22.15",
+        "object-hash": "^3.0.0"
     },
     "devDependencies": {
         "@types/jest": "^29.5.5",
+        "@types/object-hash": "^3.0.3",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "babel-plugin-comments": "^1.0.4",
@@ -56,26 +53,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/yookue/ts-lang-utils.git"
+        "url": "git+https://github.com/yookue/ts-multi-map.git"
     },
     "bugs": {
-        "url": "https://github.com/yookue/ts-lang-utils/issues"
+        "url": "https://github.com/yookue/ts-multi-map/issues"
     },
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
     },
     "author": {
         "name": "Yookue Ltd",
