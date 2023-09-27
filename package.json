@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "title": "TsMultiMap",
     "description": "Multiple Key/Value Map Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-multi-map",
@@ -32,7 +32,7 @@
         "test:coverage": "jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.22.15",
+        "@babel/runtime": "^7.23.1",
         "object-hash": "^3.0.0"
     },
     "devDependencies": {
@@ -62,6 +62,19 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
+    "collective" : {
+        "url": "https://opencollective.com/yookue-awesome"
+    },
+    "funding": [
+        {
+            "type": "opencollective",
+            "url": "https://opencollective.com/yookue-awesome"
+        },
+        {
+            "type": "individual",
+            "url": "http://yookue.com/public/donate"
+        }
+    ],
     "author": {
         "name": "Yookue Ltd",
         "email": "yookue@outlook.com",
