@@ -388,6 +388,53 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
     }
 
     /**
+     * Returns whether the map contains any of the given values, matching exactly
+     *
+     * @param {Array<V>} values the values to check
+     * @return {boolean} whether the map contains any of the given values, matching exactly
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']],
+     *     ['position', ['top', 'right', 'bottom', 'left']]
+     * ]);
+     * map.hasAnyValues(['red', 'black'], ['green', 'blue']);    // false
+     * map.hasAnyValues(['top', 'right'], ['top', 'right', 'bottom', 'left']);    // true
+     */
+    public hasAnyValues(...values: V[][]): boolean {
+        if (values?.length === 0 || this.map.size === 0) {
+            return false;
+        }
+        for (const value of values) {
+            if (this.hasValue(value)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns whether the map contains all the given values, matching exactly
+     *
+     * @param {Array<V>} values the values to check
+     * @return {boolean} whether the map contains all the given values, matching exactly
+     *
+     * @example
+     * map.hasAllValues(['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']);
+     */
+    public hasAllValues(...values: V[][]): boolean {
+        if (values?.length === 0 || this.map.size === 0) {
+            return false;
+        }
+        for (const value of values) {
+            if (!this.hasValue(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Returns whether the map is empty
      *
      * @return {boolean} whether the map is empty

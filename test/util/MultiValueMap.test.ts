@@ -141,6 +141,24 @@ describe('MultiValueMap', () => {
         expect(map.hasValue(['top', 'right'], false)).toBeTruthy();
     });
 
+    test('Testing hasAnyValues method', () => {
+        const map = MultiValueMap.of([
+            ['color', ['red', 'green', 'blue']],
+            ['position', ['top', 'right', 'bottom', 'left']]
+        ]);
+        expect(map.hasAnyValues(['red', 'black'], ['green', 'blue'])).toBeFalsy();
+        expect(map.hasAnyValues(['top', 'right'], ['top', 'right', 'bottom', 'left'])).toBeTruthy();
+    });
+
+    test('Testing hasAllValues method', () => {
+        const map = MultiValueMap.of([
+            ['color', ['red', 'green', 'blue']],
+            ['position', ['top', 'right', 'bottom', 'left']]
+        ]);
+        expect(map.hasAllValues(['red', 'black'], ['red', 'green', 'blue'])).toBeFalsy();
+        expect(map.hasAllValues(['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left'])).toBeTruthy();
+    });
+
     test('Testing Symbol.iterator method', () => {
         const map = MultiValueMap.of([
             ['color', ['red', 'green', 'blue']],
