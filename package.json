@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "title": "TsMultiMap",
     "description": "Multiple Key/Value Map Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-multi-map",
@@ -72,7 +72,7 @@
         },
         {
             "type": "individual",
-            "url": "http://yookue.com/public/donate"
+            "url": "https://yookue.com/public/donate"
         }
     ],
     "author": {

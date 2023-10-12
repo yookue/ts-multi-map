@@ -60,7 +60,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * const student = map.get(['row1', 'col1']);    // 'LiLei'
+     * map.get(['row1', 'col1']);    // 'LiLei'
      */
     public get(keys: K[]): V | undefined {
         if (keys?.length == 0) {
@@ -263,7 +263,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * map.hasKey('row1', 'col1');
      */
     public hasKey(keys: K[]): boolean {
-        return keys?.length > 0 && this.keysMap.hasValues(keys);
+        return keys?.length > 0 && this.keysMap.hasValue(keys);
     }
 
     /**
@@ -277,11 +277,61 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * const hasBoy = map.hasKeyValue(['row1', 'col1'], 'LiLei');    // true
-     * const hasGirl = map.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false
+     * map.hasKeyValue(['row1', 'col1'], 'LiLei');    // true
+     * map.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false
      */
     public hasKeyValue(keys: K[], value: V): boolean {
         return keys?.length > 0 && this.get(keys) === value;
+    }
+
+    /**
+     * Returns whether the map contains any of the given keys
+     *
+     * @param {Array<V>} keys the keys to check
+     * @return {boolean} whether the map contains any of the given keys
+     *
+     * @example
+     * const map = MultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
+     * ]);
+     * map.hasAnyKeys(['row1', 'col1']);    // true
+     * map.hasAnyKeys(['row2', 'col2']);    // false
+     */
+    public hasAnyKeys(...keys: K[][]): boolean {
+        if (keys?.length === 0 || this.keysMap.size === 0) {
+            return false;
+        }
+        for (const key of keys) {
+            if (this.hasKey(key)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns whether the map contains all the given keys
+     *
+     * @param {Array<V>} keys the keys to check
+     * @return {boolean} whether the map contains all the given keys
+     *
+     * @example
+     * const map = MultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
+     * ]);
+     * map.hasAllKeys(['row1', 'col1']);    // true
+     * map.hasAllKeys(['row2', 'col2']);    // false
+     */
+    public hasAllKeys(...keys: K[][]): boolean {
+        if (keys?.length === 0 || this.keysMap.size === 0) {
+            return false;
+        }
+        for (const key of keys) {
+            if (!this.hasKey(key)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -294,8 +344,8 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * const hasBoy = map.hasValue('LiLei');    // true
-     * const hasGirl = map.hasValue('HanMeimei');    // false
+     * map.hasValue('LiLei');    // true
+     * map.hasValue('HanMeimei');    // false
      */
     public hasValue(value: V): boolean {
         return this.values().includes(value);
@@ -311,14 +361,14 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * const hasValue = map.hasAnyValues('LiLei', 'HanMeimei');    // true
+     * map.hasAnyValues('LiLei', 'HanMeimei');    // true
      */
     public hasAnyValues(...values: V[]): boolean {
         if (values?.length === 0 || this.valueMap.size === 0) {
             return false;
         }
         for (const value of values) {
-            if (this.values().includes(value)) {
+            if (this.hasValue(value)) {
                 return true;
             }
         }
@@ -339,7 +389,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
             return false;
         }
         for (const value of values) {
-            if (!this.values().includes(value)) {
+            if (!this.hasValue(value)) {
                 return false;
             }
         }

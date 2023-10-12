@@ -107,6 +107,20 @@ describe('MultiKeyMap', () => {
         expect(map.hasKeyValue(['row1', 'col1'], 'LiLei')).toBeTruthy();
     });
 
+    test('Testing hasAnyKeys method', () => {
+        const map = MultiKeyMap.of([
+            [['row1', 'col1'], 'LiLei']
+        ]);
+        expect(map.hasAnyKeys(['row1', 'col1'], ['row2', 'col2'])).toBeTruthy();
+    });
+
+    test('Testing hasAllKeys method', () => {
+        const map = MultiKeyMap.of([
+            [['row1', 'col1'], 'LiLei']
+        ]);
+        expect(map.hasAllKeys(['row1', 'col1'], ['row2', 'col2'])).toBeFalsy();
+    });
+
     test('Testing hasAnyValues method', () => {
         const map = MultiKeyMap.of([
             [['row1', 'col1'], 'LiLei'],
@@ -139,7 +153,7 @@ describe('MultiKeyMap', () => {
         const map = MultiKeyMap.of([
             [['row1', 'col1'], 'LiLei']
         ]);
-        expect(map[Symbol.toStringTag]).not.toBeUndefined();
+        expect(map[Symbol.toStringTag]).toBeDefined();
     });
 
     test('Testing toString method', () => {

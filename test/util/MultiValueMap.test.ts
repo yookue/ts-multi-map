@@ -115,15 +115,6 @@ describe('MultiValueMap', () => {
         expect(map.hasKeyValue('color', 'red')).toBeTruthy();
     });
 
-    test('Testing hasValues method', () => {
-        const map = MultiValueMap.of([
-            ['color', ['red', 'green', 'blue']],
-            ['position', ['top', 'right', 'bottom', 'left']]
-        ]);
-        expect(map.hasValues(['red', 'black'])).toBeFalsy();
-        expect(map.hasValues(['top', 'right'])).toBeTruthy();
-    });
-
     test('Testing hasAnyKeys method', () => {
         const map = MultiValueMap.of([
             ['color', ['red', 'green', 'blue']],
@@ -138,6 +129,16 @@ describe('MultiValueMap', () => {
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
         expect(map.hasAllKeys('color', 'position')).toBeTruthy();
+    });
+
+    test('Testing hasValue method', () => {
+        const map = MultiValueMap.of([
+            ['color', ['red', 'green', 'blue']],
+            ['position', ['top', 'right', 'bottom', 'left']]
+        ]);
+        expect(map.hasValue(['red', 'black'], true)).toBeFalsy();
+        expect(map.hasValue(['top', 'right'], true)).toBeFalsy();
+        expect(map.hasValue(['top', 'right'], false)).toBeTruthy();
     });
 
     test('Testing Symbol.iterator method', () => {
@@ -156,7 +157,7 @@ describe('MultiValueMap', () => {
         const map = MultiValueMap.of([
             ['color', ['red', 'green', 'blue']]
         ]);
-        expect(map[Symbol.toStringTag]).not.toBeUndefined();
+        expect(map[Symbol.toStringTag]).toBeDefined();
     });
 
     test('Testing toString method', () => {

@@ -55,7 +55,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * const map = MultiValueMap.of([
      *     ['color', ['red', 'green', 'blue']]
      * ]);
-     * const colors = map.get('color');    // ['red', 'green', 'blue']
+     * map.get('color');    // ['red', 'green', 'blue']
      */
     public get(key: K): V[] | undefined {
         return this.map.get(key);
@@ -296,8 +296,8 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * const map = MultiValueMap.of([
      *     ['color', ['red', 'green', 'blue']]
      * ]);
-     * const hasColor = map.hasKeyValue('color', 'red');    // true
-     * const hasColor = map.hasKeyValue('color', 'black');    // false
+     * map.hasKeyValue('color', 'red');    // true
+     * map.hasKeyValue('color', 'black');    // false
      */
     public hasKeyValue(key: K, value: V): boolean {
         if (this.map.size === 0) {
@@ -305,39 +305,6 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
         }
         const array = this.get(key) || [];
         return array.includes(value);
-    }
-
-    /**
-     * Returns whether any entries of the map that contains all the given values
-     *
-     * @param {Array<V>} values the values to check
-     * @return {boolean} whether any entries of the map that contains all the given values
-     *
-     * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']],
-     *     ['position', ['top', 'right', 'bottom', 'left']]
-     * ]);
-     * const hasColor = map.hasValues(['red', 'black']);    // false
-     * const hasPosition = map.hasValues(['top', 'right']);    // true
-     */
-    public hasValues(values: V[]): boolean {
-        if (values?.length === 0 || this.map.size === 0) {
-            return false;
-        }
-        for (const array of this.map.values()) {
-            let result = true;
-            for (const v of values) {
-                result = result && array.includes(v);
-                if (!result) {
-                    break;
-                }
-            }
-            if (result) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -350,14 +317,14 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * const map = MultiValueMap.of([
      *     ['color', ['red', 'green', 'blue']]
      * ]);
-     * const hasKeys = map.hasAnyKeys('color', 'position');    // true
+     * map.hasAnyKeys('color', 'position');    // true
      */
     public hasAnyKeys(...keys: K[]): boolean {
         if (keys?.length === 0 || this.map.size === 0) {
             return false;
         }
         for (const key of keys) {
-            if (this.keys().includes(key)) {
+            if (this.hasKey(key)) {
                 return true;
             }
         }
@@ -378,11 +345,46 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
             return false;
         }
         for (const key of keys) {
-            if (!this.keys().includes(key)) {
+            if (!this.hasKey(key)) {
                 return false;
             }
         }
         return true;
+    }
+
+    /**
+     * Returns whether any entries of the map that contains the given values
+     *
+     * @param {Array<V>} values the values to check
+     * @param {boolean} exact whether matching entry values exactly
+     * @return {boolean} whether any entries of the map that contains the given values
+     *
+     * @example
+     * const map = MultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']],
+     *     ['position', ['top', 'right', 'bottom', 'left']]
+     * ]);
+     * map.hasValue(['red', 'black'], true);    // false
+     * map.hasValue(['top', 'right'], true);    // false
+     * map.hasValue(['top', 'right'], false);    // true
+     */
+    public hasValue(values: V[], exact: boolean = true): boolean {
+        if (values?.length === 0 || this.map.size === 0) {
+            return false;
+        }
+        for (const array of this.map.values()) {
+            let result = true;
+            for (const v of values) {
+                result = result && array.includes(v) && (exact ? array.length === values.length : true);
+                if (!result) {
+                    break;
+                }
+            }
+            if (result) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
