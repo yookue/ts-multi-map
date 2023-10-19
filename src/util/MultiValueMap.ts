@@ -368,7 +368,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * map.hasValue(['top', 'right'], true);    // false
      * map.hasValue(['top', 'right'], false);    // true
      */
-    public hasValue(values: V[], exact: boolean = true): boolean {
+    public hasValue(values: V[], exact = true): boolean {
         if (values?.length === 0 || this.map.size === 0) {
             return false;
         }

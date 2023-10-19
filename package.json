@@ -62,7 +62,7 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
-    "collective" : {
+    "collective": {
         "url": "https://opencollective.com/yookue-awesome"
     },
     "funding": [
