@@ -32,11 +32,11 @@
         "test:coverage": "del-cli ./coverage && jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.23.2",
+        "@babel/runtime": "^7.23.4",
         "object-hash": "^3.0.0"
     },
     "devDependencies": {
-        "@types/jest": "^29.5.6",
+        "@types/jest": "^29.5.10",
         "@types/object-hash": "^3.0.5",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
