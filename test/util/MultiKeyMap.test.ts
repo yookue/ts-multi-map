@@ -39,6 +39,14 @@ describe('MultiKeyMap', () => {
         expect(map.size).toBe(1);
     });
 
+    test('Testing get method', () => {
+        const map = MultiKeyMap.of([
+            [['row1', 'col1'], 'LiLei']
+        ]);
+        expect(map.get(['row1', 'col1'])).toBe('LiLei');
+        expect(map.get(['row2', 'col2'], 'HanMeimei')).toBe('HanMeimei');
+    });
+
     test('Testing set method', () => {
         const map = MultiKeyMap.of([
             [['row1', 'col1'], 'LiLei']

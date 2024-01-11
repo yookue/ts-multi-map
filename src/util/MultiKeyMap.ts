@@ -36,6 +36,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Construct a multi key map instance
      *
      * @param {MapEntries<K, V>} entries the map entries that represented with [K[], V][]
+     *
      * @constructor
      *
      * @example
@@ -54,6 +55,8 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Returns the value of the given keys
      *
      * @param {Array<K>} keys the keys to retrieve
+     * @param {V} defaults the default value if not found
+     *
      * @return {V|undefined} the value of the given keys
      *
      * @example
@@ -61,13 +64,14 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *     [['row1', 'col1'], 'LiLei']
      * ]);
      * map.get(['row1', 'col1']);    // 'LiLei'
+     * map.get(['row2', 'col2'], 'HanMeimei');    // 'HanMeimei'
      */
-    public get(keys: K[]): V | undefined {
-        if (keys?.length == 0) {
-            return undefined;
+    public get(keys: K[], defaults?: V): V | undefined {
+        if (keys?.length == 0 || this.valueMap.size === 0) {
+            return defaults;
         }
         const hash = objectHash(keys);
-        return this.valueMap.get(hash);
+        return this.valueMap.get(hash) || defaults;
     }
 
     /**
@@ -134,6 +138,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Deletes the entry with the given keys
      *
      * @param {Array<K>} keys the keys to delete
+     *
      * @return {boolean} whether the entry has been deleted
      *
      * @example
@@ -156,6 +161,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Deletes the entry/entries with the given value
      *
      * @param {V} value the value to delete
+     *
      * @return {boolean} whether the entry/entries has been deleted
      *
      * @example
@@ -180,6 +186,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Deletes all the entries with any of the given values
      *
      * @param {Array<V>} values the values to delete
+     *
      * @return {boolean} whether any of the entries has been deleted
      *
      * @example
@@ -271,6 +278,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      *
      * @param {Array<K>} keys the keys to check
      * @param {V} value the value to check
+     *
      * @return {boolean} whether the map contains the given keys/value pair
      *
      * @example
@@ -313,6 +321,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Returns whether the map contains all the given keys
      *
      * @param {Array<V>} keys the keys to check
+     *
      * @return {boolean} whether the map contains all the given keys
      *
      * @example
@@ -338,6 +347,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Returns whether the map contains the given value
      *
      * @param {V} value the value to check
+     *
      * @return {boolean} whether the map contains the given value
      *
      * @example
@@ -355,6 +365,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Returns whether the map contains any of the given values
      *
      * @param {Array<V>} values the values to check
+     *
      * @return {boolean} whether the map contains any of the given values
      *
      * @example
@@ -379,6 +390,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Returns whether the map contains all the given values
      *
      * @param {Array<V>} values the values to check
+     *
      * @return {boolean} whether the map contains all the given values
      *
      * @example
@@ -469,6 +481,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'get' | 'set' | 'pus
      * Construct a multi key map instance
      *
      * @param {MapEntries<K, V>} entries the map entries that represented with [K[], V][]
+     *
      * @return {MultiKeyMap} a multi key map instance
      *
      * @example

@@ -39,6 +39,22 @@ describe('MultiValueMap', () => {
         expect(map.size).toBe(1);
     });
 
+    test('Testing get method', () => {
+        const map = MultiValueMap.of([
+            ['color', ['red', 'green', 'blue']]
+        ]);
+        expect(map.get('color')).toContain('red');
+        expect(map.get('colour', ['yellow', 'black'])).toStrictEqual(['yellow', 'black']);
+    });
+
+    test('Testing set method', () => {
+        const map = MultiValueMap.of([
+            ['color', ['red', 'green', 'blue']]
+        ]);
+        map.set('color', ['yellow', 'black']);
+        expect(map.get('color')).toStrictEqual(['yellow', 'black']);
+    });
+
     test('Testing push method', () => {
         const map = MultiValueMap.of([
             ['color', ['red', 'green', 'blue']]

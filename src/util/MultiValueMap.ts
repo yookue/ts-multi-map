@@ -31,6 +31,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Construct a multi value map instance
      *
      * @param {MapEntries<K, V>} entries the map entries that represented with [K, V[]][]
+     *
      * @constructor
      *
      * @example
@@ -49,6 +50,8 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Returns the values of the given key
      *
      * @param {K} key the key to retrieve
+     * @param {Array<V>} defaults defaults the default values if not found
+     *
      * @return {Array<V>|undefined} the values of the given key
      *
      * @example
@@ -56,9 +59,10 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *     ['color', ['red', 'green', 'blue']]
      * ]);
      * map.get('color');    // ['red', 'green', 'blue']
+     * map.get('foobar', ['foo', 'bar']);    // ['foo', 'bar']
      */
-    public get(key: K): V[] | undefined {
-        return this.map.get(key);
+    public get(key: K, defaults?: V[]): V[] | undefined {
+        return this.map.get(key) || defaults;
     }
 
     /**
@@ -140,6 +144,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Deletes all the entries with any of the given keys
      *
      * @param {Array<K>} keys the keys to delete
+     *
      * @return {boolean} whether any of the entries has been deleted
      *
      * @example
@@ -160,6 +165,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Deletes the entry/entries with the given value
      *
      * @param {V} value the value to delete
+     *
      * @return {boolean} whether the entry/entries has been deleted
      *
      * @example
@@ -182,6 +188,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Deletes all the entries with any of the given values
      *
      * @param {Array<V>} values the values to delete
+     *
      * @return {boolean} whether any of the entries has been deleted
      *
      * @example
@@ -203,6 +210,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @param {K} key the key to operate
      * @param {V} value the value to delete
+     *
      * @return {boolean} whether the value has been removed
      *
      * @example
@@ -276,6 +284,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Returns whether the map contains the given key
      *
      * @param {K} key the key to check
+     *
      * @return {boolean} whether the map contains the given key
      *
      * @example
@@ -290,6 +299,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @param {K} key the key to check
      * @param {V} value the value to check
+     *
      * @return {boolean} whether the map contains the given key/value pair
      *
      * @example
@@ -311,6 +321,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Returns whether the map contains any of the given keys
      *
      * @param {Array<K>} keys the keys to check
+     *
      * @return {boolean} whether the map contains any of the given keys
      *
      * @example
@@ -335,6 +346,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Returns whether the map contains all the given keys
      *
      * @param {Array<K>} keys the keys to check
+     *
      * @return {boolean} whether the map contains all the given keys
      *
      * @example
@@ -357,6 +369,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      *
      * @param {Array<V>} values the values to check
      * @param {boolean} exact whether matching entry values exactly
+     *
      * @return {boolean} whether any entries of the map that contains the given values
      *
      * @example
@@ -391,6 +404,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Returns whether the map contains any of the given values, matching exactly
      *
      * @param {Array<V>} values the values to check
+     *
      * @return {boolean} whether the map contains any of the given values, matching exactly
      *
      * @example
@@ -417,6 +431,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Returns whether the map contains all the given values, matching exactly
      *
      * @param {Array<V>} values the values to check
+     *
      * @return {boolean} whether the map contains all the given values, matching exactly
      *
      * @example
@@ -507,6 +522,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'get' | 'set' | 'p
      * Construct a multi value map instance
      *
      * @param {MapEntries<K, V>} entries the map entries that represented with [K, V[]][]
+     *
      * @return {MultiValueMap} a multi value map instance
      *
      * @example
