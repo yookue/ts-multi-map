@@ -1,7 +1,7 @@
 # @yookue/ts-multi-map
 
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.txt)
 [![NPM version](https://img.shields.io/npm/v/@yookue/ts-multi-map.svg?style=flat)](https://npmjs.org/package/@yookue/ts-multi-map)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.txt)
 [![NPM downloads](http://img.shields.io/npm/dm/@yookue/ts-multi-map.svg?style=flat)](https://npmjs.org/package/@yookue/ts-multi-map)
 
 🏅 Multiple Key/Value Map Utilities for Typescript 👍
