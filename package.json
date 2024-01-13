@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.14",
+    "version": "0.1.15",
     "title": "TsMultiMap",
     "description": "Multiple Key/Value Map Utilities for TypeScript",
     "homepage": "https://yookue.github.io/ts-multi-map",
@@ -11,7 +11,11 @@
         "multi-map",
         "multiple-map",
         "many-keys-map",
-        "many-values-map"
+        "many-values-map",
+        "readonly-multi-map",
+        "readonly-multiple-map",
+        "readonly-many-keys-map",
+        "readonly-many-values-map"
     ],
     "files": [
         "dist"
