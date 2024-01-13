@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>MultiKeyMap - TsMultiMap</title>
+    <title>ReadonlyMultiKeyMap - TsMultiMap</title>
     
     <meta name="description" content="Multiple Key/Value Map Utilities for TypeScript" />
     
@@ -49,7 +49,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">MultiKeyMap</h1>
+    <h1 class="page-title">ReadonlyMultiKeyMap</h1>
     
 
     
@@ -63,7 +63,7 @@
     
         <h2>
         
-            MultiKeyMap
+            ReadonlyMultiKeyMap
         
         </h2>
         
@@ -82,7 +82,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="MultiKeyMap"><span class="type-signature"></span>new MultiKeyMap<span class="signature">(entries)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ReadonlyMultiKeyMap"><span class="type-signature"></span>new ReadonlyMultiKeyMap<span class="signature">(entries)</span><span class="type-signature"></span></h4>
 
     
 
@@ -98,7 +98,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line23">line 23</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -152,7 +152,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = new MultiKeyMap([    [['row1', 'col1'], 'LiLei']]);</code></pre>
+    <pre class="prettyprint"><code>const map = new ReadonlyMultiKeyMap([    [['row1', 'col1'], 'LiLei']]);</code></pre>
 
 
 
@@ -236,7 +236,7 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="MultiKeyMap.html">MultiKeyMap</a></dt>
+            <dt><a href="ReadonlyMultiKeyMap.html">ReadonlyMultiKeyMap</a></dt>
             <dd></dd>
         </dl>
     
@@ -267,7 +267,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line414">line 414</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line267">line 267</a>
     </li></ul></dd>
     
 
@@ -328,604 +328,6 @@
 
     
 
-    <h4 class="name" id="clear"><span class="type-signature"></span>clear<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Clears the map</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line86">line 86</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="deleteByKey"><span class="type-signature"></span>deleteByKey<span class="signature">(&hellip;keys)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Deletes the entry with the given keys</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line131">line 131</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>map.deleteByKey('row1', 'col1');</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>keys</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;K></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the keys to delete</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>whether the entry has been deleted</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="deleteByValue"><span class="type-signature"></span>deleteByValue<span class="signature">(value)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Deletes the entry/entries with the given value</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line153">line 153</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>map.deleteByValue('LiLei');</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">V</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the value to delete</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>whether the entry/entries has been deleted</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="deleteByValues"><span class="type-signature"></span>deleteByValues<span class="signature">(&hellip;values)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Deletes all the entries with any of the given values</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line177">line 177</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>map.deleteByValues('LiLei', 'HanMeimei');</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>values</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;V></span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>the values to delete</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5 class="h5-returns">Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>whether any of the entries has been deleted</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
     <h4 class="name" id="entries"><span class="type-signature"></span>entries<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;K>, V>}</span></h4>
 
     
@@ -942,7 +344,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line111">line 111</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line81">line 81</a>
     </li></ul></dd>
     
 
@@ -1050,7 +452,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line198">line 198</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -1214,7 +616,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line233">line 233</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -1378,7 +780,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line215">line 215</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -1542,7 +944,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line59">line 59</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -1589,7 +991,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.get(['row1', 'col1']);    // 'LiLei'map.get(['row2', 'col2'], 'HanMeimei');    // 'HanMeimei'</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.get(['row1', 'col1']);    // 'LiLei'map.get(['row2', 'col2'], 'HanMeimei');    // 'HanMeimei'</code></pre>
 
 
 
@@ -1732,7 +1134,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line309">line 309</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line186">line 186</a>
     </li></ul></dd>
     
 
@@ -1779,7 +1181,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasAllKeys(['row1', 'col1']);    // truemap.hasAllKeys(['row2', 'col2']);    // false</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasAllKeys(['row1', 'col1']);    // truemap.hasAllKeys(['row2', 'col2']);    // false</code></pre>
 
 
 
@@ -1907,7 +1309,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line371">line 371</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line232">line 232</a>
     </li></ul></dd>
     
 
@@ -2082,7 +1484,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line284">line 284</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -2129,7 +1531,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasAnyKeys(['row1', 'col1']);    // truemap.hasAnyKeys(['row2', 'col2']);    // false</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasAnyKeys(['row1', 'col1']);    // truemap.hasAnyKeys(['row2', 'col2']);    // false</code></pre>
 
 
 
@@ -2257,7 +1659,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line350">line 350</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -2304,7 +1706,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasAnyValues('LiLei', 'HanMeimei');    // true</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasAnyValues('LiLei', 'HanMeimei');    // true</code></pre>
 
 
 
@@ -2432,7 +1834,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line250">line 250</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line135">line 135</a>
     </li></ul></dd>
     
 
@@ -2595,7 +1997,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line268">line 268</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -2642,7 +2044,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasKeyValue(['row1', 'col1'], 'LiLei');    // truemap.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasKeyValue(['row1', 'col1'], 'LiLei');    // truemap.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false</code></pre>
 
 
 
@@ -2782,7 +2184,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line334">line 334</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line203">line 203</a>
     </li></ul></dd>
     
 
@@ -2829,7 +2231,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasValue('LiLei');    // truemap.hasValue('HanMeimei');    // false</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);map.hasValue('LiLei');    // truemap.hasValue('HanMeimei');    // false</code></pre>
 
 
 
@@ -2945,7 +2347,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line387">line 387</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line240">line 240</a>
     </li></ul></dd>
     
 
@@ -3053,7 +2455,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line395">line 395</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line248">line 248</a>
     </li></ul></dd>
     
 
@@ -3161,7 +2563,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line95">line 95</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -3253,170 +2655,6 @@
 
     
 
-    <h4 class="name" id="set"><span class="type-signature"></span>set<span class="signature">(keys, value)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-    
-    <dt class="tag-description">Description:</dt>
-    <dd class="tag-description"><ul class="dummy"><li><p>Sets the value of the given keys</p></li></ul></dd>
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line75">line 75</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-    <h5 class="h5-examples">Example</h5>
-    
-    <pre class="prettyprint"><code>map.set(['row1', 'col1'], 'HanMeimei');</code></pre>
-
-
-
-
-    <h5 class="h5-parameters">Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>keys</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;K></span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the keys to set</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">V</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>the value to set</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
     <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
 
     
@@ -3433,7 +2671,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line437">line 437</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line290">line 290</a>
     </li></ul></dd>
     
 
@@ -3480,7 +2718,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei'],    [['row2', 'col2'], 'HanMeimei']]);console.log(map.toString());    // [row1,col1]:LiLei;[row2,col2]:HanMeimei</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei'],    [['row2', 'col2'], 'HanMeimei']]);console.log(map.toString());    // [row1,col1]:LiLei;[row2,col2]:HanMeimei</code></pre>
 
 
 
@@ -3546,7 +2784,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line103">line 103</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line73">line 73</a>
     </li></ul></dd>
     
 
@@ -3638,7 +2876,7 @@
 
     
 
-    <h4 class="name" id=".of"><span class="type-signature type-signature-static">(static) </span>of<span class="signature">(entries)</span><span class="type-signature"> &rarr; {<a href="MultiKeyMap.html">MultiKeyMap</a>}</span></h4>
+    <h4 class="name" id=".of"><span class="type-signature type-signature-static">(static) </span>of<span class="signature">(entries)</span><span class="type-signature"> &rarr; {<a href="ReadonlyMultiKeyMap.html">ReadonlyMultiKeyMap</a>}</span></h4>
 
     
 
@@ -3654,7 +2892,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="MultiKeyMap.js.html">MultiKeyMap.js</a>, <a href="MultiKeyMap.js.html#line455">line 455</a>
+        <a href="ReadonlyMultiKeyMap.js.html">ReadonlyMultiKeyMap.js</a>, <a href="ReadonlyMultiKeyMap.js.html#line305">line 305</a>
     </li></ul></dd>
     
 
@@ -3701,7 +2939,7 @@
 
     <h5 class="h5-examples">Example</h5>
     
-    <pre class="prettyprint"><code>const map = MultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);</code></pre>
+    <pre class="prettyprint"><code>const map = ReadonlyMultiKeyMap.of([    [['row1', 'col1'], 'LiLei']]);</code></pre>
 
 
 
@@ -3774,7 +3012,7 @@
 
         
 <div class="param-desc">
-    <p>a multi key map instance</p>
+    <p>a readonly multi key map instance</p>
 </div>
 
 
@@ -3785,7 +3023,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="MultiKeyMap.html">MultiKeyMap</a></span>
+<span class="param-type"><a href="ReadonlyMultiKeyMap.html">ReadonlyMultiKeyMap</a></span>
 
 
 

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>MultiValueMap.js - TsMultiMap</title>
+    <title>ReadonlyMultiKeyMap.js - TsMultiMap</title>
     
     <meta name="description" content="Multiple Key/Value Map Utilities for TypeScript" />
     
@@ -49,7 +49,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">MultiValueMap.js</h1>
+    <h1 class="page-title">ReadonlyMultiKeyMap.js</h1>
     
 
     
@@ -74,198 +74,73 @@
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  */
+import { MultiKeyMap } from '@';
 /**
- * Map with entries that contains a single key and multiple values
+ * Map with entries that contains multiple keys and a single value
  *
- * @implements {Omit&lt;Map&lt;K, Array&lt;V>>>}
+ * @implements {Omit&lt;Map&lt;Array&lt;K>, V>>}
  */
-export class MultiValueMap {
+export class ReadonlyMultiKeyMap {
     /**
-     * Construct a multi value map instance
+     * Construct a multi key map instance
      *
-     * @param {MultiValueMapEntries&lt;K, V>} entries the map entries that represented with [K, V[]][]
+     * @param {MultiKeyMapEntries&lt;K, V>} entries the map entries that represented with [K[], V][]
      *
      * @constructor
      *
      * @example
-     * const map = new MultiValueMap([
-     *     ['color', ['red', 'green', 'blue']]
+     * const map = new ReadonlyMultiKeyMap([
+     *     [['row1', 'col1'], 'LiLei']
      * ]);
      */
     constructor(entries) {
-        this.map = new Map();
+        this.map = new MultiKeyMap();
         entries === null || entries === void 0 ? void 0 : entries.forEach(entry => {
-            const [key, values] = entry;
-            this.set(key, values);
+            const [keys, value] = entry;
+            this.map.set(keys, value);
         });
     }
     /**
-     * Returns the values of the given key
+     * Returns the value of the given keys
      *
-     * @param {K} key the key to retrieve
-     * @param {Array&lt;V>} defaults defaults the default values if not found
+     * @param {Array&lt;K>} keys the keys to retrieve
+     * @param {V} defaults the default value if not found
      *
-     * @return {Array&lt;V>|undefined} the values of the given key
+     * @return {V|undefined} the value of the given keys
      *
      * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']]
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * map.get('color');    // ['red', 'green', 'blue']
-     * map.get('foobar', ['foo', 'bar']);    // ['foo', 'bar']
+     * map.get(['row1', 'col1']);    // 'LiLei'
+     * map.get(['row2', 'col2'], 'HanMeimei');    // 'HanMeimei'
      */
-    get(key, defaults) {
-        return this.map.get(key) || defaults;
+    get(keys, defaults) {
+        return this.map.get(keys, defaults);
     }
     /**
-     * Sets the values of the given key
+     * Returns the keys array of the map
      *
-     * @param {K} key the key to set
-     * @param {Array&lt;V>} values the values to set
-     *
-     * @example
-     * map.set('color', ['red', 'green', 'blue']);
-     */
-    set(key, values) {
-        this.map.set(key, values);
-    }
-    /**
-     * Push values onto the given key, the values will be appended to the given key
-     *
-     * @param {K} key the key to operate
-     * @param {Array&lt;V>} values the values to push
-     *
-     * @example
-     * map.push('color', ['yellow', 'black']);
-     */
-    push(key, values) {
-        const array = this.get(key) || [];
-        array.push(...values);
-        this.map.set(key, array);
-    }
-    /**
-     * Clears the map
-     */
-    clear() {
-        this.map.clear();
-    }
-    /**
-     * Returns the keys of the map
-     *
-     * @return {Array&lt;K>} the keys of the map
+     * @return {Array&lt;Array&lt;K>>} the keys array of the map
      */
     keys() {
-        return [...this.map.keys()];
+        return this.map.keys();
     }
     /**
-     * Returns the values array of the map
+     * Returns the values of the map
      *
-     * @return {Array&lt;Array&lt;V>>} the values array of the map
+     * @return {Array&lt;V>} the values of the map
      */
     values() {
-        return [...this.map.values()];
+        return this.map.values();
     }
     /**
-     * Returns the key/values entries of the map
+     * Returns the keys/value entries of the map
      *
-     * @return {Array&lt;K, Array&lt;V>>} the key/values entries of the map
+     * @return {Array&lt;Array&lt;K>, V>} the keys/value entries of the map
      */
     entries() {
-        return [...this.map.entries()];
-    }
-    /**
-     * Deletes the entry with the given key
-     *
-     * @param {K} key the key to delete
-     * @return {boolean} whether the entry has been deleted
-     *
-     * @example
-     * map.deleteByKey('color');
-     */
-    deleteByKey(key) {
-        return this.map.delete(key);
-    }
-    /**
-     * Deletes all the entries with any of the given keys
-     *
-     * @param {Array&lt;K>} keys the keys to delete
-     *
-     * @return {boolean} whether any of the entries has been deleted
-     *
-     * @example
-     * map.deleteByKeys('color', 'position');
-     */
-    deleteByKeys(...keys) {
-        if ((keys === null || keys === void 0 ? void 0 : keys.length) === 0 || this.map.size === 0) {
-            return false;
-        }
-        let result = false;
-        for (const key of keys) {
-            result = result || this.map.delete(key);
-        }
-        return result;
-    }
-    /**
-     * Deletes the entry/entries with the given value
-     *
-     * @param {V} value the value to delete
-     *
-     * @return {boolean} whether the entry/entries has been deleted
-     *
-     * @example
-     * map.deleteByValue('red');
-     */
-    deleteByValue(value) {
-        if (this.map.size === 0) {
-            return false;
-        }
-        let result = false;
-        for (const [key, values] of this.entries()) {
-            if (values === null || values === void 0 ? void 0 : values.includes(value)) {
-                result = result || this.map.delete(key);
-            }
-        }
-        return result;
-    }
-    /**
-     * Deletes all the entries with any of the given values
-     *
-     * @param {Array&lt;V>} values the values to delete
-     *
-     * @return {boolean} whether any of the entries has been deleted
-     *
-     * @example
-     * map.deleteByValues('green', 'blue');
-     */
-    deleteByValues(...values) {
-        if ((values === null || values === void 0 ? void 0 : values.length) === 0 || this.map.size === 0) {
-            return false;
-        }
-        let result = false;
-        for (const value of values) {
-            result = result || this.deleteByValue(value);
-        }
-        return result;
-    }
-    /**
-     * Deletes a value for the given key from the map, keeping other values
-     *
-     * @param {K} key the key to operate
-     * @param {V} value the value to delete
-     *
-     * @return {boolean} whether the value has been removed
-     *
-     * @example
-     * map.deleteValueOfKey('color', 'blue');
-     */
-    deleteValueOfKey(key, value) {
-        let array = this.get(key) || [];
-        if (!array.includes(value)) {
-            return false;
-        }
-        array = array.filter(v => v !== value);
-        this.map.set(key, array);
-        return true;
+        return this.map.entries();
     }
     /**
      * Processes each entry in the map
@@ -274,14 +149,12 @@ export class MultiValueMap {
      * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
-     * map.forEach((values, key) => {
-     *     console.log(key);
+     * map.forEach((value, keys) => {
+     *     console.log(value);
      * });
      */
     forEach(callback, thisArg) {
-        this.map.forEach((values, key) => {
-            callback(values, key);
-        }, thisArg);
+        this.map.forEach(callback, thisArg);
     }
     /**
      * Processes each entry in the map with index capability
@@ -290,15 +163,12 @@ export class MultiValueMap {
      * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
-     * map.forEachIndexing((values, key, index) => {
+     * map.forEachIndexing((value, keys, index) => {
      *     console.log(index);
      * });
      */
     forEachIndexing(callback, thisArg) {
-        let index = 0;
-        this.map.forEach((values, key) => {
-            callback(values, key, index++);
-        }, thisArg);
+        this.map.forEachIndexing(callback, thisArg);
     }
     /**
      * Processes each entry in the map with breakable capability
@@ -307,178 +177,121 @@ export class MultiValueMap {
      * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
-     * map.forEachBreakable((values, key) => {
+     * map.forEachBreakable((value, keys) => {
      *     return true;
      * });
      */
     forEachBreakable(callback, thisArg) {
-        this.map.forEach((values, key) => {
-            if (!callback(values, key)) {
-                return;
-            }
-        }, thisArg);
+        this.map.forEachBreakable(callback, thisArg);
     }
     /**
-     * Returns whether the map contains the given key
+     * Returns whether the map contains the given keys
      *
-     * @param {K} key the key to check
-     *
+     * @param {Array&lt;K>} keys the keys to check
      * @return {boolean} whether the map contains the given key
      *
      * @example
-     * map.hasKey('color');
+     * map.hasKey('row1', 'col1');
      */
-    hasKey(key) {
-        return this.map.has(key);
+    hasKey(keys) {
+        return this.map.hasKey(keys);
     }
     /**
-     * Returns whether the map contains the given key/value pair
+     * Returns whether the map contains the given keys/value pair
      *
-     * @param {K} key the key to check
+     * @param {Array&lt;K>} keys the keys to check
      * @param {V} value the value to check
      *
-     * @return {boolean} whether the map contains the given key/value pair
+     * @return {boolean} whether the map contains the given keys/value pair
      *
      * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']]
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * map.hasKeyValue('color', 'red');    // true
-     * map.hasKeyValue('color', 'black');    // false
+     * map.hasKeyValue(['row1', 'col1'], 'LiLei');    // true
+     * map.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false
      */
-    hasKeyValue(key, value) {
-        if (this.map.size === 0) {
-            return false;
-        }
-        const array = this.get(key) || [];
-        return array.includes(value);
+    hasKeyValue(keys, value) {
+        return this.map.hasKeyValue(keys, value);
     }
     /**
      * Returns whether the map contains any of the given keys
      *
-     * @param {Array&lt;K>} keys the keys to check
-     *
+     * @param {Array&lt;V>} keys the keys to check
      * @return {boolean} whether the map contains any of the given keys
      *
      * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']]
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * map.hasAnyKeys('color', 'position');    // true
+     * map.hasAnyKeys(['row1', 'col1']);    // true
+     * map.hasAnyKeys(['row2', 'col2']);    // false
      */
     hasAnyKeys(...keys) {
-        if ((keys === null || keys === void 0 ? void 0 : keys.length) === 0 || this.map.size === 0) {
-            return false;
-        }
-        for (const key of keys) {
-            if (this.hasKey(key)) {
-                return true;
-            }
-        }
-        return false;
+        return this.map.hasAnyKeys(...keys);
     }
     /**
      * Returns whether the map contains all the given keys
      *
-     * @param {Array&lt;K>} keys the keys to check
+     * @param {Array&lt;V>} keys the keys to check
      *
      * @return {boolean} whether the map contains all the given keys
      *
      * @example
-     * map.hasAllKeys('color', 'position');
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
+     * ]);
+     * map.hasAllKeys(['row1', 'col1']);    // true
+     * map.hasAllKeys(['row2', 'col2']);    // false
      */
     hasAllKeys(...keys) {
-        if ((keys === null || keys === void 0 ? void 0 : keys.length) === 0 || this.map.size === 0) {
-            return false;
-        }
-        for (const key of keys) {
-            if (!this.hasKey(key)) {
-                return false;
-            }
-        }
-        return true;
+        return this.map.hasAllKeys(...keys);
     }
     /**
-     * Returns whether any entries of the map that contains the given values
+     * Returns whether the map contains the given value
      *
-     * @param {Array&lt;V>} values the values to check
-     * @param {boolean} exact whether matching entry values exactly
+     * @param {V} value the value to check
      *
-     * @return {boolean} whether any entries of the map that contains the given values
+     * @return {boolean} whether the map contains the given value
      *
      * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']],
-     *     ['position', ['top', 'right', 'bottom', 'left']]
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * map.hasValue(['red', 'black'], true);    // false
-     * map.hasValue(['top', 'right'], true);    // false
-     * map.hasValue(['top', 'right'], false);    // true
+     * map.hasValue('LiLei');    // true
+     * map.hasValue('HanMeimei');    // false
      */
-    hasValue(values, exact = true) {
-        if ((values === null || values === void 0 ? void 0 : values.length) === 0 || this.map.size === 0) {
-            return false;
-        }
-        for (const array of this.map.values()) {
-            let result = true;
-            for (const v of values) {
-                result = result &amp;&amp; array.includes(v) &amp;&amp; (exact ? array.length === values.length : true);
-                if (!result) {
-                    break;
-                }
-            }
-            if (result) {
-                return true;
-            }
-        }
-        return false;
+    hasValue(value) {
+        return this.map.hasValue(value);
     }
     /**
-     * Returns whether the map contains any of the given values, matching exactly
+     * Returns whether the map contains any of the given values
      *
      * @param {Array&lt;V>} values the values to check
      *
-     * @return {boolean} whether the map contains any of the given values, matching exactly
+     * @return {boolean} whether the map contains any of the given values
      *
      * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']],
-     *     ['position', ['top', 'right', 'bottom', 'left']]
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
      * ]);
-     * map.hasAnyValues(['red', 'black'], ['green', 'blue']);    // false
-     * map.hasAnyValues(['top', 'right'], ['top', 'right', 'bottom', 'left']);    // true
+     * map.hasAnyValues('LiLei', 'HanMeimei');    // true
      */
     hasAnyValues(...values) {
-        if ((values === null || values === void 0 ? void 0 : values.length) === 0 || this.map.size === 0) {
-            return false;
-        }
-        for (const value of values) {
-            if (this.hasValue(value)) {
-                return true;
-            }
-        }
-        return false;
+        return this.map.hasAnyValues(...values);
     }
     /**
-     * Returns whether the map contains all the given values, matching exactly
+     * Returns whether the map contains all the given values
      *
      * @param {Array&lt;V>} values the values to check
      *
-     * @return {boolean} whether the map contains all the given values, matching exactly
+     * @return {boolean} whether the map contains all the given values
      *
      * @example
-     * map.hasAllValues(['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']);
+     * map.hasAllValues('LiLei');
      */
     hasAllValues(...values) {
-        if ((values === null || values === void 0 ? void 0 : values.length) === 0 || this.map.size === 0) {
-            return false;
-        }
-        for (const value of values) {
-            if (!this.hasValue(value)) {
-                return false;
-            }
-        }
-        return true;
+        return this.map.hasAllValues(...values);
     }
     /**
      * Returns whether the map is empty
@@ -486,7 +299,7 @@ export class MultiValueMap {
      * @return {boolean} whether the map is empty
      */
     isEmpty() {
-        return this.map.size === 0;
+        return this.map.isEmpty();
     }
     /**
      * Returns whether the map is not empty
@@ -494,14 +307,14 @@ export class MultiValueMap {
      * @return {boolean} whether the map is not empty
      */
     isNotEmpty() {
-        return this.map.size > 0;
+        return this.map.isNotEmpty();
     }
     /**
-     * Response for returning the list of key/values to iterate
+     * Response for returning the list of keys/value to iterate
      *
      * @example
-     * for (const [key, values] of map) {
-     *     console.log(key);
+     * for (const [keys, value] of map) {
+     *     console.log(value);
      * }
      */
     [Symbol.iterator]() {
@@ -516,12 +329,12 @@ export class MultiValueMap {
         return this.map.size;
     }
     /**
-     * Returns the string representation of the map identifier ('MultiValueMap')
+     * Returns the string representation of the map identifier ('ReadonlyMultiKeyMap')
      *
      * @returns {string} the string representation of the map identifier
      */
     get [Symbol.toStringTag]() {
-        return 'MultiValueMap';
+        return 'ReadonlyMultiKeyMap';
     }
     /**
      * Returns the string representation of the map elements
@@ -529,32 +342,29 @@ export class MultiValueMap {
      * @returns {string} the string representation of the map elements
      *
      * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']],
-     *     ['position', ['top', 'right', 'bottom', 'left']]
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei'],
+     *     [['row2', 'col2'], 'HanMeimei']
      * ]);
-     * console.log(map.toString());    // color:[red,green,blue];position:[top,right,bottom,left]
+     * console.log(map.toString());    // [row1,col1]:LiLei;[row2,col2]:HanMeimei
      */
     toString() {
-        return [...this].map(entry => {
-            const [key, values] = ((entry.length &lt;= 1) ? [[], entry[0]] : [entry.slice(0, -1), entry[entry.length - 1]]);
-            return `${key}:[${values.join()}]`;
-        }).join(';');
+        return this.map.toString();
     }
     /**
-     * Construct a multi value map instance
+     * Construct a multi key map instance
      *
-     * @param {MultiValueMapEntries&lt;K, V>} entries the map entries that represented with [K, V[]][]
+     * @param {MultiKeyMapEntries&lt;K, V>} entries the map entries that represented with [K[], V][]
      *
-     * @return {MultiValueMap} a multi value map instance
+     * @return {ReadonlyMultiKeyMap} a readonly multi key map instance
      *
      * @example
-     * const map = MultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']]
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'LiLei']
      * ]);
      */
     static of(entries) {
-        return new MultiValueMap(entries);
+        return new ReadonlyMultiKeyMap(entries);
     }
 }
 </code></pre>
