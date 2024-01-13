@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023 Yookue Ltd. All rights reserved.
  *
- * Licensed under the MIT License.
+ * Licensed under the MIT License (the "License")
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -15,8 +15,8 @@
  */
 
 
-export * from './type/map-entry';
-export {MultiKeyMap} from './util/MultiKeyMap';
-export {MultiValueMap} from './util/MultiValueMap';
-export {ReadonlyMultiKeyMap} from './util/ReadonlyMultiKeyMap';
-export {ReadonlyMultiValueMap} from './util/ReadonlyMultiValueMap';
+export type MultiKeyMapEntry<K, V> = [K[], V];
+export type MultiKeyMapEntries<K, V> = readonly (readonly [K[], V])[] | null;
+
+export type MultiValueMapEntry<K, V> = [K, V[]];
+export type MultiValueMapEntries<K, V> = readonly (readonly [K, V[]])[] | null;
