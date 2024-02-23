@@ -41,6 +41,20 @@ describe('ReadonlyMultiKeyMap', () => {
         expect(map.get(['row2', 'col2'], 'HanMeimei')).toBe('HanMeimei');
     });
 
+    test('Testing keys method', () => {
+        const map = ReadonlyMultiKeyMap.of([
+            [['row1', 'col1'], 'LiLei']
+        ]);
+        expect(map.keys()).toStrictEqual([['row1', 'col1']]);
+    });
+
+    test('Testing values method', () => {
+        const map = ReadonlyMultiKeyMap.of([
+            [['row1', 'col1'], 'LiLei']
+        ]);
+        expect(map.values()).toStrictEqual(['LiLei']);
+    });
+
     test('Testing undefined key value', () => {
         const map = ReadonlyMultiKeyMap.of([
             [[undefined], undefined],

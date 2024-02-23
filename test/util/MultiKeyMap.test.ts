@@ -55,6 +55,20 @@ describe('MultiKeyMap', () => {
         expect(map.get(['row1', 'col1'])).toBe('HanMeimei');
     });
 
+    test('Testing keys method', () => {
+        const map = MultiKeyMap.of([
+            [['row1', 'col1'], 'LiLei']
+        ]);
+        expect(map.keys()).toStrictEqual([['row1', 'col1']]);
+    });
+
+    test('Testing values method', () => {
+        const map = MultiKeyMap.of([
+            [['row1', 'col1'], 'LiLei']
+        ]);
+        expect(map.values()).toStrictEqual(['LiLei']);
+    });
+
     test('Testing deleteByKey method', () => {
         const map = MultiKeyMap.of([
             [['row1', 'col1'], 'LiLei']

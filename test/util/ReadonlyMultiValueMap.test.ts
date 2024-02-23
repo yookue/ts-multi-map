@@ -41,6 +41,20 @@ describe('ReadonlyMultiValueMap', () => {
         expect(map.get('colour', ['yellow', 'black'])).toStrictEqual(['yellow', 'black']);
     });
 
+    test('Testing keys method', () => {
+        const map = ReadonlyMultiValueMap.of([
+            ['color', ['red', 'green', 'blue']]
+        ]);
+        expect(map.keys()).toStrictEqual(['color']);
+    });
+
+    test('Testing values method', () => {
+        const map = ReadonlyMultiValueMap.of([
+            ['color', ['red', 'green', 'blue']]
+        ]);
+        expect(map.values()).toStrictEqual([['red', 'green', 'blue']]);
+    });
+
     test('Testing undefined key value', () => {
         const map = ReadonlyMultiValueMap.of([
             [undefined, [undefined]]
