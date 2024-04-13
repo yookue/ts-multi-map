@@ -8,7 +8,7 @@
 
 ## Features
 
-🪄 Supports multiple keys/values
+🪄 Supports multiple keys/values, with readonly capability.
 
 ## Quickstart
 
@@ -32,7 +32,7 @@ Enjoy your journey in coding your projects with ts-multi-map. ✌️
 
 ## License
 
-This project is under the [MIT](https://mit-license.org/) License (MIT)
+This project is under the [MIT License](https://mit-license.org/).
 
 ## Website
 
