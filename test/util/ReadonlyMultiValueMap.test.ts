@@ -19,18 +19,18 @@ import {ReadonlyMultiValueMap} from '@yookue/ts-multi-map';
 
 
 describe('ReadonlyMultiValueMap', () => {
-    test('Testing constructor args', () => {
-        const map = new ReadonlyMultiValueMap([
-            ['color', ['red', 'green', 'blue']]
-        ]);
-        expect(map.get('color')).toContain('red');
-    });
-
     test('Testing of method', () => {
         const map = ReadonlyMultiValueMap.of([
             ['color', ['red', 'green', 'blue']]
         ]);
         expect(map.get('color')).toContain('green');
+    });
+
+    test('Testing constructor args', () => {
+        const map = new ReadonlyMultiValueMap([
+            ['color', ['red', 'green', 'blue']]
+        ]);
+        expect(map.get('color')).toContain('red');
     });
 
     test('Testing get method', () => {
@@ -102,7 +102,7 @@ describe('ReadonlyMultiValueMap', () => {
             ['color', ['red', 'green', 'blue']],
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
-        expect(map.hasAnyKeys('color')).toBeTruthy();
+        expect(map.hasAnyKeys(['color'])).toBeTruthy();
     });
 
     test('Testing hasAllKeys method', () => {
@@ -110,7 +110,7 @@ describe('ReadonlyMultiValueMap', () => {
             ['color', ['red', 'green', 'blue']],
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
-        expect(map.hasAllKeys('color', 'position')).toBeTruthy();
+        expect(map.hasAllKeys(['color', 'position'])).toBeTruthy();
     });
 
     test('Testing hasValue method', () => {
@@ -128,8 +128,8 @@ describe('ReadonlyMultiValueMap', () => {
             ['color', ['red', 'green', 'blue']],
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
-        expect(map.hasAnyValues(['red', 'black'], ['green', 'blue'])).toBeFalsy();
-        expect(map.hasAnyValues(['top', 'right'], ['top', 'right', 'bottom', 'left'])).toBeTruthy();
+        expect(map.hasAnyValues([['red', 'black'], ['green', 'blue']])).toBeFalsy();
+        expect(map.hasAnyValues([['top', 'right'], ['top', 'right', 'bottom', 'left']])).toBeTruthy();
     });
 
     test('Testing hasAllValues method', () => {
@@ -137,8 +137,8 @@ describe('ReadonlyMultiValueMap', () => {
             ['color', ['red', 'green', 'blue']],
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
-        expect(map.hasAllValues(['red', 'black'], ['red', 'green', 'blue'])).toBeFalsy();
-        expect(map.hasAllValues(['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left'])).toBeTruthy();
+        expect(map.hasAllValues([['red', 'black'], ['red', 'green', 'blue']])).toBeFalsy();
+        expect(map.hasAllValues([['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']])).toBeTruthy();
     });
 
     test('Testing Symbol.iterator method', () => {
@@ -161,6 +161,7 @@ describe('ReadonlyMultiValueMap', () => {
     });
 
     test('Testing toString method', () => {
+        expect(ReadonlyMultiValueMap.of().toString()).toEqual('');
         const map = ReadonlyMultiValueMap.of([
             ['color', ['red', 'green', 'blue']],
             ['position', ['top', 'right', 'bottom', 'left']]

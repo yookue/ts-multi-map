@@ -27,15 +27,31 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
     private readonly map = new MultiKeyMap<K, V>();
 
     /**
-     * Construct a multi key map instance
+     * Construct a readonly multi key map instance
      *
-     * @param {MultiKeyMapEntries<K, V>} entries the map entries that represented with [K[], V][]
+     * @param {MultiKeyMapEntries<K, V>} entries the map entries that represented as [K[], V][]
+     *
+     * @return {ReadonlyMultiKeyMap} a readonly multi key map instance
+     *
+     * @example
+     * const map = ReadonlyMultiKeyMap.of([
+     *     [['row1', 'col1'], 'foo']
+     * ]);
+     */
+    public static of(entries?: MultiKeyMapEntries<any, any>): ReadonlyMultiKeyMap<any, any> {
+        return new ReadonlyMultiKeyMap<any, any>(entries);
+    }
+
+    /**
+     * Construct a readonly multi key map instance
+     *
+     * @param {MultiKeyMapEntries<K, V>} entries the map entries that represented as [K[], V][]
      *
      * @constructor
      *
      * @example
      * const map = new ReadonlyMultiKeyMap([
-     *     [['row1', 'col1'], 'LiLei']
+     *     [['row1', 'col1'], 'foo']
      * ]);
      */
     public constructor(entries?: MultiKeyMapEntries<K, V>) {
@@ -51,14 +67,14 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * @param {Array<K>} keys the keys to retrieve
      * @param {V} defaults the default value if not found
      *
-     * @return {V|undefined} the value of the given keys
+     * @return {V} the value of the given keys
      *
      * @example
      * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei']
+     *     [['row1', 'col1'], 'foo']
      * ]);
-     * map.get(['row1', 'col1']);    // 'LiLei'
-     * map.get(['row2', 'col2'], 'HanMeimei');    // 'HanMeimei'
+     * map.get(['row1', 'col1']);    // 'foo'
+     * map.get(['row2', 'col2'], 'bar');    // 'bar'
      */
     public get(keys: K[], defaults?: V): V | undefined {
         return this.map.get(keys, defaults);
@@ -140,13 +156,15 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * Returns whether the map contains the given keys
      *
      * @param {Array<K>} keys the keys to check
+     * @param {boolean} exact whether matching entry values exactly
+     *
      * @return {boolean} whether the map contains the given key
      *
      * @example
-     * map.hasKey('row1', 'col1');
+     * map.hasKey(['row1', 'col1']);
      */
-    public hasKey(keys: K[]): boolean {
-        return this.map.hasKey(keys)
+    public hasKey(keys: K[], exact: boolean = true): boolean {
+        return this.map.hasKey(keys, exact)
     }
 
     /**
@@ -159,10 +177,10 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      *
      * @example
      * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei']
+     *     [['row1', 'col1'], 'foo']
      * ]);
-     * map.hasKeyValue(['row1', 'col1'], 'LiLei');    // true
-     * map.hasKeyValue(['row1', 'col1'], 'HanMeimei');    // false
+     * map.hasKeyValue(['row1', 'col1'], 'foo');    // true
+     * map.hasKeyValue(['row1', 'col1'], 'bar');    // false
      */
     public hasKeyValue(keys: K[], value: V): boolean {
         return this.map.hasKeyValue(keys, value);
@@ -172,35 +190,36 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * Returns whether the map contains any of the given keys
      *
      * @param {Array<V>} keys the keys to check
+     * @param {boolean} exact whether matching entry values exactly
+     *
      * @return {boolean} whether the map contains any of the given keys
      *
      * @example
      * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei']
+     *     [['row1', 'col1'], 'foo']
      * ]);
-     * map.hasAnyKeys(['row1', 'col1']);    // true
-     * map.hasAnyKeys(['row2', 'col2']);    // false
+     * map.hasAnyKeys([['row1', 'col1'], ['row2', 'col2']]);    // true
      */
-    public hasAnyKeys(...keys: K[][]): boolean {
-        return this.map.hasAnyKeys(...keys);
+    public hasAnyKeys(keys: K[][], exact: boolean = true): boolean {
+        return this.map.hasAnyKeys(keys, exact);
     }
 
     /**
      * Returns whether the map contains all the given keys
      *
      * @param {Array<V>} keys the keys to check
+     * @param {boolean} exact whether matching entry values exactly
      *
      * @return {boolean} whether the map contains all the given keys
      *
      * @example
      * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei']
+     *     [['row1', 'col1'], 'foo']
      * ]);
-     * map.hasAllKeys(['row1', 'col1']);    // true
-     * map.hasAllKeys(['row2', 'col2']);    // false
+     * map.hasAllKeys([['row1', 'col1'], ['row2', 'col2']]);    // false
      */
-    public hasAllKeys(...keys: K[][]): boolean {
-        return this.map.hasAllKeys(...keys);
+    public hasAllKeys(keys: K[][], exact: boolean = true): boolean {
+        return this.map.hasAllKeys(keys, exact);
     }
 
     /**
@@ -212,10 +231,10 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      *
      * @example
      * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei']
+     *     [['row1', 'col1'], 'foo']
      * ]);
-     * map.hasValue('LiLei');    // true
-     * map.hasValue('HanMeimei');    // false
+     * map.hasValue('foo');    // true
+     * map.hasValue('bar');    // false
      */
     public hasValue(value: V): boolean {
         return this.map.hasValue(value);
@@ -230,12 +249,12 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      *
      * @example
      * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei']
+     *     [['row1', 'col1'], 'foo']
      * ]);
-     * map.hasAnyValues('LiLei', 'HanMeimei');    // true
+     * map.hasAnyValues(['foo', 'bar']);    // true
      */
-    public hasAnyValues(...values: V[]): boolean {
-        return this.map.hasAnyValues(...values);
+    public hasAnyValues(values: V[]): boolean {
+        return this.map.hasAnyValues(values);
     }
 
     /**
@@ -246,10 +265,10 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * @return {boolean} whether the map contains all the given values
      *
      * @example
-     * map.hasAllValues('LiLei');
+     * map.hasAllValues(['foo', 'bar']);
      */
-    public hasAllValues(...values: V[]): boolean {
-        return this.map.hasAllValues(...values);
+    public hasAllValues(values: V[]): boolean {
+        return this.map.hasAllValues(values);
     }
 
     /**
@@ -294,7 +313,7 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
     /**
      * Returns the string representation of the map identifier ('ReadonlyMultiKeyMap')
      *
-     * @returns {string} the string representation of the map identifier
+     * @return {string} the string representation of the map identifier
      */
     public get [Symbol.toStringTag](): string {
         return 'ReadonlyMultiKeyMap';
@@ -303,32 +322,16 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
     /**
      * Returns the string representation of the map elements
      *
-     * @returns {string} the string representation of the map elements
+     * @return {string} the string representation of the map elements
      *
      * @example
      * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei'],
-     *     [['row2', 'col2'], 'HanMeimei']
+     *     [['row1', 'col1'], 'foo'],
+     *     [['row2', 'col2'], 'bar']
      * ]);
-     * console.log(map.toString());    // [row1,col1]:LiLei;[row2,col2]:HanMeimei
+     * console.log(map.toString());    // [row1,col1]:foo;[row2,col2]:bar
      */
     public toString(): string {
         return this.map.toString();
-    }
-
-    /**
-     * Construct a multi key map instance
-     *
-     * @param {MultiKeyMapEntries<K, V>} entries the map entries that represented with [K[], V][]
-     *
-     * @return {ReadonlyMultiKeyMap} a readonly multi key map instance
-     *
-     * @example
-     * const map = ReadonlyMultiKeyMap.of([
-     *     [['row1', 'col1'], 'LiLei']
-     * ]);
-     */
-    public static of(entries?: MultiKeyMapEntries<any, any>): ReadonlyMultiKeyMap<any, any> {
-        return new ReadonlyMultiKeyMap<any, any>(entries);
     }
 }

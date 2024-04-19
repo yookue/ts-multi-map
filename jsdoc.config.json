@@ -33,7 +33,7 @@
         "meta": {
             "title": "TsMultiMap",
             "description": "Multiple Key/Value Map Utilities for TypeScript",
-            "keyword": "yookue, multi-map, multiple-map, many-keys-map, many-values-map"
+            "keyword": "yookue, multi-map, multiple-map, many-keys-map, many-values-map, readonly-multi-map, readonly-multiple-map, readonly-many-keys-map, readonly-many-values-map"
         },
         "menu": {
             "Github": {

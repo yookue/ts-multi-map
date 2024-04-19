@@ -27,9 +27,25 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
     private readonly map = new MultiValueMap<K, V>();
 
     /**
-     * Construct a multi value map instance
+     * Construct a readonly multi value map instance
      *
-     * @param {MultiValueMapEntries<K, V>} entries the map entries that represented with [K, V[]][]
+     * @param {MultiValueMapEntries<K, V>} entries the map entries that represented as [K, V[]][]
+     *
+     * @return {ReadonlyMultiValueMap} a readonly multi value map instance
+     *
+     * @example
+     * const map = ReadonlyMultiValueMap.of([
+     *     ['color', ['red', 'green', 'blue']]
+     * ]);
+     */
+    public static of(entries?: MultiValueMapEntries<any, any>): ReadonlyMultiValueMap<any, any> {
+        return new ReadonlyMultiValueMap<any, any>(entries);
+    }
+
+    /**
+     * Construct a readonly multi value map instance
+     *
+     * @param {MultiValueMapEntries<K, V>} entries the map entries that represented as [K, V[]][]
      *
      * @constructor
      *
@@ -49,9 +65,9 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      * Returns the values of the given key
      *
      * @param {K} key the key to retrieve
-     * @param {Array<V>} defaults defaults the default values if not found
+     * @param {Array<V>} defaults the default values if not found
      *
-     * @return {Array<V>|undefined} the values of the given key
+     * @return {Array<V>} the values of the given key
      *
      * @example
      * const map = ReadonlyMultiValueMap.of([
@@ -180,10 +196,10 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      * const map = ReadonlyMultiValueMap.of([
      *     ['color', ['red', 'green', 'blue']]
      * ]);
-     * map.hasAnyKeys('color', 'position');    // true
+     * map.hasAnyKeys(['color', 'position']);    // true
      */
-    public hasAnyKeys(...keys: K[]): boolean {
-        return this.map.hasAnyKeys(...keys);
+    public hasAnyKeys(keys: K[]): boolean {
+        return this.map.hasAnyKeys(keys);
     }
 
     /**
@@ -194,10 +210,10 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      * @return {boolean} whether the map contains all the given keys
      *
      * @example
-     * map.hasAllKeys('color', 'position');
+     * map.hasAllKeys(['color', 'position']);
      */
-    public hasAllKeys(...keys: K[]): boolean {
-        return this.map.hasAllKeys(...keys);
+    public hasAllKeys(keys: K[]): boolean {
+        return this.map.hasAllKeys(keys);
     }
 
     /**
@@ -222,36 +238,38 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
     }
 
     /**
-     * Returns whether the map contains any of the given values, matching exactly
+     * Returns whether the map contains any of the given values
      *
      * @param {Array<V>} values the values to check
+     * @param {boolean} exact whether matching entry values exactly
      *
-     * @return {boolean} whether the map contains any of the given values, matching exactly
+     * @return {boolean} whether the map contains any of the given values
      *
      * @example
      * const map = ReadonlyMultiValueMap.of([
      *     ['color', ['red', 'green', 'blue']],
      *     ['position', ['top', 'right', 'bottom', 'left']]
      * ]);
-     * map.hasAnyValues(['red', 'black'], ['green', 'blue']);    // false
-     * map.hasAnyValues(['top', 'right'], ['top', 'right', 'bottom', 'left']);    // true
+     * map.hasAnyValues([['red', 'black'], ['green', 'blue']]);    // false
+     * map.hasAnyValues([['top', 'right'], ['top', 'right', 'bottom', 'left']]);    // true
      */
-    public hasAnyValues(...values: V[][]): boolean {
-        return this.map.hasAnyValues(...values);
+    public hasAnyValues(values: V[][], exact: boolean = true): boolean {
+        return this.map.hasAnyValues(values, exact);
     }
 
     /**
-     * Returns whether the map contains all the given values, matching exactly
+     * Returns whether the map contains all the given values
      *
      * @param {Array<V>} values the values to check
+     * @param {boolean} exact whether matching entry values exactly
      *
-     * @return {boolean} whether the map contains all the given values, matching exactly
+     * @return {boolean} whether the map contains all the given values
      *
      * @example
-     * map.hasAllValues(['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']);
+     * map.hasAllValues([['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']]);
      */
-    public hasAllValues(...values: V[][]): boolean {
-        return this.map.hasAllValues(...values);
+    public hasAllValues(values: V[][], exact: boolean = true): boolean {
+        return this.map.hasAllValues(values, exact);
     }
 
     /**
@@ -296,7 +314,7 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
     /**
      * Returns the string representation of the map identifier ('ReadonlyMultiValueMap')
      *
-     * @returns {string} the string representation of the map identifier
+     * @return {string} the string representation of the map identifier
      */
     public get [Symbol.toStringTag](): string {
         return 'ReadonlyMultiValueMap';
@@ -305,7 +323,7 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
     /**
      * Returns the string representation of the map elements
      *
-     * @returns {string} the string representation of the map elements
+     * @return {string} the string representation of the map elements
      *
      * @example
      * const map = ReadonlyMultiValueMap.of([
@@ -316,21 +334,5 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      */
     public toString(): string {
         return this.map.toString();
-    }
-
-    /**
-     * Construct a multi value map instance
-     *
-     * @param {MultiValueMapEntries<K, V>} entries the map entries that represented with [K, V[]][]
-     *
-     * @return {ReadonlyMultiValueMap} a readonly multi value map instance
-     *
-     * @example
-     * const map = ReadonlyMultiValueMap.of([
-     *     ['color', ['red', 'green', 'blue']]
-     * ]);
-     */
-    public static of(entries?: MultiValueMapEntries<any, any>): ReadonlyMultiValueMap<any, any> {
-        return new ReadonlyMultiValueMap<any, any>(entries);
     }
 }

@@ -15,7 +15,7 @@
  */
 
 
-export * from './type/map-entry';
+export * from './type/definition';
 export {MultiKeyMap} from './util/MultiKeyMap';
 export {MultiValueMap} from './util/MultiValueMap';
 export {ReadonlyMultiKeyMap} from './util/ReadonlyMultiKeyMap';
