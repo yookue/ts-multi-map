@@ -278,7 +278,7 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      * @return {boolean} whether the map is empty
      */
     public isEmpty(): boolean {
-        return this.map.size === 0;
+        return this.map.isEmpty();
     }
 
     /**
@@ -287,7 +287,7 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      * @return {boolean} whether the map is not empty
      */
     public isNotEmpty(): boolean {
-        return this.map.size > 0;
+        return this.map.isNotEmpty();
     }
 
     /**
