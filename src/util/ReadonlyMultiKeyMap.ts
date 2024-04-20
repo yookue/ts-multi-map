@@ -329,7 +329,7 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      *     [['row1', 'col1'], 'foo'],
      *     [['row2', 'col2'], 'bar']
      * ]);
-     * console.log(map.toString());    // [row1,col1]:foo;[row2,col2]:bar
+     * console.log(map.toString());    // '[row1,col1]:foo;[row2,col2]:bar'
      */
     public toString(): string {
         return this.map.toString();

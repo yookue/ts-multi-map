@@ -330,7 +330,7 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      *     ['color', ['red', 'green', 'blue']],
      *     ['position', ['top', 'right', 'bottom', 'left']]
      * ]);
-     * console.log(map.toString());    // color:[red,green,blue];position:[top,right,bottom,left]
+     * console.log(map.toString());    // 'color:[red,green,blue];position:[top,right,bottom,left]'
      */
     public toString(): string {
         return this.map.toString();

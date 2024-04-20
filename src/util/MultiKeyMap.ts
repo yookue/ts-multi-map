@@ -474,7 +474,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *     [['row1', 'col1'], 'foo'],
      *     [['row2', 'col2'], 'bar']
      * ]);
-     * console.log(map.toString());    // [row1,col1]:foo;[row2,col2]:bar
+     * console.log(map.toString());    // '[row1,col1]:foo;[row2,col2]:bar'
      */
     public toString(): string {
         return [...this].map(entry => {

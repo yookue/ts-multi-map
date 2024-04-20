@@ -491,7 +491,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     ['color', ['red', 'green', 'blue']],
      *     ['position', ['top', 'right', 'bottom', 'left']]
      * ]);
-     * console.log(map.toString());    // color:[red,green,blue];position:[top,right,bottom,left]
+     * console.log(map.toString());    // 'color:[red,green,blue];position:[top,right,bottom,left]'
      */
     public toString(): string {
         return [...this].map(entry => {
