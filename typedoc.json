@@ -1,9 +1,16 @@
 {
-    "entryPoints": ["src/index.ts"],
+    "entryPoints": [
+        "src/index.ts"
+    ],
     "disableSources": true,
     "excludeExternals": true,
     "excludePrivate": true,
     "excludeProtected": true,
     "hideGenerator": true,
-    "includeVersion": true
+    "includeVersion": true,
+    "plugin": [
+        "typedoc-plugin-extra-footer"
+    ],
+    "extraFooter": "<div style='text-align: center'>Copyright &copy; 2023 Yookue Ltd. All rights reserved</div>",
+    "extraFooterNoDefaultWrapper": true
 }

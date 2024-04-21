@@ -21,7 +21,7 @@ import {MultiKeyMap, type MultiKeyMapEntries} from '@';
 /**
  * Map with entries that contains multiple keys and a single value
  *
- * @implements {Omit<Map<Array<K>, V>>}
+ * @implements ReadonlyMap<K[], V>
  *
  * @author David Hsing
  */

@@ -22,7 +22,7 @@ import {type RangeMapKey} from '@';
 /**
  * Map with entries that contains a range key and a value
  *
- * @implements {Omit<Map<RangeMapKey, V>>}
+ * @implements Map<RangeMapKey, V>
  *
  * @author David Hsing
  */

@@ -21,7 +21,7 @@ import {type MultiValueMapEntry, type MultiValueMapEntries} from '@';
 /**
  * Map with entries that contains a single key and multiple values
  *
- * @implements {Omit<Map<K, Array<V>>>}
+ * @implements Map<K, V[]>
  *
  * @author David Hsing
  */

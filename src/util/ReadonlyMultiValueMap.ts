@@ -21,7 +21,7 @@ import {MultiValueMap, type MultiValueMapEntries} from '@';
 /**
  * Readonly map with entries that contains a single key and multiple values
  *
- * @implements {ReadonlyMap<Map<K, Array<V>>>}
+ * @implements ReadonlyMap<K, V[]>
  *
  * @author David Hsing
  */

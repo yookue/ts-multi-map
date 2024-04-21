@@ -22,7 +22,7 @@ import {MultiValueMap, type MultiKeyMapEntry, type MultiKeyMapEntries} from '@';
 /**
  * Map with entries that contains multiple keys and a single value
  *
- * @implements {Omit<Map<Array<K>, V>>}
+ * @implements Map<K[], V>
  *
  * @author David Hsing
  */
