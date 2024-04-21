@@ -9,6 +9,7 @@
 ## Features
 
 🪄 Supports multiple keys/values, with readonly capability.
+💎 Supports ranges, with readonly capability.
 
 ## Quickstart
 
@@ -21,7 +22,7 @@ $ npm install @yookue/ts-multi-map --save
 Then, you may import components of ts-multi-map as follows:
 
 ```jsx | pure
-import {MultiKeyMap, MultiValueMap, ReadonlyMultiKeyMap, ReadonlyMultiValueMap} from '@yookue/ts-multi-map';
+import {MultiKeyMap, MultiValueMap, RangeMap, ReadonlyMultiKeyMap, ReadonlyMultiValueMap, ReadonlyRangeMap} from '@yookue/ts-multi-map';
 ```
 
 Enjoy your journey in coding your projects with ts-multi-map. ✌️

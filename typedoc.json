@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["src/index.ts"],
+    "disableSources": true,
+    "excludeExternals": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "hideGenerator": true,
+    "includeVersion": true
+}

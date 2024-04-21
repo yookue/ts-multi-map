@@ -22,6 +22,8 @@ import {type MultiValueMapEntry, type MultiValueMapEntries} from '@';
  * Map with entries that contains a single key and multiple values
  *
  * @implements {Omit<Map<K, Array<V>>>}
+ *
+ * @author David Hsing
  */
 export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEach' | 'get' | 'has' | 'set' | 'entries' | 'keys' | 'values' | 'push'> {
     private readonly map = new Map<K, V[]>();
@@ -29,9 +31,9 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Construct a multi value map instance
      *
-     * @param {MultiValueMapEntries<K, V>} entries the map entries that represented as [K, V[]][]
+     * @param entries the map entries that represented as [K, V[]][]
      *
-     * @return {MultiValueMap} a multi value map instance
+     * @return a multi value map instance
      *
      * @example
      * const map = MultiValueMap.of([
@@ -45,7 +47,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Construct a multi value map instance
      *
-     * @param {MultiValueMapEntries<K, V>} entries the map entries that represented as [K, V[]][]
+     * @param entries the map entries that represented as [K, V[]][]
      *
      * @constructor
      *
@@ -64,10 +66,10 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns the values of the given key
      *
-     * @param {K} key the key to retrieve
-     * @param {Array<V>} defaults the default values if not found
+     * @param key the key to retrieve
+     * @param defaults the default values if not found
      *
-     * @return {Array<V>} the values of the given key
+     * @return the values of the given key
      *
      * @example
      * const map = MultiValueMap.of([
@@ -83,8 +85,8 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Sets the values of the given key
      *
-     * @param {K} key the key to set
-     * @param {Array<V>} values the values to set
+     * @param key the key to set
+     * @param values the values to set
      *
      * @example
      * map.set('color', ['red', 'green', 'blue']);
@@ -96,8 +98,8 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Push values onto the given key, the values will be appended to the given key
      *
-     * @param {K} key the key to operate
-     * @param {Array<V>} values the values to push
+     * @param key the key to operate
+     * @param values the values to push
      *
      * @example
      * map.push('color', ['yellow', 'black']);
@@ -118,7 +120,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns the keys of the map
      *
-     * @return {Array<K>} the keys of the map
+     * @return the keys of the map
      */
     public keys(): K[] {
         return [...this.map.keys()];
@@ -127,7 +129,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns the values array of the map
      *
-     * @return {Array<Array<V>>} the values array of the map
+     * @return the values array of the map
      */
     public values(): V[][] {
         return [...this.map.values()];
@@ -136,7 +138,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns the key/values entries of the map
      *
-     * @return {Array<K, Array<V>>} the key/values entries of the map
+     * @return the key/values entries of the map
      */
     public entries(): [K, V[]][] {
         return [...this.map.entries()];
@@ -145,9 +147,9 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Deletes the entry with the given key
      *
-     * @param {K} key the key to delete
+     * @param key the key to delete
      *
-     * @return {boolean} whether the entry has been deleted
+     * @return whether the entry has been deleted
      *
      * @example
      * map.deleteByKey('color');
@@ -159,20 +161,20 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Deletes all the entries with any of the given keys
      *
-     * @param {Array<K>} keys the keys to delete
+     * @param keys the keys to delete
      *
-     * @return {boolean} whether any of the entries has been deleted
+     * @return whether any of the entries has been deleted
      *
      * @example
      * map.deleteByKeys(['color', 'position']);
      */
     public deleteByKeys(keys: K[]): boolean {
-        if (keys?.length === 0 || this.isEmpty()) {
+        if (this.isEmpty() || keys?.length === 0) {
             return false;
         }
         let result = false;
         for (const key of keys) {
-            if (this.map.delete(key)) {
+            if (this.deleteByKey(key)) {
                 result = true;
             }
         }
@@ -182,9 +184,9 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Deletes the entry/entries with the given value
      *
-     * @param {V} value the value to delete
+     * @param value the value to delete
      *
-     * @return {boolean} whether the entry/entries has been deleted
+     * @return whether the entry/entries has been deleted
      *
      * @example
      * map.deleteByValue('red');
@@ -205,15 +207,15 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Deletes all the entries with any of the given values
      *
-     * @param {Array<V>} values the values to delete
+     * @param values the values to delete
      *
-     * @return {boolean} whether any of the entries has been deleted
+     * @return whether any of the entries has been deleted
      *
      * @example
      * map.deleteByValues(['green', 'blue']);
      */
     public deleteByValues(values: V[]): boolean {
-        if (values?.length === 0 || this.isEmpty()) {
+        if (this.isEmpty() || values?.length === 0) {
             return false;
         }
         let result = false;
@@ -228,10 +230,10 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Deletes a value for the given key from the map, keeping other values
      *
-     * @param {K} key the key to operate
-     * @param {V} value the value to delete
+     * @param key the key to operate
+     * @param value the value to delete
      *
-     * @return {boolean} whether the value has been removed
+     * @return whether the value has been removed
      *
      * @example
      * map.deleteValueOfKey('color', 'blue');
@@ -249,8 +251,8 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Processes each entry in the map
      *
-     * @param {function} callback a callback function that processes each entry
-     * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
+     * @param callback a callback function that processes each entry
+     * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
      * map.forEach((values, key) => {
@@ -258,16 +260,16 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * });
      */
     public forEach(callback: (values?: V[], key?: K) => void, thisArg?: any): void {
-        this.map.forEach((values, key) => {
-            callback(values, key);
+        this.map.forEach((vs, k) => {
+            callback(vs, k);
         }, thisArg);
     }
 
     /**
      * Processes each entry in the map with index capability
      *
-     * @param {function} callback a callback function that processes each entry
-     * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
+     * @param callback a callback function that processes each entry
+     * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
      * map.forEachIndexing((values, key, index) => {
@@ -276,16 +278,16 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      */
     public forEachIndexing(callback: (values?: V[], key?: K, index?: number) => void, thisArg?: any): void {
         let index = 0;
-        this.map.forEach((values, key) => {
-            callback(values, key, index++);
+        this.map.forEach((vs, k) => {
+            callback(vs, k, index++);
         }, thisArg);
     }
 
     /**
      * Processes each entry in the map with breakable capability
      *
-     * @param {function} callback a callback function that processes each entry. Returning false indicates to break the map iteration
-     * @param {*} thisArg any instance to retrieve 'this' reference in the callback function
+     * @param callback a callback function that processes each entry. Returning false indicates to break the map iteration
+     * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
      * map.forEachBreakable((values, key) => {
@@ -293,8 +295,8 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * });
      */
     public forEachBreakable(callback: (values?: V[], key?: K) => boolean, thisArg?: any): void {
-        this.map.forEach((values, key) => {
-            if (!callback(values, key)) {
+        this.map.forEach((vs, k) => {
+            if (!callback(vs, k)) {
                 return;
             }
         }, thisArg);
@@ -303,9 +305,9 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether the map contains the given key
      *
-     * @param {K} key the key to check
+     * @param key the key to check
      *
-     * @return {boolean} whether the map contains the given key
+     * @return whether the map contains the given key
      *
      * @example
      * map.hasKey('color');
@@ -317,10 +319,10 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether the map contains the given key/value pair
      *
-     * @param {K} key the key to check
-     * @param {V} value the value to check
+     * @param key the key to check
+     * @param value the value to check
      *
-     * @return {boolean} whether the map contains the given key/value pair
+     * @return whether the map contains the given key/value pair
      *
      * @example
      * const map = MultiValueMap.of([
@@ -330,19 +332,15 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.hasKeyValue('color', 'black');    // false
      */
     public hasKeyValue(key: K, value: V): boolean {
-        if (this.isEmpty()) {
-            return false;
-        }
-        const array = this.get(key) || [];
-        return array.includes(value);
+        return this.isNotEmpty() && (this.get(key) ?? []).includes(value);
     }
 
     /**
      * Returns whether the map contains any of the given keys
      *
-     * @param {Array<K>} keys the keys to check
+     * @param keys the keys to check
      *
-     * @return {boolean} whether the map contains any of the given keys
+     * @return whether the map contains any of the given keys
      *
      * @example
      * const map = MultiValueMap.of([
@@ -357,9 +355,9 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether the map contains all the given keys
      *
-     * @param {Array<K>} keys the keys to check
+     * @param keys the keys to check
      *
-     * @return {boolean} whether the map contains all the given keys
+     * @return whether the map contains all the given keys
      *
      * @example
      * map.hasAllKeys('color', 'position');
@@ -371,10 +369,10 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether any entries of the map that contains the given values
      *
-     * @param {Array<V>} values the values to check
-     * @param {boolean} exact whether matching entry values exactly
+     * @param values the values to check
+     * @param exact whether matching entry values exactly
      *
-     * @return {boolean} whether any entries of the map that contains the given values
+     * @return whether any entries of the map that contains the given values
      *
      * @example
      * const map = MultiValueMap.of([
@@ -386,7 +384,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.hasValue(['top', 'right'], false);    // true
      */
     public hasValue(values: V[], exact: boolean = true): boolean {
-        if (values?.length === 0 || this.isEmpty()) {
+        if (this.isEmpty() || values?.length === 0) {
             return false;
         }
         for (const vs of this.map.values()) {
@@ -401,10 +399,10 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether the map contains any of the given values
      *
-     * @param {Array<V>} values the values to check
-     * @param {boolean} exact whether matching entry values exactly
+     * @param values the values to check
+     * @param exact whether matching entry values exactly
      *
-     * @return {boolean} whether the map contains any of the given values
+     * @return whether the map contains any of the given values
      *
      * @example
      * const map = MultiValueMap.of([
@@ -421,10 +419,10 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether the map contains all the given values
      *
-     * @param {Array<V>} values the values to check
-     * @param {boolean} exact whether matching entry values exactly
+     * @param values the values to check
+     * @param exact whether matching entry values exactly
      *
-     * @return {boolean} whether the map contains all the given values
+     * @return whether the map contains all the given values
      *
      * @example
      * map.hasAllValues(['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']);
@@ -436,7 +434,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether the map is empty
      *
-     * @return {boolean} whether the map is empty
+     * @return whether the map is empty
      */
     public isEmpty(): boolean {
         return this.map.size === 0;
@@ -445,7 +443,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns whether the map is not empty
      *
-     * @return {boolean} whether the map is not empty
+     * @return whether the map is not empty
      */
     public isNotEmpty(): boolean {
         return this.map.size > 0;
@@ -466,7 +464,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns the size of map
      *
-     * @return {number} the size of map
+     * @return the size of map
      */
     public get size(): number {
         return this.map.size;
@@ -475,7 +473,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns the string representation of the map identifier ('MultiValueMap')
      *
-     * @return {string} the string representation of the map identifier
+     * @return the string representation of the map identifier
      */
     public get [Symbol.toStringTag](): string {
         return 'MultiValueMap';
@@ -484,7 +482,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
     /**
      * Returns the string representation of the map elements
      *
-     * @return {string} the string representation of the map elements
+     * @return the string representation of the map elements
      *
      * @example
      * const map = MultiValueMap.of([
