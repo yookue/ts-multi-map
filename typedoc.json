@@ -4,6 +4,7 @@
     ],
     "disableSources": true,
     "excludeExternals": true,
+    "excludeInternal": true,
     "excludePrivate": true,
     "excludeProtected": true,
     "hideGenerator": true,
