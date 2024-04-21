@@ -18,5 +18,14 @@
 export type MultiKeyMapEntry<K, V> = [K[], V];
 export type MultiKeyMapEntries<K, V> = readonly (readonly [K[], V])[] | null;
 
+
 export type MultiValueMapEntry<K, V> = [K, V[]];
 export type MultiValueMapEntries<K, V> = readonly (readonly [K, V[]])[] | null;
+
+
+export type RangeMapKey = {
+    start: number;
+    end: number;
+    startInclusive?: boolean;
+    endInclusive?: boolean;
+};
