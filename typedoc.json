@@ -1,4 +1,5 @@
 {
+    "name": "TsMultiMap",
     "entryPoints": [
         "src/index.ts"
     ],
@@ -8,7 +9,11 @@
     "excludePrivate": true,
     "excludeProtected": true,
     "hideGenerator": true,
-    "includeVersion": true,
+    "includeVersion": false,
+    "navigationLinks": {
+        "GitHub": "https://github.com/yookue/ts-multi-map",
+        "Yookue": "https://yookue.com"
+    },
     "plugin": [
         "typedoc-plugin-extra-footer"
     ],
