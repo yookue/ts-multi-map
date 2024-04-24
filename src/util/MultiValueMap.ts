@@ -40,8 +40,8 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     ['color', ['red', 'green', 'blue']]
      * ]);
      */
-    public static of(entries?: MultiValueMapEntries<any, any>): MultiValueMap<any, any> {
-        return new MultiValueMap<any, any>(entries);
+    public static of<K, V>(entries?: MultiValueMapEntries<K, V>): MultiValueMap<K, V> {
+        return new MultiValueMap(entries);
     }
 
     /**

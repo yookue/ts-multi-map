@@ -40,8 +40,8 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      *     ['color', ['red', 'green', 'blue']]
      * ]);
      */
-    public static of(entries?: MultiValueMapEntries<any, any>): ReadonlyMultiValueMap<any, any> {
-        return new ReadonlyMultiValueMap<any, any>(entries);
+    public static of<K, V>(entries?: MultiValueMapEntries<K, V>): ReadonlyMultiValueMap<K, V> {
+        return new ReadonlyMultiValueMap(entries);
     }
 
     /**

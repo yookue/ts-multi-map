@@ -46,8 +46,8 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *     [[90, 100, true, true], 'red']
      * ]);
      */
-    public static of(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], any][], validation: boolean = true): RangeMap<any> {
-        return new RangeMap<any>(entries, validation);
+    public static of<V>(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], V][], validation: boolean = true): RangeMap<V> {
+        return new RangeMap(entries, validation);
     }
 
     /**

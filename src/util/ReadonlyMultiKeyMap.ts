@@ -40,8 +40,8 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      *     [['row1', 'col1'], 'foo']
      * ]);
      */
-    public static of(entries?: MultiKeyMapEntries<any, any>): ReadonlyMultiKeyMap<any, any> {
-        return new ReadonlyMultiKeyMap<any, any>(entries);
+    public static of<K, V>(entries?: MultiKeyMapEntries<K, V>): ReadonlyMultiKeyMap<K, V> {
+        return new ReadonlyMultiKeyMap(entries);
     }
 
     /**

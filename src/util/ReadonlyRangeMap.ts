@@ -44,8 +44,8 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *     [[90, 100, true, true], 'red']
      * ]);
      */
-    public static of(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], any][], validation: boolean = true): ReadonlyRangeMap<any> {
-        return new ReadonlyRangeMap<any>(entries, validation);
+    public static of<V>(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], V][], validation: boolean = true): ReadonlyRangeMap<V> {
+        return new ReadonlyRangeMap(entries, validation);
     }
 
     /**
@@ -64,7 +64,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *     [[90, 100, true, true], 'red']
      * ]);
      */
-    public constructor(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], any][], validation: boolean = true) {
+    public constructor(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], V][], validation: boolean = true) {
         entries?.forEach(entry => {
             const [k, v] = entry;
             this.map.set(k, v, validation);

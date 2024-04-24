@@ -42,8 +42,8 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *     [['row1', 'col1'], 'foo']
      * ]);
      */
-    public static of(entries?: MultiKeyMapEntries<any, any>): MultiKeyMap<any, any> {
-        return new MultiKeyMap<any, any>(entries);
+    public static of<K, V>(entries?: MultiKeyMapEntries<K, V>): MultiKeyMap<K, V> {
+        return new MultiKeyMap(entries);
     }
 
     /**

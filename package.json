@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.20",
+    "version": "0.1.21",
     "title": "TsMultiMap",
     "description": "Multiple Key/Value Map & Range Map for TypeScript",
     "homepage": "https://yookue.github.io/ts-multi-map",
