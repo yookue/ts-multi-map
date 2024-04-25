@@ -36,7 +36,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param entries the map entries
      * @param validation whether to compare the ranges to all the ranges previously, to determine if there are any conflicts
      *
-     * @return a range map instance
+     * @returns a range map instance
      *
      * @example
      * const map = RangeMap.of([
@@ -79,7 +79,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param key the key to retrieve
      * @param defaults the default value if not found
      *
-     * @return the value of the given key
+     * @returns the value of the given key
      *
      * @example
      * const map = RangeMap.of([
@@ -100,7 +100,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param digit the number to retrieve
      * @param defaults the default value if not found
      *
-     * @return the value that associated to the number, by determining which bound contains the given number
+     * @returns the value that associated to the number, by determining which bound contains the given number
      *
      * @example
      * const map = RangeMap.of([
@@ -159,7 +159,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns the keys of the map
      *
-     * @return the keys of the map
+     * @returns the keys of the map
      */
     public keys(): RangeMapKey[] {
         return [...this.keyMap.values()];
@@ -168,7 +168,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns the value array of the map
      *
-     * @return the value array of the map
+     * @returns the value array of the map
      */
     public values(): V[] {
         return [...this.valueMap.values()];
@@ -177,7 +177,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns the key/value entries of the map
      *
-     * @return the key/value entries of the map
+     * @returns the key/value entries of the map
      */
     public entries(): [RangeMapKey, V][] {
         if (this.isEmpty()) {
@@ -198,7 +198,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param key the key to delete
      *
-     * @return whether the entry has been deleted
+     * @returns whether the entry has been deleted
      *
      * @example
      * map.deleteByKey([1, 50]);
@@ -216,7 +216,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param keys the keys to delete
      *
-     * @return whether any of the entries has been deleted
+     * @returns whether any of the entries has been deleted
      *
      * @example
      * map.deleteByKeys([[1, 30], [30, 50]]);
@@ -239,7 +239,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param value the value to delete
      *
-     * @return whether the entry/entries has been deleted
+     * @returns whether the entry/entries has been deleted
      *
      * @example
      * map.deleteByValue('red');
@@ -262,7 +262,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param values the values to delete
      *
-     * @return whether any of the entries has been deleted
+     * @returns whether any of the entries has been deleted
      *
      * @example
      * map.deleteByValues(['green', 'blue']);
@@ -342,7 +342,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param key the key to check
      *
-     * @return whether the map contains the given key
+     * @returns whether the map contains the given key
      *
      * @example
      * map.hasKey([1, 30]);
@@ -357,7 +357,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param key the key to check
      * @param value the value to check
      *
-     * @return whether the map contains the given key/value pair
+     * @returns whether the map contains the given key/value pair
      *
      * @example
      * const map = RangeMap.of([
@@ -375,7 +375,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param keys the keys to check
      *
-     * @return whether the map contains any of the given keys
+     * @returns whether the map contains any of the given keys
      *
      * @example
      * const map = RangeMap.of([
@@ -393,7 +393,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param keys the keys to check
      *
-     * @return whether the map contains all the given keys
+     * @returns whether the map contains all the given keys
      *
      * @example
      * map.hasAllKeys([[1, 50], [51, 100]]);
@@ -407,7 +407,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param value the value to check
      *
-     * @return whether any entries of the map that contains the given values
+     * @returns whether any entries of the map that contains the given values
      *
      * @example
      * const map = RangeMap.of([
@@ -426,7 +426,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param values the values to check
      *
-     * @return whether the map contains any of the given values
+     * @returns whether the map contains any of the given values
      *
      * @example
      * const map = RangeMap.of([
@@ -445,7 +445,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param values the values to check
      *
-     * @return whether the map contains all the given values, matching exactly
+     * @returns whether the map contains all the given values, matching exactly
      *
      * @example
      * map.hasAllValues(['red', 'green', 'blue']);
@@ -457,7 +457,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns whether the map is empty
      *
-     * @return whether the map is empty
+     * @returns whether the map is empty
      */
     public isEmpty(): boolean {
         return this.valueMap.size === 0;
@@ -466,7 +466,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns whether the map is not empty
      *
-     * @return whether the map is not empty
+     * @returns whether the map is not empty
      */
     public isNotEmpty(): boolean {
         return this.valueMap.size > 0;
@@ -487,7 +487,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns the size of map
      *
-     * @return the size of map
+     * @returns the size of map
      */
     public get size(): number {
         return this.valueMap.size;
@@ -496,7 +496,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns the string representation of the map identifier ('RangeMap')
      *
-     * @return the string representation of the map identifier
+     * @returns the string representation of the map identifier
      */
     public get [Symbol.toStringTag](): string {
         return 'RangeMap';
@@ -505,7 +505,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
     /**
      * Returns the string representation of the map elements
      *
-     * @return the string representation of the map elements
+     * @returns the string representation of the map elements
      *
      * @example
      * const map = RangeMap.of([
@@ -528,7 +528,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param key the key to convert
      *
-     * @return the converted key
+     * @returns the converted key
      */
     private toInternalKey(key: RangeMapKey | [number, number] | [number, number, boolean, boolean]): RangeMapKey {
         return !Array.isArray(key) ? key : {

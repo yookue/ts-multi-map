@@ -35,7 +35,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param entries the map entries that represented as [K[], V][]
      *
-     * @return a multi key map instance
+     * @returns a multi key map instance
      *
      * @example
      * const map = MultiKeyMap.of([
@@ -71,7 +71,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param keys the keys to retrieve
      * @param defaults the default value if not found
      *
-     * @return the value of the given keys
+     * @returns the value of the given keys
      *
      * @example
      * const map = MultiKeyMap.of([
@@ -117,7 +117,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns the keys array of the map
      *
-     * @return the keys array of the map
+     * @returns the keys array of the map
      */
     public keys(): K[][] {
         return [...this.keyMap.values()];
@@ -126,7 +126,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns the values of the map
      *
-     * @return the values of the map
+     * @returns the values of the map
      */
     public values(): V[] {
         return [...this.valueMap.values()];
@@ -135,7 +135,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns the keys/value entries of the map
      *
-     * @return the keys/value entries of the map
+     * @returns the keys/value entries of the map
      */
     public entries(): [K[], V][] {
         if (this.isEmpty()) {
@@ -156,7 +156,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param key the key to delete
      *
-     * @return whether the entry has been deleted
+     * @returns whether the entry has been deleted
      *
      * @example
      * map.deleteByKey(['row1', 'col1']);
@@ -174,7 +174,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param keys the keys to delete
      *
-     * @return whether any of the entries has been deleted
+     * @returns whether any of the entries has been deleted
      *
      * @example
      * map.deleteByKey([['row1', 'col1'], ['row2', 'col2']]);
@@ -197,7 +197,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param value the value to delete
      *
-     * @return whether the entry/entries has been deleted
+     * @returns whether the entry/entries has been deleted
      *
      * @example
      * map.deleteByValue('foo');
@@ -220,7 +220,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param values the values to delete
      *
-     * @return whether any of the entries has been deleted
+     * @returns whether any of the entries has been deleted
      *
      * @example
      * map.deleteByValues(['foo', 'bar']);
@@ -301,7 +301,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param keys the keys to check
      * @param exact whether matching entry values exactly
      *
-     * @return whether the map contains the given key
+     * @returns whether the map contains the given key
      *
      * @example
      * map.hasKey(['row1', 'col1']);
@@ -316,7 +316,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param keys the keys to check
      * @param value the value to check
      *
-     * @return whether the map contains the given keys/value pair
+     * @returns whether the map contains the given keys/value pair
      *
      * @example
      * const map = MultiKeyMap.of([
@@ -335,7 +335,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param keys the keys to check
      * @param exact whether matching entry values exactly
      *
-     * @return whether the map contains any of the given keys
+     * @returns whether the map contains any of the given keys
      *
      * @example
      * const map = MultiKeyMap.of([
@@ -353,7 +353,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param keys the keys to check
      * @param exact whether matching entry values exactly
      *
-     * @return whether the map contains all the given keys
+     * @returns whether the map contains all the given keys
      *
      * @example
      * const map = MultiKeyMap.of([
@@ -370,7 +370,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param value the value to check
      *
-     * @return whether the map contains the given value
+     * @returns whether the map contains the given value
      *
      * @example
      * const map = MultiKeyMap.of([
@@ -388,7 +388,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param values the values to check
      *
-     * @return whether the map contains any of the given values
+     * @returns whether the map contains any of the given values
      *
      * @example
      * const map = MultiKeyMap.of([
@@ -405,7 +405,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *
      * @param values the values to check
      *
-     * @return whether the map contains all the given values
+     * @returns whether the map contains all the given values
      *
      * @example
      * map.hasAllValues(['foo']);
@@ -417,7 +417,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns whether the map is empty
      *
-     * @return whether the map is empty
+     * @returns whether the map is empty
      */
     public isEmpty(): boolean {
         return this.valueMap.size === 0;
@@ -426,7 +426,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns whether the map is not empty
      *
-     * @return whether the map is not empty
+     * @returns whether the map is not empty
      */
     public isNotEmpty(): boolean {
         return this.valueMap.size > 0;
@@ -447,7 +447,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns the size of map
      *
-     * @return the size of map
+     * @returns the size of map
      */
     public get size(): number {
         return this.valueMap.size;
@@ -456,7 +456,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns the string representation of the map identifier ('MultiKeyMap')
      *
-     * @return the string representation of the map identifier
+     * @returns the string representation of the map identifier
      */
     public get [Symbol.toStringTag](): string {
         return 'MultiKeyMap';
@@ -465,7 +465,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     /**
      * Returns the string representation of the map elements
      *
-     * @return the string representation of the map elements
+     * @returns the string representation of the map elements
      *
      * @example
      * const map = MultiKeyMap.of([

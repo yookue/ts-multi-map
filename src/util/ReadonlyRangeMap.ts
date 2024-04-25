@@ -34,7 +34,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param entries the map entries
      * @param validation whether to compare the ranges to all the ranges previously, to determine if there are any conflicts
      *
-     * @return a readonly multi value map instance
+     * @returns a readonly multi value map instance
      *
      * @example
      * const map = ReadonlyRangeMap.of([
@@ -77,7 +77,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param key the key to retrieve
      * @param defaults the default value if not found
      *
-     * @return the value of the given key
+     * @returns the value of the given key
      *
      * @example
      * const map = ReadonlyRangeMap.of([
@@ -97,7 +97,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param digit the number to retrieve
      * @param defaults the default value if not found
      *
-     * @return the value that associated to the number, by determining which bound contains the given number
+     * @returns the value that associated to the number, by determining which bound contains the given number
      *
      * @example
      * const map = ReadonlyRangeMap.of([
@@ -114,7 +114,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns the keys of the map
      *
-     * @return the keys of the map
+     * @returns the keys of the map
      */
     public keys(): RangeMapKey[] {
         return this.map.keys();
@@ -123,7 +123,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns the value array of the map
      *
-     * @return the value array of the map
+     * @returns the value array of the map
      */
     public values(): V[] {
         return this.map.values();
@@ -132,7 +132,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns the key/value entries of the map
      *
-     * @return the key/value entries of the map
+     * @returns the key/value entries of the map
      */
     public entries(): [RangeMapKey, V][] {
         return this.map.entries();
@@ -188,7 +188,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *
      * @param key the key to check
      *
-     * @return whether the map contains the given key
+     * @returns whether the map contains the given key
      *
      * @example
      * map.hasKey([1, 30]);
@@ -203,7 +203,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param key the key to check
      * @param value the value to check
      *
-     * @return whether the map contains the given key/value pair
+     * @returns whether the map contains the given key/value pair
      *
      * @example
      * const map = ReadonlyRangeMap.of([
@@ -221,7 +221,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *
      * @param keys the keys to check
      *
-     * @return whether the map contains any of the given keys
+     * @returns whether the map contains any of the given keys
      *
      * @example
      * const map = ReadonlyRangeMap.of([
@@ -239,7 +239,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *
      * @param keys the keys to check
      *
-     * @return whether the map contains all the given keys
+     * @returns whether the map contains all the given keys
      *
      * @example
      * map.hasAllKeys([[1, 50], [51, 100]]);
@@ -253,7 +253,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *
      * @param value the value to check
      *
-     * @return whether any entries of the map that contains the given values
+     * @returns whether any entries of the map that contains the given values
      *
      * @example
      * const map = ReadonlyRangeMap.of([
@@ -272,7 +272,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *
      * @param values the values to check
      *
-     * @return whether the map contains any of the given values
+     * @returns whether the map contains any of the given values
      *
      * @example
      * const map = ReadonlyRangeMap.of([
@@ -291,7 +291,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *
      * @param values the values to check
      *
-     * @return whether the map contains all the given values, matching exactly
+     * @returns whether the map contains all the given values, matching exactly
      *
      * @example
      * map.hasAllValues(['red', 'green', 'blue']);
@@ -303,7 +303,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns whether the map is empty
      *
-     * @return whether the map is empty
+     * @returns whether the map is empty
      */
     public isEmpty(): boolean {
         return this.map.isEmpty();
@@ -312,7 +312,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns whether the map is not empty
      *
-     * @return whether the map is not empty
+     * @returns whether the map is not empty
      */
     public isNotEmpty(): boolean {
         return this.map.isNotEmpty();
@@ -333,7 +333,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns the size of map
      *
-     * @return the size of map
+     * @returns the size of map
      */
     public get size(): number {
         return this.map.size;
@@ -342,7 +342,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns the string representation of the map identifier ('ReadonlyRangeMap')
      *
-     * @return the string representation of the map identifier
+     * @returns the string representation of the map identifier
      */
     public get [Symbol.toStringTag](): string {
         return 'ReadonlyRangeMap';
@@ -351,7 +351,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
     /**
      * Returns the string representation of the map elements
      *
-     * @return the string representation of the map elements
+     * @returns the string representation of the map elements
      *
      * @example
      * const map = ReadonlyRangeMap.of([
