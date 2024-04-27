@@ -14,19 +14,19 @@
 
 ## Quickstart
 
-You can install ts-multi-map package in your existing typescript project as follows:
+You can install this package in your typescript project as follows:
 
 ```bash
 $ npm install @yookue/ts-multi-map --save
 ```
 
-Then, you may import components of ts-multi-map as follows:
+Then, you may import components as follows:
 
 ```jsx | pure
 import {MultiKeyMap, MultiValueMap, RangeMap, ReadonlyMultiKeyMap, ReadonlyMultiValueMap, ReadonlyRangeMap} from '@yookue/ts-multi-map';
 ```
 
-Enjoy your journey in coding your projects with ts-multi-map. ✌️
+Enjoy your coding journey with `ts-multi-map`. ✌️
 
 ## Document
 
