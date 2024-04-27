@@ -8,9 +8,9 @@
 
 ## Features
 
-🪄 Supports multiple keys/values, with readonly capability.
+✅ Supports multiple keys/values, with readonly capability.
 
-💎 Supports ranges, with readonly capability.
+✅ Supports ranges, with readonly capability.
 
 ## Quickstart
 
