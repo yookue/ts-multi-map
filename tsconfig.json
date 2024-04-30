@@ -4,8 +4,8 @@
         "declaration": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "target": "es6",
-        "lib": ["dom", "es2017"],
+        "target": "es2015",
+        "lib": ["dom"],
         "skipLibCheck": true,
         "strict": true,
         "paths": {
