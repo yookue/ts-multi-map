@@ -15,8 +15,12 @@
         "Yookue": "https://yookue.com"
     },
     "plugin": [
-        "typedoc-plugin-extra-footer"
+        "@yookue/typedoc-raw-content"
     ],
-    "extraFooter": "<div style='text-align: center'>Copyright &copy; 2023 Yookue Ltd. All rights reserved</div>",
-    "extraFooterNoDefaultWrapper": true
+    "rawHeadEnds": [
+        "<meta name='keywords' content='typescript, yookue, ts-multi-map'/>"
+    ],
+    "rawFooterEnds": [
+        "<div style='text-align: center'>Copyright &copy; 2023 Yookue Ltd. All rights reserved</div>"
+    ]
 }
