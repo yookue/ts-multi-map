@@ -15,14 +15,14 @@
  */
 
 
+import nodePath from 'node:path';
 import {defineConfig} from 'father';
 
-
-const path = require('path');
 
 /**
  * @see "https://github.com/umijs/father/blob/master/docs/config.md"
  */
+// noinspection JSUnusedGlobalSymbols
 export default defineConfig({
     cjs: {},
     esm: {},
@@ -30,8 +30,8 @@ export default defineConfig({
         name: 'TsMultiMap',
     },
     alias: {
-        '@': path.resolve(__dirname, './src'),
-        '@yookue/ts-multi-map': path.resolve(__dirname, './src'),
+        '@': nodePath.resolve(__dirname, './src'),
+        '@yookue/ts-multi-map': nodePath.resolve(__dirname, './src'),
     },
     extraBabelPlugins: [
         ['babel-plugin-comments', {

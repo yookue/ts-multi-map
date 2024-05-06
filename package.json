@@ -29,16 +29,16 @@
     "sideEffects": false,
     "scripts": {
         "build": "del-cli ./dist && father build",
+        "build:doctor": "father doctor",
         "build:watch": "father dev",
         "docs:build": "typedoc --out ./docs-dist",
         "docs:publish": "gh-pages -d ./docs-dist",
-        "doctor": "father doctor",
         "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
         "test": "jest",
         "test:coverage": "del-cli ./coverage && jest --coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.24.4",
+        "@babel/runtime": "^7.24.5",
         "object-hash": "^3.0.0"
     },
     "devDependencies": {
