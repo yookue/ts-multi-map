@@ -15,7 +15,7 @@
         "Yookue": "https://yookue.com"
     },
     "plugin": [
-        "@yookue/typedoc-raw-content"
+        "@yookue/typedoc-plugin-raw-content"
     ],
     "rawHeadEnds": [
         "<meta name='keywords' content='typescript, yookue, ts-multi-map'/>"

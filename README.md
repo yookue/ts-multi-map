@@ -4,13 +4,13 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.txt)
 [![NPM downloads](http://img.shields.io/npm/dm/@yookue/ts-multi-map.svg?style=flat)](https://npmjs.org/package/@yookue/ts-multi-map)
 
-🏅 Multiple Key/Value Map & Range Map for Typescript 👍
+🏅 Multiple key/value map & range map for typescript 👍
 
 ## Features
 
-✅ Supports multiple keys/values, with readonly capability.
+✅ Supports multiple keys/values, with readonly capability
 
-✅ Supports ranges, with readonly capability.
+✅ Supports ranges, with readonly capability
 
 ## Quickstart
 
@@ -26,7 +26,7 @@ Then, you may import components as follows:
 import {MultiKeyMap, MultiValueMap, RangeMap, ReadonlyMultiKeyMap, ReadonlyMultiValueMap, ReadonlyRangeMap} from '@yookue/ts-multi-map';
 ```
 
-Enjoy your coding journey with `ts-multi-map`. ✌️
+Enjoy your coding journey with `ts-multi-map` ✌️
 
 ## Document
 

@@ -1,8 +1,8 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.24",
+    "version": "0.1.25",
     "title": "TsMultiMap",
-    "description": "Multiple Key/Value Map & Range Map for TypeScript",
+    "description": "Multiple key/value map & range map for typescript",
     "homepage": "https://yookue.github.io/ts-multi-map",
     "organization": "Yookue Ltd",
     "private": false,
@@ -35,7 +35,7 @@
         "docs:publish": "gh-pages -d ./docs-dist",
         "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
         "test": "jest",
-        "test:coverage": "del-cli ./coverage && jest --coverage"
+        "test:coverage": "del-cli ./coverage && jest --coverage --coverageDirectory ./coverage"
     },
     "dependencies": {
         "@babel/runtime": "^7.24.5",
@@ -46,8 +46,8 @@
         "@types/object-hash": "^3.0.6",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
-        "@yookue/typedoc-raw-content": "^0.1.1",
-        "babel-plugin-comments": "^1.0.4",
+        "@yookue/babel-plugin-remove-comment": "^0.1.0",
+        "@yookue/typedoc-plugin-raw-content": "^0.1.0",
         "del-cli": "^5.1.0",
         "eslint": "^7.32.0",
         "father": "^4.4.0",

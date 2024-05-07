@@ -34,8 +34,8 @@ export default defineConfig({
         '@yookue/ts-multi-map': nodePath.resolve(__dirname, './src'),
     },
     extraBabelPlugins: [
-        ['babel-plugin-comments', {
-            remove: 'all',
+        ['@yookue/babel-plugin-remove-comment', {
+            scope: 'all',
         }]
     ]
 });
