@@ -222,7 +222,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * map.deleteByKeys([[1, 30], [30, 50]]);
      */
     public deleteByKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
-        if (this.isEmpty() || keys?.length === 0) {
+        if (keys.length === 0 || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -268,7 +268,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * map.deleteByValues(['green', 'blue']);
      */
     public deleteByValues(values: V[]): boolean {
-        if (this.isEmpty() || values?.length === 0) {
+        if (values.length === 0 || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -291,7 +291,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *     console.log(value);
      * });
      */
-    public forEach(callback: (value?: V, key?: RangeMapKey) => void, thisArg?: any): void {
+    public forEach(callback: (value: V, key: RangeMapKey) => void, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [k, v] = entry;
             callback(v, k);
@@ -309,7 +309,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *     console.log(index);
      * });
      */
-    public forEachIndexing(callback: (value?: V, key?: RangeMapKey, index?: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value: V, key: RangeMapKey, index: number) => void, thisArg?: any): void {
         let index = 0;
         this.entries().forEach(entry => {
             const [k, v] = entry;
@@ -328,7 +328,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *     return true;
      * });
      */
-    public forEachBreakable(callback: (value?: V, key?: RangeMapKey) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value: V, key: RangeMapKey) => boolean, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [k, v] = entry;
             if (!callback(v, k)) {
@@ -385,7 +385,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * map.hasAnyKeys([[1, 50, true, true], [20, 60]]);    // true
      */
     public hasAnyKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && keys.some(item => this.hasKey(item));
+        return this.isNotEmpty() && keys.length > 0 && keys.some(item => this.hasKey(item));
     }
 
     /**
@@ -399,7 +399,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * map.hasAllKeys([[1, 50], [51, 100]]);
      */
     public hasAllKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && keys.every(item => this.hasKey(item));
+        return this.isNotEmpty() && keys.length > 0 && keys.every(item => this.hasKey(item));
     }
 
     /**
@@ -437,7 +437,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * map.hasAnyValues(['top', 'right']);    // false
      */
     public hasAnyValues(values: V[]): boolean {
-        return this.isNotEmpty() && values?.length > 0 && values.some(item => this.hasValue(item));
+        return this.isNotEmpty() && values.length > 0 && values.some(item => this.hasValue(item));
     }
 
     /**
@@ -451,7 +451,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * map.hasAllValues(['red', 'green', 'blue']);
      */
     public hasAllValues(values: V[]): boolean {
-        return this.isNotEmpty() && values?.length > 0 && values.every(item => this.hasValue(item));
+        return this.isNotEmpty() && values.length > 0 && values.every(item => this.hasValue(item));
     }
 
     /**

@@ -146,7 +146,7 @@ describe('RangeMap', () => {
             [[51, 100, false, true], 'black']
         ]);
         const array = [];
-        map.forEachBreakable((value, keys) => {
+        map.forEachBreakable((value) => {
             if (value === 'black') {
                 return false;
             }

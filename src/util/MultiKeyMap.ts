@@ -81,7 +81,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.get(['row2', 'col2'], 'bar');    // 'bar'
      */
     public get(keys: K[], defaults?: V): V | undefined {
-        if (this.isEmpty() || keys?.length == 0) {
+        if (keys.length == 0 || this.isEmpty()) {
             return defaults;
         }
         const hash = objectHash(keys);
@@ -98,7 +98,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.set(['row1', 'col1'], 'bar');
      */
     public set(keys: K[], value: V): void {
-        if (keys?.length == 0) {
+        if (keys.length == 0) {
             return;
         }
         const hash = objectHash(keys);
@@ -162,7 +162,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.deleteByKey(['row1', 'col1']);
      */
     public deleteByKey(key: K[]): boolean {
-        if (this.isEmpty() || key?.length === 0) {
+        if (key.length === 0 || this.isEmpty()) {
             return false;
         }
         const hash = objectHash(key);
@@ -180,7 +180,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.deleteByKey([['row1', 'col1'], ['row2', 'col2']]);
      */
     public deleteByKeys(keys: K[][]): boolean {
-        if (this.isEmpty() || keys?.length === 0) {
+        if (keys.length === 0 || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -226,7 +226,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.deleteByValues(['foo', 'bar']);
      */
     public deleteByValues(values: V[]): boolean {
-        if (this.isEmpty() || values?.length === 0) {
+        if (values.length === 0 || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -249,7 +249,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *     console.log(value);
      * });
      */
-    public forEach(callback: (value?: V, keys?: K[]) => void, thisArg?: any): void {
+    public forEach(callback: (value: V, keys: K[]) => void, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [ks, v] = entry;
             callback(v, ks);
@@ -267,7 +267,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *     console.log(index);
      * });
      */
-    public forEachIndexing(callback: (value?: V, keys?: K[], index?: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value: V, keys: K[], index: number) => void, thisArg?: any): void {
         let index = 0;
         this.entries().forEach(entry => {
             const [ks, v] = entry;
@@ -286,7 +286,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      *     return true;
      * });
      */
-    public forEachBreakable(callback: (value?: V, keys?: K[]) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value: V, keys: K[]) => boolean, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [ks, v] = entry;
             if (!callback(v, ks)) {
@@ -307,7 +307,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.hasKey(['row1', 'col1']);
      */
     public hasKey(keys: K[], exact: boolean = true): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && this.keyMap.hasValue(keys, exact);
+        return this.isNotEmpty() && keys.length > 0 && this.keyMap.hasValue(keys, exact);
     }
 
     /**
@@ -326,7 +326,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.hasKeyValue(['row1', 'col1'], 'bar');    // false
      */
     public hasKeyValue(keys: K[], value: V): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && this.get(keys) === value;
+        return this.isNotEmpty() && keys.length > 0 && this.get(keys) === value;
     }
 
     /**
@@ -344,7 +344,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.hasAnyKeys([['row1', 'col1'], ['row2', 'col2']]);    // true
      */
     public hasAnyKeys(keys: K[][], exact: boolean = true): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && keys.some(item => this.hasKey(item, exact));
+        return this.isNotEmpty() && keys.length > 0 && keys.some(item => this.hasKey(item, exact));
     }
 
     /**
@@ -362,7 +362,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.hasAllKeys([['row1', 'col1'], ['row2', 'col2']]);    // false
      */
     public hasAllKeys(keys: K[][], exact: boolean = true): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && keys.every(item => this.hasKey(item, exact));
+        return this.isNotEmpty() && keys.length > 0 && keys.every(item => this.hasKey(item, exact));
     }
 
     /**
@@ -397,7 +397,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.hasAnyValues(['foo', 'bar']);    // true
      */
     public hasAnyValues(values: V[]): boolean {
-        return this.isNotEmpty() && values?.length > 0 && values.some(item => this.hasValue(item));
+        return this.isNotEmpty() && values.length > 0 && values.some(item => this.hasValue(item));
     }
 
     /**
@@ -411,7 +411,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * map.hasAllValues(['foo']);
      */
     public hasAllValues(values: V[]): boolean {
-        return this.isNotEmpty() && values?.length > 0 && values.every(item => this.hasValue(item));
+        return this.isNotEmpty() && values.length > 0 && values.every(item => this.hasValue(item));
     }
 
     /**

@@ -169,7 +169,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.deleteByKeys(['color', 'position']);
      */
     public deleteByKeys(keys: K[]): boolean {
-        if (this.isEmpty() || keys?.length === 0) {
+        if (keys.length === 0 || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -215,7 +215,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.deleteByValues(['green', 'blue']);
      */
     public deleteByValues(values: V[]): boolean {
-        if (this.isEmpty() || values?.length === 0) {
+        if (values.length === 0 || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -259,7 +259,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     console.log(key);
      * });
      */
-    public forEach(callback: (values?: V[], key?: K) => void, thisArg?: any): void {
+    public forEach(callback: (values: V[], key: K) => void, thisArg?: any): void {
         this.map.forEach((vs, k) => {
             callback(vs, k);
         }, thisArg);
@@ -276,7 +276,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     console.log(index);
      * });
      */
-    public forEachIndexing(callback: (values?: V[], key?: K, index?: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (values: V[], key: K, index: number) => void, thisArg?: any): void {
         let index = 0;
         this.map.forEach((vs, k) => {
             callback(vs, k, index++);
@@ -294,7 +294,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     return true;
      * });
      */
-    public forEachBreakable(callback: (values?: V[], key?: K) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (values: V[], key: K) => boolean, thisArg?: any): void {
         this.map.forEach((vs, k) => {
             if (!callback(vs, k)) {
                 return;
@@ -349,7 +349,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.hasAnyKeys(['color', 'position']);    // true
      */
     public hasAnyKeys(keys: K[]): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && keys.some(item => this.hasKey(item));
+        return this.isNotEmpty() && keys.length > 0 && keys.some(item => this.hasKey(item));
     }
 
     /**
@@ -363,7 +363,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.hasAllKeys('color', 'position');
      */
     public hasAllKeys(keys: K[]): boolean {
-        return this.isNotEmpty() && keys?.length > 0 && keys.every(item => this.hasKey(item));
+        return this.isNotEmpty() && keys.length > 0 && keys.every(item => this.hasKey(item));
     }
 
     /**
@@ -384,7 +384,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.hasValue(['top', 'right'], false);    // true
      */
     public hasValue(values: V[], exact: boolean = true): boolean {
-        if (this.isEmpty() || values?.length === 0) {
+        if (values.length === 0 || this.isEmpty()) {
             return false;
         }
         for (const vs of this.map.values()) {
@@ -413,7 +413,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.hasAnyValues([['top', 'right'], ['top', 'right', 'bottom', 'left']]);    // true
      */
     public hasAnyValues(values: V[][], exact: boolean = true): boolean {
-        return this.isNotEmpty() && values?.length > 0 && values.some(item => this.hasValue(item, exact));
+        return this.isNotEmpty() && values.length > 0 && values.some(item => this.hasValue(item, exact));
     }
 
     /**
@@ -428,7 +428,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * map.hasAllValues(['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']);
      */
     public hasAllValues(values: V[][], exact: boolean = true): boolean {
-        return this.isNotEmpty() && values?.length > 0 && values.every(item => this.hasValue(item, exact));
+        return this.isNotEmpty() && values.length > 0 && values.every(item => this.hasValue(item, exact));
     }
 
     /**

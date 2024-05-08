@@ -109,7 +109,7 @@ describe('MultiKeyMap', () => {
             [['row2', 'col2'], 'bar']
         ]);
         const array = [];
-        map.forEachIndexing((value, keys, index) => {
+        map.forEachIndexing((value) => {
             array.push(value);
         });
         expect(array.length).toBe(map.size);
