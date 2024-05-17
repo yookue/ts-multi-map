@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.27",
+    "version": "0.1.28",
     "title": "TsMultiMap",
     "description": "Multiple key/value map & range map for typescript",
     "homepage": "https://yookue.github.io/ts-multi-map",
@@ -47,6 +47,7 @@
         "@typescript-eslint/eslint-plugin": "^6.21.0",
         "@yookue/babel-plugin-remove-comment": "^0.1.2",
         "@yookue/typedoc-plugin-raw-content": "^0.1.2",
+        "@yookue/typedoc-theme-dumi": "^0.1.0",
         "del-cli": "^5.1.0",
         "father": "^4.4.0",
         "gh-pages": "^6.1.1",

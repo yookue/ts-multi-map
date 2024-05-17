@@ -15,7 +15,7 @@
  */
 
 
-export * from './type/definition';
+export * from './type/declaration';
 export {MultiKeyMap} from './util/MultiKeyMap';
 export {MultiValueMap} from './util/MultiValueMap';
 export {RangeMap} from './util/RangeMap';
