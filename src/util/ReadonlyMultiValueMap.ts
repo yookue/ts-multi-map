@@ -25,6 +25,7 @@ import {MultiValueMap, type MultiValueMapEntries} from '@';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'forEach' | 'get' | 'has' | 'entries' | 'keys' | 'values'> {
     private readonly map = new MultiValueMap<K, V>();
 

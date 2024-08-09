@@ -25,6 +25,7 @@ import {RangeMap, RangeMapKey} from '@';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'forEach' | 'get' | 'has' | 'entries' | 'keys' | 'values'> {
     private readonly map = new RangeMap<V>();
 

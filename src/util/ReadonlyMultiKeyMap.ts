@@ -25,6 +25,7 @@ import {MultiKeyMap, type MultiKeyMapEntries} from '@';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'forEach' | 'get' | 'has' | 'entries' | 'keys' | 'values'> {
     private readonly map = new MultiKeyMap<K, V>();
 

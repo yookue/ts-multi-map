@@ -26,6 +26,7 @@ import {MultiValueMap, type MultiKeyMapEntry, type MultiKeyMapEntries} from '@';
  *
  * @author David Hsing
  */
+// noinspection JSUnusedGlobalSymbols
 export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach' | 'get' | 'has' | 'set' | 'entries' | 'keys' | 'values' | 'push'> {
     private readonly keyMap = new MultiValueMap<string, K>();
     private readonly valueMap = new Map<string, V>();
