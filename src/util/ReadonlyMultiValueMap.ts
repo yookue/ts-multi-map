@@ -21,8 +21,6 @@ import {MultiValueMap, type MultiValueMapEntries} from '@';
 /**
  * Readonly map with entries that contains a single key and multiple values
  *
- * @implements ReadonlyMap<K, V[]>
- *
  * @author David Hsing
  */
 // noinspection JSUnusedGlobalSymbols
@@ -49,8 +47,6 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      * Construct a readonly multi value map instance
      *
      * @param entries the map entries that represented as [K, V[]][]
-     *
-     * @constructor
      *
      * @example
      * const map = new ReadonlyMultiValueMap([

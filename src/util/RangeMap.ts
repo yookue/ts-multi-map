@@ -22,8 +22,6 @@ import {type RangeMapKey} from '@';
 /**
  * Map with entries that contains a range key and a value
  *
- * @implements Map<RangeMapKey, V>
- *
  * @author David Hsing
  */
 // noinspection JSUnusedGlobalSymbols
@@ -56,8 +54,6 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      *
      * @param entries the map entries
      * @param validation whether to compare the ranges to all the ranges previously, to determine if there are any conflicts
-     *
-     * @constructor
      *
      * @example
      * const map = new RangeMap([

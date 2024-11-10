@@ -21,8 +21,6 @@ import {RangeMap, RangeMapKey} from '@';
 /**
  * Readonly map with entries that contains a range key and a value
  *
- * @implements ReadonlyMap<RangeMapKey, V>
- *
  * @author David Hsing
  */
 // noinspection JSUnusedGlobalSymbols
@@ -54,8 +52,6 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      *
      * @param entries the map entries
      * @param validation whether to compare the ranges to all the ranges previously, to determine if there are any conflicts
-     *
-     * @constructor
      *
      * @example
      * const map = new ReadonlyRangeMap([

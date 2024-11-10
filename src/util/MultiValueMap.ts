@@ -21,8 +21,6 @@ import {type MultiValueMapEntry, type MultiValueMapEntries} from '@';
 /**
  * Map with entries that contains a single key and multiple values
  *
- * @implements Map<K, V[]>
- *
  * @author David Hsing
  */
 // noinspection JSUnusedGlobalSymbols
@@ -49,8 +47,6 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * Construct a multi value map instance
      *
      * @param entries the map entries that represented as [K, V[]][]
-     *
-     * @constructor
      *
      * @example
      * const map = new MultiValueMap([

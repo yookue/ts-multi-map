@@ -21,8 +21,6 @@ import {MultiKeyMap, type MultiKeyMapEntries} from '@';
 /**
  * Map with entries that contains multiple keys and a single value
  *
- * @implements ReadonlyMap<K[], V>
- *
  * @author David Hsing
  */
 // noinspection JSUnusedGlobalSymbols
@@ -49,8 +47,6 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * Construct a readonly multi key map instance
      *
      * @param entries the map entries that represented as [K[], V][]
-     *
-     * @constructor
      *
      * @example
      * const map = new ReadonlyMultiKeyMap([
