@@ -23,7 +23,9 @@ $ npm install @yookue/ts-multi-map --save
 Then, you may import components as follows:
 
 ```jsx | pure
-import {MultiKeyMap, MultiValueMap, RangeMap, ReadonlyMultiKeyMap, ReadonlyMultiValueMap, ReadonlyRangeMap} from '@yookue/ts-multi-map';
+import {MultiKeyMap, ReadonlyMultiKeyMap} from '@yookue/ts-multi-map';
+import {MultiValueMap, ReadonlyMultiValueMap} from '@yookue/ts-multi-map';
+import {RangeMap, ReadonlyRangeMap} from '@yookue/ts-multi-map';
 ```
 
 Enjoy your coding journey with `ts-multi-map` ✌️
