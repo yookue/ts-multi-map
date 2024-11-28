@@ -47,7 +47,7 @@
         "@typescript-eslint/eslint-plugin": "^7.18.0",
         "@yookue/babel-plugin-remove-comment": "~0.1.5",
         "@yookue/typedoc-plugin-raw-content": "~0.1.7",
-        "@yookue/typedoc-theme-dumi": "~0.1.4",
+        "@yookue/typedoc-theme-dumi": "~0.1.5",
         "del-cli": "^6.0.0",
         "father": "^4.5.1",
         "gh-pages": "^6.2.0",
