@@ -157,10 +157,19 @@ footer a:active,
 .container .site-menu .tsd-navigation a:active span {
   color: #5173d7 !important;
 }
-.container .site-menu .tsd-navigation .tsd-index-accordion .tsd-accordion-summary > svg {
+.container .site-menu .tsd-navigation > .tsd-small-nested-navigation {
+  margin-left: 3rem;
+}
+.container .site-menu .tsd-navigation > .tsd-small-nested-navigation .tsd-index-accordion > .tsd-accordion-summary > svg {
   position: absolute;
   right: 1.5rem;
   margin-top: 1rem;
+}
+.container .site-menu .tsd-navigation > .tsd-small-nested-navigation .tsd-index-accordion > .tsd-accordion-details > .tsd-nested-navigation {
+  margin-left: 1.5rem;
+}
+.container .site-menu .tsd-navigation > .tsd-small-nested-navigation > li > a {
+  margin-left: -1.5rem;
 }
 .container .col-content {
   padding: 32px 2rem !important;
