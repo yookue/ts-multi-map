@@ -39,9 +39,11 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns a multi key map instance
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo']
      * ]);
+     * ```
      */
     public static of<K, V>(entries?: MultiKeyMapEntries<K, V>): MultiKeyMap<K, V> {
         return new MultiKeyMap(entries);
@@ -55,14 +57,16 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @constructor
      *
      * @example
+     * ```ts
      * const map = new MultiKeyMap([
      *     [['row1', 'col1'], 'foo']
      * ]);
+     * ```
      */
     public constructor(entries?: MultiKeyMapEntries<K, V>) {
         entries?.forEach(entry => {
-            const [keys, value] = entry;
-            this.set(keys, value);
+            const [ks, v] = entry;
+            this.set(ks, v);
         });
     }
 
@@ -75,11 +79,13 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns the value of the given keys
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo']
      * ]);
      * map.get(['row1', 'col1']);    // 'foo'
      * map.get(['row2', 'col2'], 'bar');    // 'bar'
+     * ```
      */
     public get(keys: K[], defaults?: V): V | undefined {
         if (keys.length == 0 || this.isEmpty()) {
@@ -96,7 +102,9 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param value the value to set
      *
      * @example
+     * ```ts
      * map.set(['row1', 'col1'], 'bar');
+     * ```
      */
     public set(keys: K[], value: V): void {
         if (keys.length == 0) {
@@ -160,10 +168,12 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the entry has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByKey(['row1', 'col1']);
+     * ```
      */
     public deleteByKey(key: K[]): boolean {
-        if (key.length === 0 || this.isEmpty()) {
+        if (!key.length || this.isEmpty()) {
             return false;
         }
         const hash = objectHash(key);
@@ -178,10 +188,12 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether any of the entries has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByKey([['row1', 'col1'], ['row2', 'col2']]);
+     * ```
      */
     public deleteByKeys(keys: K[][]): boolean {
-        if (keys.length === 0 || this.isEmpty()) {
+        if (!keys.length || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -201,7 +213,9 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the entry/entries has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByValue('foo');
+     * ```
      */
     public deleteByValue(value: V): boolean {
         if (this.isEmpty()) {
@@ -224,10 +238,12 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether any of the entries has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByValues(['foo', 'bar']);
+     * ```
      */
     public deleteByValues(values: V[]): boolean {
-        if (values.length === 0 || this.isEmpty()) {
+        if (!values.length || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -246,9 +262,11 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEach((value, keys) => {
      *     console.log(value);
      * });
+     * ```
      */
     public forEach(callback: (value: V, keys: K[]) => void, thisArg?: any): void {
         this.entries().forEach(entry => {
@@ -264,9 +282,11 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEachIndexing((value, keys, index) => {
      *     console.log(index);
      * });
+     * ```
      */
     public forEachIndexing(callback: (value: V, keys: K[], index: number) => void, thisArg?: any): void {
         let index = 0;
@@ -283,9 +303,11 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEachBreakable((value, keys) => {
      *     return true;
      * });
+     * ```
      */
     public forEachBreakable(callback: (value: V, keys: K[]) => boolean, thisArg?: any): void {
         this.entries().forEach(entry => {
@@ -305,7 +327,9 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map contains the given key
      *
      * @example
+     * ```ts
      * map.hasKey(['row1', 'col1']);
+     * ```
      */
     public hasKey(keys: K[], exact: boolean = true): boolean {
         return this.isNotEmpty() && keys.length > 0 && this.keyMap.hasValue(keys, exact);
@@ -320,11 +344,13 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map contains the given keys/value pair
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo']
      * ]);
      * map.hasKeyValue(['row1', 'col1'], 'foo');    // true
      * map.hasKeyValue(['row1', 'col1'], 'bar');    // false
+     * ```
      */
     public hasKeyValue(keys: K[], value: V): boolean {
         return this.isNotEmpty() && keys.length > 0 && this.get(keys) === value;
@@ -339,10 +365,12 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map contains any of the given keys
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo']
      * ]);
      * map.hasAnyKeys([['row1', 'col1'], ['row2', 'col2']]);    // true
+     * ```
      */
     public hasAnyKeys(keys: K[][], exact: boolean = true): boolean {
         return this.isNotEmpty() && keys.length > 0 && keys.some(item => this.hasKey(item, exact));
@@ -357,10 +385,12 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map contains all the given keys
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo']
      * ]);
      * map.hasAllKeys([['row1', 'col1'], ['row2', 'col2']]);    // false
+     * ```
      */
     public hasAllKeys(keys: K[][], exact: boolean = true): boolean {
         return this.isNotEmpty() && keys.length > 0 && keys.every(item => this.hasKey(item, exact));
@@ -374,11 +404,13 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map contains the given value
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo']
      * ]);
      * map.hasValue('foo');    // true
      * map.hasValue('bar');    // false
+     * ```
      */
     public hasValue(value: V): boolean {
         return this.values().includes(value);
@@ -392,10 +424,12 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map contains any of the given values
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo']
      * ]);
      * map.hasAnyValues(['foo', 'bar']);    // true
+     * ```
      */
     public hasAnyValues(values: V[]): boolean {
         return this.isNotEmpty() && values.length > 0 && values.some(item => this.hasValue(item));
@@ -409,7 +443,9 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map contains all the given values
      *
      * @example
+     * ```ts
      * map.hasAllValues(['foo']);
+     * ```
      */
     public hasAllValues(values: V[]): boolean {
         return this.isNotEmpty() && values.length > 0 && values.every(item => this.hasValue(item));
@@ -421,7 +457,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns whether the map is empty
      */
     public isEmpty(): boolean {
-        return this.valueMap.size === 0;
+        return !this.valueMap.size;
     }
 
     /**
@@ -434,12 +470,39 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
     }
 
     /**
+     * Returns the keys with the given value
+     *
+     * @param value the value to inspect
+     * @param defaults the default keys if nothing matches the given value
+     *
+     * @returns the keys with the given value
+     *
+     * @example
+     * ```ts
+     * map.getKey('bar');
+     * ```
+     */
+    public getKey(value: V, defaults?: K[]): K[] | undefined {
+        if (this.isEmpty()) {
+            return defaults;
+        }
+        for (const [k, v] of this.valueMap.entries()) {
+            if (v === value) {
+                return this.keyMap.get(k, defaults);
+            }
+        }
+        return defaults;
+    }
+
+    /**
      * Response for returning the list of keys/value to iterate
      *
      * @example
+     * ```ts
      * for (const [keys, value] of map) {
      *     console.log(value);
      * }
+     * ```
      */
     public [Symbol.iterator](): IterableIterator<[K[], V]> {
         return this.entries()[Symbol.iterator]();
@@ -469,18 +532,20 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * @returns the string representation of the map elements
      *
      * @example
+     * ```ts
      * const map = MultiKeyMap.of([
      *     [['row1', 'col1'], 'foo'],
      *     [['row2', 'col2'], 'bar']
      * ]);
      * console.log(map.toString());    // '[row1,col1]:foo;[row2,col2]:bar'
+     * ```
      */
     public toString(): string {
         return [...this].map(entry => {
-            const [keys, value] = (
+            const [ks, v] = (
                 (entry.length <= 1) ? [[], entry[0]] : [entry.slice(0, -1), entry[entry.length - 1]]
             ) as MultiKeyMapEntry<K, V>;
-            return `[${keys.join()}]:${value}`;
+            return `[${ks.join()}]:${v}`;
         }).join(';');
     }
 }

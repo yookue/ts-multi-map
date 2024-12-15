@@ -228,7 +228,7 @@ describe('RangeMap', () => {
             [[90, 100, true, true], 'red']
         ]);
         const array = [];
-        for (const [key, values] of map) {
+        for (const [key, _values] of map) {
             array.push(key);
         }
         expect(array.length).toBe(map.size);

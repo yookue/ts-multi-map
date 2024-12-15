@@ -40,12 +40,14 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns a range map instance
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 30], 'green'],
      *     [[30, 60], 'blue'],
      *     [[60, 90], 'orange'],
      *     [[90, 100, true, true], 'red']
      * ]);
+     * ```
      */
     public static of<V>(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], V][], validation: boolean = true): RangeMap<V> {
         return new RangeMap(entries, validation);
@@ -60,12 +62,14 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @constructor
      *
      * @example
+     * ```ts
      * const map = new RangeMap([
      *     [[1, 30], 'green'],
      *     [[30, 60], 'blue'],
      *     [[60, 90], 'orange'],
      *     [[90, 100, true, true], 'red']
      * ]);
+     * ```
      */
     public constructor(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], V][], validation: boolean = true) {
         entries?.forEach(entry => {
@@ -83,12 +87,14 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns the value of the given key
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.get([1, 50, true, true]);    // 'white'
      * map.get([51, 100, false, true]);    // 'black'
+     * ```
      */
     public get(key: RangeMapKey | [number, number] | [number, number, boolean, boolean], defaults?: V): V | undefined {
         const hash = objectHash(this.toInternalKey(key));
@@ -104,6 +110,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns the value that associated to the number, by determining which bound contains the given number
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
@@ -113,6 +120,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * map.getByDigit(51);    // undefined
      * map.getByDigit(52);    // 'black'
      * map.getByDigit(200);    // undefined
+     * ```
      */
     public getByDigit(digit: number, defaults?: V): V | undefined {
         if (this.isEmpty()) {
@@ -134,7 +142,9 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param validation whether to compare the range to all the ranges previously, to determine if there are any conflicts
      *
      * @example
+     * ```ts
      * map.set([60, 80, true, true], 'volcano');
+     * ```
      */
     public set(key: RangeMapKey | [number, number] | [number, number, boolean, boolean], value: V, validation: boolean = true): void {
         const alias = this.toInternalKey(key);
@@ -202,7 +212,9 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the entry has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByKey([1, 50]);
+     * ```
      */
     public deleteByKey(key: RangeMapKey | [number, number] | [number, number, boolean, boolean]): boolean {
         if (this.isEmpty()) {
@@ -220,10 +232,12 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether any of the entries has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByKeys([[1, 30], [30, 50]]);
+     * ```
      */
     public deleteByKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
-        if (keys.length === 0 || this.isEmpty()) {
+        if (!keys.length || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -243,7 +257,9 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the entry/entries has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByValue('red');
+     * ```
      */
     public deleteByValue(value: V): boolean {
         if (this.isEmpty()) {
@@ -266,10 +282,12 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether any of the entries has been deleted
      *
      * @example
+     * ```ts
      * map.deleteByValues(['green', 'blue']);
+     * ```
      */
     public deleteByValues(values: V[]): boolean {
-        if (values.length === 0 || this.isEmpty()) {
+        if (!values.length || this.isEmpty()) {
             return false;
         }
         let result = false;
@@ -288,9 +306,11 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEach((value, key) => {
      *     console.log(value);
      * });
+     * ```
      */
     public forEach(callback: (value: V, key: RangeMapKey) => void, thisArg?: any): void {
         this.entries().forEach(entry => {
@@ -306,9 +326,11 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEachIndexing((value, key, index) => {
      *     console.log(index);
      * });
+     * ```
      */
     public forEachIndexing(callback: (value: V, key: RangeMapKey, index: number) => void, thisArg?: any): void {
         let index = 0;
@@ -325,9 +347,11 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEachBreakable((value, key) => {
      *     return true;
      * });
+     * ```
      */
     public forEachBreakable(callback: (value: V, key: RangeMapKey) => boolean, thisArg?: any): void {
         this.entries().forEach(entry => {
@@ -346,7 +370,9 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the map contains the given key
      *
      * @example
+     * ```ts
      * map.hasKey([1, 30]);
+     * ```
      */
     public hasKey(key: RangeMapKey | [number, number] | [number, number, boolean, boolean]): boolean {
         return this.isNotEmpty() && this.keyMap.has(objectHash(this.toInternalKey(key)));
@@ -361,11 +387,13 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the map contains the given key/value pair
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 50], 'white']
      * ]);
      * map.hasKeyValue([1, 50], 'white');    // true
      * map.hasKeyValue([1, 50], 'black');    // false
+     * ```
      */
     public hasKeyValue(key: RangeMapKey | [number, number] | [number, number, boolean, boolean], value: V): boolean {
         return this.isNotEmpty() && this.get(key) === value;
@@ -379,11 +407,13 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the map contains any of the given keys
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.hasAnyKeys([[1, 50, true, true], [20, 60]]);    // true
+     * ```
      */
     public hasAnyKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
         return this.isNotEmpty() && keys.length > 0 && keys.some(item => this.hasKey(item));
@@ -397,7 +427,9 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the map contains all the given keys
      *
      * @example
+     * ```ts
      * map.hasAllKeys([[1, 50], [51, 100]]);
+     * ```
      */
     public hasAllKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
         return this.isNotEmpty() && keys.length > 0 && keys.every(item => this.hasKey(item));
@@ -411,12 +443,14 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether any entries of the map that contains the given values
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.hasValue('white');    // true
      * map.hasValue('blue');    // false
+     * ```
      */
     public hasValue(value: V): boolean {
         return this.isNotEmpty() && this.values().includes(value);
@@ -430,12 +464,14 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the map contains any of the given values
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.hasAnyValues(['red', 'black']);    // true
      * map.hasAnyValues(['top', 'right']);    // false
+     * ```
      */
     public hasAnyValues(values: V[]): boolean {
         return this.isNotEmpty() && values.length > 0 && values.some(item => this.hasValue(item));
@@ -449,7 +485,9 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the map contains all the given values, matching exactly
      *
      * @example
+     * ```ts
      * map.hasAllValues(['red', 'green', 'blue']);
+     * ```
      */
     public hasAllValues(values: V[]): boolean {
         return this.isNotEmpty() && values.length > 0 && values.every(item => this.hasValue(item));
@@ -461,7 +499,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns whether the map is empty
      */
     public isEmpty(): boolean {
-        return this.valueMap.size === 0;
+        return !this.valueMap.size;
     }
 
     /**
@@ -477,9 +515,11 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * Response for returning the list of key/value to iterate
      *
      * @example
+     * ```ts
      * for (const [key, value] of map) {
      *     console.log(value);
      * }
+     * ```
      */
     public [Symbol.iterator](): IterableIterator<[RangeMapKey, V]> {
         return this.entries()[Symbol.iterator]();
@@ -509,18 +549,20 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * @returns the string representation of the map elements
      *
      * @example
+     * ```ts
      * const map = RangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * console.log(map.toString());    // '[start:1,end:50,startInclusive:true,endInclusive:true]:white;[start:51,end:100,startInclusive:false,endInclusive:true]:black'
+     * ```
      */
     public toString(): string {
         return [...this].map(entry => {
-            const [key, value] = entry as [RangeMapKey, V];
+            const [k, v] = entry as [RangeMapKey, V];
             // @ts-ignore
-            const keyString = Object.keys(key).map(item => `${item}:${key[item]}`).join();
-            return `[${keyString}]:${value}`;
+            const ks = Object.keys(k).map(item => `${item}:${k[item]}`).join();
+            return `[${ks}]:${v}`;
         }).join(';');
     }
 
