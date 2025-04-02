@@ -281,7 +281,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     console.log(key);
      * });
      */
-    public forEach(callback: (values: V[], key: K) => void, thisArg?: any): void {
+    public forEach(callback: (values?: V[], key?: K) => void, thisArg?: any): void {
         this.map.forEach((vs, k) => {
             callback(vs, k);
         }, thisArg);
@@ -299,7 +299,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     console.log(index);
      * });
      */
-    public forEachIndexing(callback: (values: V[], key: K, index: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (values?: V[], key?: K, index?: number) => void, thisArg?: any): void {
         let index = 0;
         this.map.forEach((vs, k) => {
             callback(vs, k, index++);
@@ -318,7 +318,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      *     return true;
      * });
      */
-    public forEachBreakable(callback: (values: V[], key: K) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (values?: V[], key?: K) => boolean, thisArg?: any): void {
         this.map.forEach((vs, k) => {
             if (!callback(vs, k)) {
                 return;

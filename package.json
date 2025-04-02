@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.1.32",
+    "version": "0.1.33",
     "title": "TsMultiMap",
     "description": "Multiple key/value map & range map for typescript",
     "homepage": "https://yookue.github.io/ts-multi-map",
@@ -38,7 +38,7 @@
         "test:coverage": "del-cli ./coverage && jest --coverage --coverageDirectory ./coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.26.9",
+        "@babel/runtime": "^7.27.0",
         "object-hash": "^3.0.0"
     },
     "devDependencies": {
@@ -51,7 +51,7 @@
         "del-cli": "^6.0.0",
         "father": "^4.5.3",
         "gh-pages": "^6.3.0",
-        "ts-jest": "^29.2.6",
+        "ts-jest": "^29.3.1",
         "typedoc": "~0.25.13",
         "typescript": "^4.9.5"
     },

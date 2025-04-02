@@ -268,7 +268,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * });
      * ```
      */
-    public forEach(callback: (value: V, keys: K[]) => void, thisArg?: any): void {
+    public forEach(callback: (value?: V, keys?: K[]) => void, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [ks, v] = entry;
             callback(v, ks);
@@ -288,7 +288,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * });
      * ```
      */
-    public forEachIndexing(callback: (value: V, keys: K[], index: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value?: V, keys?: K[], index?: number) => void, thisArg?: any): void {
         let index = 0;
         this.entries().forEach(entry => {
             const [ks, v] = entry;
@@ -309,7 +309,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * });
      * ```
      */
-    public forEachBreakable(callback: (value: V, keys: K[]) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value?: V, keys?: K[]) => boolean, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [ks, v] = entry;
             if (!callback(v, ks)) {

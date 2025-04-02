@@ -312,7 +312,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * });
      * ```
      */
-    public forEach(callback: (value: V, key: RangeMapKey) => void, thisArg?: any): void {
+    public forEach(callback: (value?: V, key?: RangeMapKey) => void, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [k, v] = entry;
             callback(v, k);
@@ -332,7 +332,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * });
      * ```
      */
-    public forEachIndexing(callback: (value: V, key: RangeMapKey, index: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value?: V, key?: RangeMapKey, index?: number) => void, thisArg?: any): void {
         let index = 0;
         this.entries().forEach(entry => {
             const [k, v] = entry;
@@ -353,7 +353,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * });
      * ```
      */
-    public forEachBreakable(callback: (value: V, key: RangeMapKey) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value?: V, key?: RangeMapKey) => boolean, thisArg?: any): void {
         this.entries().forEach(entry => {
             const [k, v] = entry;
             if (!callback(v, k)) {

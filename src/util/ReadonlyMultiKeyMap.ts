@@ -129,7 +129,7 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * });
      * ```
      */
-    public forEach(callback: (value: V, keys: K[]) => void, thisArg?: any): void {
+    public forEach(callback: (value?: V, keys?: K[]) => void, thisArg?: any): void {
         this.map.forEach(callback, thisArg);
     }
 
@@ -146,7 +146,7 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * });
      * ```
      */
-    public forEachIndexing(callback: (value: V, keys: K[], index: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value?: V, keys?: K[], index?: number) => void, thisArg?: any): void {
         this.map.forEachIndexing(callback, thisArg);
     }
 
@@ -163,7 +163,7 @@ export class ReadonlyMultiKeyMap<K, V> implements Omit<ReadonlyMap<K[], V>, 'for
      * });
      * ```
      */
-    public forEachBreakable(callback: (value: V, keys: K[]) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value?: V, keys?: K[]) => boolean, thisArg?: any): void {
         this.map.forEachBreakable(callback, thisArg);
     }
 

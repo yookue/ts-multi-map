@@ -160,7 +160,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * });
      * ```
      */
-    public forEach(callback: (value: V, key: RangeMapKey) => void, thisArg?: any): void {
+    public forEach(callback: (value?: V, key?: RangeMapKey) => void, thisArg?: any): void {
         this.map.forEach(callback, thisArg);
     }
 
@@ -177,7 +177,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * });
      * ```
      */
-    public forEachIndexing(callback: (value: V, key: RangeMapKey, index: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value?: V, key?: RangeMapKey, index?: number) => void, thisArg?: any): void {
         this.map.forEachIndexing(callback, thisArg);
     }
 
@@ -194,7 +194,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * });
      * ```
      */
-    public forEachBreakable(callback: (value: V, key: RangeMapKey) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value?: V, key?: RangeMapKey) => boolean, thisArg?: any): void {
         this.map.forEachBreakable(callback, thisArg);
     }
 
