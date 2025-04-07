@@ -141,13 +141,21 @@ describe('ReadonlyMultiValueMap', () => {
         expect(map.hasAllValues([['red', 'green', 'blue'], ['top', 'right', 'bottom', 'left']])).toBeTruthy();
     });
 
+    test('Testing getKey method', () => {
+        const map = ReadonlyMultiValueMap.of([
+            ['color', ['red', 'green', 'blue']],
+            ['position', ['top', 'right', 'bottom', 'left']]
+        ]);
+        expect(map.getKey(['red', 'green', 'blue'])).toBe('color');
+    });
+
     test('Testing Symbol.iterator method', () => {
         const map = ReadonlyMultiValueMap.of([
             ['color', ['red', 'green', 'blue']],
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
         const array = [];
-        for (const [key, values] of map) {
+        for (const [key, _values] of map) {
             array.push(key);
         }
         expect(array.length).toBe(map.size);

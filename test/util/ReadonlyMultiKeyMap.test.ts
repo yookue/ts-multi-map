@@ -127,13 +127,21 @@ describe('ReadonlyMultiKeyMap', () => {
         expect(map.hasAllValues(['foo', 'bar'])).toBeTruthy();
     });
 
+    test('Testing getKey method', () => {
+        const map = ReadonlyMultiKeyMap.of([
+            [['row1', 'col1'], 'foo'],
+            [['row2', 'col2'], 'bar']
+        ]);
+        expect(map.getKey('bar')).toStrictEqual(['row2', 'col2']);
+    });
+
     test('Testing Symbol.iterator method', () => {
         const map = ReadonlyMultiKeyMap.of([
             [['row1', 'col1'], 'foo'],
             [['row2', 'col2'], 'bar']
         ]);
         const array = [];
-        for (const [keys, value] of map) {
+        for (const [_keys, value] of map) {
             array.push(value);
         }
         expect(array.length).toBe(map.size);
