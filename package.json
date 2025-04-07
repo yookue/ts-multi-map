@@ -1,6 +1,6 @@
 {
     "name": "@yookue/ts-multi-map",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "title": "TsMultiMap",
     "description": "Multiple key/value map & range map for typescript",
     "homepage": "https://yookue.github.io/ts-multi-map",
@@ -38,25 +38,25 @@
         "test:coverage": "del-cli ./coverage && jest --coverage --coverageDirectory ./coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.26.0",
+        "@babel/runtime": "^7.27.0",
         "object-hash": "^3.0.0"
     },
     "devDependencies": {
-        "@eslint/eslintrc": "^3.1.0",
-        "@eslint/js": "^9.14.0",
+        "@eslint/eslintrc": "^3.3.1",
+        "@eslint/js": "^9.24.0",
         "@types/jest": "^29.5.14",
         "@types/object-hash": "^3.0.6",
-        "@typescript-eslint/eslint-plugin": "^8.13.0",
+        "@typescript-eslint/eslint-plugin": "^8.29.0",
         "@yookue/babel-plugin-remove-comment": "^0.2.0",
-        "@yookue/typedoc-plugin-raw-content": "^0.2.2",
-        "@yookue/typedoc-theme-dumi": "^0.2.1",
+        "@yookue/typedoc-plugin-raw-content": "~0.3.0",
+        "@yookue/typedoc-theme-dumi": "~0.4.0",
         "del-cli": "^6.0.0",
-        "father": "^4.5.1",
-        "gh-pages": "^6.2.0",
-        "globals": "^15.12.0",
-        "ts-jest": "^29.2.5",
-        "typedoc": "^0.26.11",
-        "typescript": "^5.6.3"
+        "father": "^4.5.2",
+        "gh-pages": "^6.3.0",
+        "globals": "^16.0.0",
+        "ts-jest": "^29.3.1",
+        "typedoc": "~0.28.2",
+        "typescript": "^5.8.3"
     },
     "repository": {
         "type": "git",

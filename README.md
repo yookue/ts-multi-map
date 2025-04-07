@@ -38,6 +38,10 @@ Enjoy your coding journey with `ts-multi-map` ✌️
 
 This project is under the [MIT License](https://mit-license.org/).
 
+## Copyright
+
+Beijing Yookue Network Technology Ltd.
+
 ## Website
 
 - Yookue: [https://yookue.com](https://yookue.com)

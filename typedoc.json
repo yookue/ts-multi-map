@@ -31,8 +31,11 @@
         "<meta name='keywords' content='typescript, yookue, ts-multi-map'/>"
     ],
     "rawFooterEnds": [
-        "<div style='text-align: center'>Copyright &copy; 2023 Yookue Ltd. All rights reserved</div>"
+        "<div style='text-align: center'>Copyright &copy; 2025 Yookue Ltd. All rights reserved</div>"
     ],
+    "logoImage": "https://yookue.github.io/assets/ico/logo-icon.svg",
+    "logoWidth": 32,
+    "logoHeight": 32,
     "logoTitle": "@yookue/ts-multi-map",
     "navigationLinkTargets": {
         "GitHub": "_blank",
