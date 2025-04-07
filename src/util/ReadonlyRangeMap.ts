@@ -36,12 +36,14 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns a readonly multi value map instance
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *    [[1, 30], 'green'],
      *     [[30, 60], 'blue'],
      *     [[60, 90], 'orange'],
      *     [[90, 100, true, true], 'red']
      * ]);
+     * ```
      */
     public static of<V>(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], V][], validation: boolean = true): ReadonlyRangeMap<V> {
         return new ReadonlyRangeMap(entries, validation);
@@ -54,12 +56,14 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param validation whether to compare the ranges to all the ranges previously, to determine if there are any conflicts
      *
      * @example
+     * ```ts
      * const map = new ReadonlyRangeMap([
      *     [[1, 30], 'green'],
      *     [[30, 60], 'blue'],
      *     [[60, 90], 'orange'],
      *     [[90, 100, true, true], 'red']
      * ]);
+     * ```
      */
     public constructor(entries?: [RangeMapKey | [number, number] | [number, number, boolean, boolean], V][], validation: boolean = true) {
         entries?.forEach(entry => {
@@ -77,12 +81,14 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns the value of the given key
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.get([1, 50, true, true]);    // 'white'
      * map.get([51, 100, false, true]);    // 'black'
+     * ```
      */
     public get(key: RangeMapKey | [number, number] | [number, number, boolean, boolean], defaults?: V): V | undefined {
         return this.map.get(key, defaults);
@@ -97,12 +103,14 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns the value that associated to the number, by determining which bound contains the given number
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.get(25);    // 'white'
      * map.get(200);    // undefined
+     * ```
      */
     public getByDigit(digit: number, defaults?: V): V | undefined {
         return this.map.getByDigit(digit, defaults);
@@ -142,11 +150,13 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEach((value, key) => {
      *     console.log(value);
      * });
+     * ```
      */
-    public forEach(callback: (value: V, key: RangeMapKey) => void, thisArg?: any): void {
+    public forEach(callback: (value?: V, key?: RangeMapKey) => void, thisArg?: any): void {
         this.map.forEach(callback, thisArg);
     }
 
@@ -157,11 +167,13 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEachIndexing((value, key, index) => {
      *     console.log(index);
      * });
+     * ```
      */
-    public forEachIndexing(callback: (value: V, key: RangeMapKey, index: number) => void, thisArg?: any): void {
+    public forEachIndexing(callback: (value?: V, key?: RangeMapKey, index?: number) => void, thisArg?: any): void {
         this.map.forEachIndexing(callback, thisArg);
     }
 
@@ -172,11 +184,13 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @param thisArg any instance to retrieve 'this' reference in the callback function
      *
      * @example
+     * ```ts
      * map.forEachBreakable((value, key) => {
      *     return true;
      * });
+     * ```
      */
-    public forEachBreakable(callback: (value: V, key: RangeMapKey) => boolean, thisArg?: any): void {
+    public forEachBreakable(callback: (value?: V, key?: RangeMapKey) => boolean, thisArg?: any): void {
         this.map.forEachBreakable(callback, thisArg);
     }
 
@@ -188,7 +202,9 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns whether the map contains the given key
      *
      * @example
+     * ```ts
      * map.hasKey([1, 30]);
+     * ```
      */
     public hasKey(key: RangeMapKey | [number, number] | [number, number, boolean, boolean]): boolean {
         return this.map.hasKey(key);
@@ -203,11 +219,13 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns whether the map contains the given key/value pair
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *     [[1, 50], 'white']
      * ]);
      * map.hasKeyValue([1, 50], 'white');    // true
      * map.hasKeyValue([1, 50], 'black');    // false
+     * ```
      */
     public hasKeyValue(key: RangeMapKey | [number, number] | [number, number, boolean, boolean], value: V): boolean {
         return this.map.hasKeyValue(key, value);
@@ -221,11 +239,13 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns whether the map contains any of the given keys
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.hasAnyKeys([[1, 50, true, true], [20, 60]]);    // true
+     * ```
      */
     public hasAnyKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
         return this.map.hasAnyKeys(keys);
@@ -239,7 +259,9 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns whether the map contains all the given keys
      *
      * @example
+     * ```ts
      * map.hasAllKeys([[1, 50], [51, 100]]);
+     * ```
      */
     public hasAllKeys(keys: Array<RangeMapKey | [number, number] | [number, number, boolean, boolean]>): boolean {
         return this.map.hasAllKeys(keys);
@@ -253,12 +275,14 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns whether any entries of the map that contains the given values
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.hasValue('white');    // true
      * map.hasValue('blue');    // false
+     * ```
      */
     public hasValue(value: V): boolean {
         return this.map.hasValue(value);
@@ -272,12 +296,14 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns whether the map contains any of the given values
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * map.hasAnyValues(['red', 'black']);    // true
      * map.hasAnyValues(['top', 'right']);    // false
+     * ```
      */
     public hasAnyValues(values: V[]): boolean {
         return this.map.hasAnyValues(values);
@@ -291,7 +317,9 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns whether the map contains all the given values, matching exactly
      *
      * @example
+     * ```ts
      * map.hasAllValues(['red', 'green', 'blue']);
+     * ```
      */
     public hasAllValues(values: V[]): boolean {
         return this.map.hasAllValues(values);
@@ -319,9 +347,11 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * Response for returning the list of key/value to iterate
      *
      * @example
+     * ```ts
      * for (const [key, value] of map) {
      *     console.log(value);
      * }
+     * ```
      */
     public [Symbol.iterator](): IterableIterator<[RangeMapKey, V]> {
         return this.map[Symbol.iterator]();
@@ -351,11 +381,13 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * @returns the string representation of the map elements
      *
      * @example
+     * ```ts
      * const map = ReadonlyRangeMap.of([
      *     [[1, 50, true, true], 'white'],
      *     [[51, 100, false, true], 'black']
      * ]);
      * console.log(map.toString());    // '[start:1,end:50,startInclusive:true,endInclusive:true]:white;[start:51,end:100,startInclusive:false,endInclusive:true]:black'
+     * ```
      */
     public toString(): string {
         return this.map.toString();
