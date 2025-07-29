@@ -353,6 +353,7 @@ export class ReadonlyRangeMap<V> implements Omit<ReadonlyMap<RangeMapKey, V>, 'f
      * }
      * ```
      */
+    // @ts-ignore
     public [Symbol.iterator](): IterableIterator<[RangeMapKey, V]> {
         return this.map[Symbol.iterator]();
     }

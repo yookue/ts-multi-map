@@ -500,6 +500,7 @@ export class MultiKeyMap<K, V> implements Omit<Map<K[], V>, 'delete' | 'forEach'
      * }
      * ```
      */
+    // @ts-ignore
     public [Symbol.iterator](): IterableIterator<[K[], V]> {
         return this.entries()[Symbol.iterator]();
     }

@@ -517,6 +517,7 @@ export class RangeMap<V> implements Omit<Map<RangeMapKey, V>, 'delete' | 'forEac
      * }
      * ```
      */
+    // @ts-ignore
     public [Symbol.iterator](): IterableIterator<[RangeMapKey, V]> {
         return this.entries()[Symbol.iterator]();
     }

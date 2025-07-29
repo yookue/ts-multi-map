@@ -342,6 +342,7 @@ export class ReadonlyMultiValueMap<K, V> implements Omit<ReadonlyMap<K, V[]>, 'f
      * }
      * ```
      */
+    // @ts-ignore
     public [Symbol.iterator](): IterableIterator<[K, V[]]> {
         return this.map[Symbol.iterator]();
     }

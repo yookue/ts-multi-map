@@ -512,6 +512,7 @@ export class MultiValueMap<K, V> implements Omit<Map<K, V[]>, 'delete' | 'forEac
      * }
      * ```
      */
+    // @ts-ignore
     public [Symbol.iterator](): IterableIterator<[K, V[]]> {
         return this.map[Symbol.iterator]();
     }
