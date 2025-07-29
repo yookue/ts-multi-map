@@ -51,7 +51,7 @@
         "@yookue/typedoc-plugin-raw-content": "~0.3.0",
         "@yookue/typedoc-theme-dumi": "~0.4.0",
         "del-cli": "^6.0.0",
-        "father": "^4.5.6",
+        "father": "^4.6.1",
         "gh-pages": "^6.3.0",
         "globals": "^16.3.0",
         "ts-jest": "^29.4.0",
