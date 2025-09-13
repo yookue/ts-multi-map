@@ -5,6 +5,6 @@
     "moduleNameMapper": {
         "^@$": "<rootDir>/src",
         "^@/(.*)$": "<rootDir>/src/$1",
-        "^@yookue/ts-multi-map$": "<rootDir>/src"
+        "^@unikue/ts-multi-map$": "<rootDir>/src"
     }
 }

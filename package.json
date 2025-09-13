@@ -1,10 +1,10 @@
 {
-    "name": "@yookue/ts-multi-map",
-    "version": "0.2.2",
+    "name": "@unikue/ts-multi-map",
+    "version": "1.0.0",
     "title": "TsMultiMap",
     "description": "Multiple key/value map & range map for typescript",
-    "homepage": "https://yookue.github.io/ts-multi-map",
-    "organization": "Yookue Ltd",
+    "homepage": "https://unikueltd.github.io/ts-multi-map",
+    "organization": "Unikue Ltd",
     "private": false,
     "license": "MIT",
     "keywords": [
@@ -38,54 +38,54 @@
         "test:coverage": "del-cli ./coverage && jest --coverage --coverageDirectory ./coverage"
     },
     "dependencies": {
-        "@babel/runtime": "^7.27.6",
+        "@babel/runtime": "^7.28.4",
         "object-hash": "^3.0.0"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.3.1",
-        "@eslint/js": "^9.32.0",
+        "@eslint/js": "^9.35.0",
         "@types/jest": "^30.0.0",
         "@types/object-hash": "^3.0.6",
-        "@typescript-eslint/eslint-plugin": "^8.38.0",
-        "@yookue/babel-plugin-remove-comment": "^0.2.0",
-        "@yookue/typedoc-plugin-raw-content": "~0.3.0",
-        "@yookue/typedoc-theme-dumi": "~0.4.0",
+        "@typescript-eslint/eslint-plugin": "^8.43.0",
+        "@unikue/babel-plugin-remove-comment": "^1.0.0",
+        "@unikue/typedoc-plugin-raw-content": "~1.0.0",
+        "@unikue/typedoc-theme-dumi": "~1.0.0",
         "del-cli": "^6.0.0",
-        "father": "^4.6.1",
+        "father": "^4.6.4",
         "gh-pages": "^6.3.0",
-        "globals": "^16.3.0",
-        "ts-jest": "^29.4.0",
-        "typedoc": "~0.28.8",
-        "typescript": "^5.8.3"
+        "globals": "^16.4.0",
+        "ts-jest": "^29.4.1",
+        "typedoc": "~0.28.12",
+        "typescript": "^5.9.2"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/yookue/ts-multi-map.git"
+        "url": "git+https://github.com/unikueltd/ts-multi-map.git"
     },
     "bugs": {
-        "url": "https://github.com/yookue/ts-multi-map/issues"
+        "url": "https://github.com/unikueltd/ts-multi-map/issues"
     },
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org"
     },
     "collective": {
-        "url": "https://opencollective.com/yookue-awesome"
+        "url": "https://opencollective.com/unikue-awesome"
     },
     "funding": [
         {
             "type": "opencollective",
-            "url": "https://opencollective.com/yookue-awesome"
+            "url": "https://opencollective.com/unikue-awesome"
         },
         {
             "type": "individual",
-            "url": "https://yookue.com/public/donate"
+            "url": "https://unikue.cn/donation"
         }
     ],
     "author": {
-        "name": "Yookue Ltd",
-        "email": "yookue@outlook.com",
-        "url": "https://yookue.com"
+        "name": "Unikue Ltd",
+        "email": "unikue@yeah.net",
+        "url": "https://unikue.cn"
     },
     "contributors": [
         {

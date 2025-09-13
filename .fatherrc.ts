@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2023 Unikue Ltd. All rights reserved.
  *
  * Licensed under the MIT License.
  *
@@ -31,10 +31,10 @@ export default defineConfig({
     },
     alias: {
         '@': nodePath.resolve(__dirname, './src'),
-        '@yookue/ts-multi-map': nodePath.resolve(__dirname, './src'),
+        '@unikue/ts-multi-map': nodePath.resolve(__dirname, './src'),
     },
     extraBabelPlugins: [
-        ['@yookue/babel-plugin-remove-comment', {
+        ['@unikue/babel-plugin-remove-comment', {
             scope: 'all',
         }]
     ]

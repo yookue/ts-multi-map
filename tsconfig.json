@@ -16,10 +16,10 @@
             "@/*": [
                 "./src/*"
             ],
-            "@yookue/ts-multi-map": [
+            "@unikue/ts-multi-map": [
                 "./src"
             ],
-            "@yookue/ts-multi-map/*": [
+            "@unikue/ts-multi-map/*": [
                 "./src/*",
                 "*"
             ]
