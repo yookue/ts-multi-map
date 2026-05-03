@@ -57,7 +57,7 @@ describe('ReadonlyRangeMap', () => {
         ]);
         expect(map.getByDigit(25)).toBe('white');
         expect(map.getByDigit(50)).toBe('white');
-        expect(map.getByDigit(51)).toBeUndefined;
+        expect(map.getByDigit(51)).toBeUndefined();
         expect(map.getByDigit(52)).toBe('black');
         expect(map.getByDigit(200)).toBeUndefined();
     });
@@ -84,7 +84,8 @@ describe('ReadonlyRangeMap', () => {
             [[51, 100, false, true], 'black']
         ]);
         const array = [];
-        map.forEachIndexing((value, keys, index) => {
+        map.forEachIndexing((value) => {
+            // @ts-ignore
             array.push(value);
         });
         expect(array.length).toBe(map.size);
@@ -96,10 +97,11 @@ describe('ReadonlyRangeMap', () => {
             [[51, 100, false, true], 'black']
         ]);
         const array = [];
-        map.forEachBreakable((value, keys) => {
+        map.forEachBreakable((value) => {
             if (value === 'black') {
                 return false;
             }
+            // @ts-ignore
             array.push(value);
             return true;
         });
@@ -178,7 +180,8 @@ describe('ReadonlyRangeMap', () => {
             [[90, 100, true, true], 'red']
         ]);
         const array = [];
-        for (const [key, _values] of map) {
+        for (const [key] of map) {
+            // @ts-ignore
             array.push(key);
         }
         expect(array.length).toBe(map.size);

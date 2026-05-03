@@ -1,14 +1,19 @@
 {
     "compilerOptions": {
-        "baseUrl": "./",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "target": "es2020",
+        "lib": ["dom"],
         "declaration": true,
         "esModuleInterop": true,
-        "moduleResolution": "node",
-        "target": "es2015",
-        "lib": ["dom"],
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
         "removeComments": true,
         "skipLibCheck": true,
         "strict": true,
+        "types": ["node"],
         "paths": {
             "@": [
                 "./src"
@@ -20,8 +25,8 @@
                 "./src"
             ],
             "@unikue/ts-multi-map/*": [
-                "./src/*",
-                "*"
+                "./*",
+                "./src/*"
             ]
         }
     },

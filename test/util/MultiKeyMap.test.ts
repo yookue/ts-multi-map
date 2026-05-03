@@ -110,6 +110,7 @@ describe('MultiKeyMap', () => {
         ]);
         const array = [];
         map.forEachIndexing((value) => {
+            // @ts-ignore
             array.push(value);
         });
         expect(array.length).toBe(map.size);
@@ -121,10 +122,11 @@ describe('MultiKeyMap', () => {
             [['row2', 'col2'], 'bar']
         ]);
         const array = [];
-        map.forEachBreakable((value, keys) => {
+        map.forEachBreakable((value) => {
             if (value === 'bar') {
                 return false;
             }
+            // @ts-ignore
             array.push(value);
             return true;
         });
@@ -182,7 +184,8 @@ describe('MultiKeyMap', () => {
             [['row2', 'col2'], 'bar']
         ]);
         const array = [];
-        for (const [_keys, value] of map) {
+        for (const [, value] of map) {
+            // @ts-ignore
             array.push(value);
         }
         expect(array.length).toBe(map.size);

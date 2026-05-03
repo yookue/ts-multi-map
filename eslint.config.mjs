@@ -1,38 +1,28 @@
-
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
+// @ts-check
+import eslint from '@eslint/js';
+import tslint from 'typescript-eslint';
+import jestlint from 'eslint-plugin-jest';
 import globals from 'globals';
-import tsParser from '@typescript-eslint/parser';
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
-import js from '@eslint/js';
-import {FlatCompat} from '@eslint/eslintrc';
 
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all,
-});
-
-
-export default [
+export default tslint.config(
     {
-        ignores: ['src/**/*.test.ts*', 'test/**/*'],
+        ignores: [
+            'coverage/**/*',
+            'dist/**/*',
+            'docs-dist/**/*',
+            'node_modules/**/*'
+        ],
     },
-    ...compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended'),
+    eslint.configs.recommended,
+    ...tslint.configs.recommended,
     {
-        plugins: {
-            '@typescript-eslint': typescriptEslint,
-        },
         languageOptions: {
             globals: {
                 ...globals.browser,
                 ...globals.node,
                 ...globals.jest,
             },
-            parser: tsParser,
             ecmaVersion: 'latest',
             sourceType: 'module',
         },
@@ -48,5 +38,21 @@ export default [
             '@typescript-eslint/no-var-requires': 'off',
             '@typescript-eslint/triple-slash-reference': 'off',
         },
+    },
+    {
+        files: [
+            '**/*.test.ts',
+            '**/*.test.tsx',
+            '**/*.spec.ts',
+            '**/*.spec.tsx'
+        ],
+        plugins: {
+            jest: jestlint,
+        },
+        rules: {
+            ...jestlint.configs.recommended.rules,
+            '@typescript-eslint/no-require-imports': 'off',
+            'import/no-unresolved': 'off',
+        },
     }
-];
+);

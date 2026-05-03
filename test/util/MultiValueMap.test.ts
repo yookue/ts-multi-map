@@ -116,7 +116,8 @@ describe('MultiValueMap', () => {
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
         const array = [];
-        map.forEachIndexing((values, key, index) => {
+        map.forEachIndexing((_values, key) => {
+            // @ts-ignore
             array.push(key);
         });
         expect(array.length).toBe(map.size);
@@ -132,6 +133,7 @@ describe('MultiValueMap', () => {
             if (key === 'position') {
                 return false;
             }
+            // @ts-ignore
             array.push(key);
             return true;
         });
@@ -203,7 +205,8 @@ describe('MultiValueMap', () => {
             ['position', ['top', 'right', 'bottom', 'left']]
         ]);
         const array = [];
-        for (const [key, _values] of map) {
+        for (const [key] of map) {
+            // @ts-ignore
             array.push(key);
         }
         expect(array.length).toBe(map.size);
