@@ -25,7 +25,6 @@
                 "./src"
             ],
             "@unikue/ts-multi-map/*": [
-                "./*",
                 "./src/*"
             ]
         }
