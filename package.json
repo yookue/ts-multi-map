@@ -61,6 +61,9 @@
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.59.1"
     },
+    "peerDependencies": {
+        "typescript": ">=4.0.0"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/unikueltd/ts-multi-map.git"
