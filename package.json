@@ -1,6 +1,6 @@
 {
     "name": "@unikue/ts-multi-map",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "title": "TsMultiMap",
     "description": "Multiple key/value map & range map for typescript",
     "homepage": "https://unikueltd.github.io/ts-multi-map",
@@ -34,6 +34,7 @@
         "docs:build": "typedoc --out ./docs-dist",
         "docs:publish": "gh-pages -d ./docs-dist",
         "lint": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+        "lint:fix": "eslint --fix \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
         "test": "jest",
         "test:coverage": "del-cli ./coverage && jest --coverage --coverageDirectory ./coverage"
     },
@@ -49,7 +50,7 @@
         "@types/object-hash": "^3.0.6",
         "@unikue/babel-plugin-remove-comment": "^1.2.0",
         "@unikue/typedoc-plugin-raw-content": "^1.1.0",
-        "@unikue/typedoc-theme-dumi": "^1.1.0",
+        "@unikue/typedoc-theme-dumi": "^1.1.1",
         "del-cli": "^7.0.0",
         "eslint": "^10.3.0",
         "eslint-plugin-jest": "^29.15.2",

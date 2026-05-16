@@ -7,7 +7,7 @@
         "declaration": true,
         "esModuleInterop": true,
         "module": "nodenext",
-        "moduleResolution": "bundler",
+        "moduleResolution": "nodenext",
         "noImplicitAny": false,
         "noUnusedLocals": true,
         "removeComments": true,

@@ -15,7 +15,7 @@
  */
 
 
-import {RangeMap} from '@unikue/ts-multi-map';
+import { RangeMap } from '@unikue/ts-multi-map';
 
 
 describe('RangeMap', () => {

@@ -15,7 +15,7 @@
  */
 
 
-import {MultiKeyMap, type MultiKeyMapEntries} from '@';
+import { MultiKeyMap, type MultiKeyMapEntries } from '@';
 
 
 /**

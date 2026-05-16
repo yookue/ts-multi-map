@@ -16,7 +16,7 @@
 
 
 import objectHash from 'object-hash';
-import {MultiValueMap, type MultiKeyMapEntry, type MultiKeyMapEntries} from '@';
+import { MultiValueMap, type MultiKeyMapEntry, type MultiKeyMapEntries } from '@';
 
 
 /**

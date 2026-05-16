@@ -15,7 +15,7 @@
  */
 
 
-import {MultiValueMap, type MultiValueMapEntries} from '@';
+import { MultiValueMap, type MultiValueMapEntries } from '@';
 
 
 /**

@@ -15,7 +15,7 @@
  */
 
 
-import {ReadonlyRangeMap} from '@unikue/ts-multi-map';
+import { ReadonlyRangeMap } from '@unikue/ts-multi-map';
 
 
 describe('ReadonlyRangeMap', () => {

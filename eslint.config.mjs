@@ -29,6 +29,7 @@ export default tslint.config(
         rules: {
             'no-control-regex': 'off',
             'no-empty': 'off',
+            'object-curly-spacing': ['error', 'always'],
             '@typescript-eslint/ban-ts-comment': 'off',
             '@typescript-eslint/no-empty-function': 'off',
             '@typescript-eslint/no-explicit-any': 'off',

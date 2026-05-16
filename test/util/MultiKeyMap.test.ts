@@ -15,7 +15,7 @@
  */
 
 
-import {MultiKeyMap} from '@unikue/ts-multi-map';
+import { MultiKeyMap } from '@unikue/ts-multi-map';
 
 
 describe('MultiKeyMap', () => {

@@ -15,10 +15,10 @@
  */
 
 
-export {MultiKeyMap} from './util/MultiKeyMap';
-export {MultiValueMap} from './util/MultiValueMap';
-export {RangeMap} from './util/RangeMap';
-export {ReadonlyMultiKeyMap} from './util/ReadonlyMultiKeyMap';
-export {ReadonlyMultiValueMap} from './util/ReadonlyMultiValueMap';
-export {ReadonlyRangeMap} from './util/ReadonlyRangeMap';
+export { MultiKeyMap } from './util/MultiKeyMap';
+export { MultiValueMap } from './util/MultiValueMap';
+export { RangeMap } from './util/RangeMap';
+export { ReadonlyMultiKeyMap } from './util/ReadonlyMultiKeyMap';
+export { ReadonlyMultiValueMap } from './util/ReadonlyMultiValueMap';
+export { ReadonlyRangeMap } from './util/ReadonlyRangeMap';
 export * from './type/declaration';

@@ -16,7 +16,7 @@
 
 
 import objectHash from 'object-hash';
-import {type RangeMapKey} from '@';
+import { type RangeMapKey } from '@';
 
 
 /**

@@ -15,7 +15,7 @@
  */
 
 
-import {ReadonlyMultiKeyMap} from '@unikue/ts-multi-map';
+import { ReadonlyMultiKeyMap } from '@unikue/ts-multi-map';
 
 
 describe('ReadonlyMultiKeyMap', () => {

@@ -15,7 +15,7 @@
  */
 
 
-import {MultiValueMap} from '@unikue/ts-multi-map';
+import { MultiValueMap } from '@unikue/ts-multi-map';
 
 
 describe('MultiValueMap', () => {

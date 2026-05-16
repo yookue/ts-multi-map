@@ -15,7 +15,7 @@
  */
 
 
-import {RangeMap, RangeMapKey} from '@';
+import { RangeMap, RangeMapKey } from '@';
 
 
 /**
